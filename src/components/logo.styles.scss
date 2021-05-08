@@ -1,0 +1,23 @@
+@import "../scss/variables.scss";
+
+.teamUp-logo-cont {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+
+	.logo-image {
+		width: 50px;
+	}
+
+	h2 {
+		margin-left: $xs-gap;
+		font-size: 1.8rem;
+
+		.red-text {
+			color: #b90b0a;
+		}
+		.blue-text {
+			color: #005f95;
+		}
+	}
+}

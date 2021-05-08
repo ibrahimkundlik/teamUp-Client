@@ -11,11 +11,16 @@ $high-text: #ff5756;
 $high-bg: #ffe2e2;
 
 //gap
+$xs-gap: 0.5rem;
 $s-gap: 1rem;
-$m-gap: 1.5rem;
+$m-gap: 2rem;
 $l-gap: 3rem;
 
 //border-radius
-$s-br: 5px;
-$m-br: 10px;
-$l-br: 15px;
+$s-br: 0.5rem;
+$m-br: 1rem;
+$l-br: 1.5rem;
+
+//media-queries
+$tablet: 768px;
+$desktop: 992px;
