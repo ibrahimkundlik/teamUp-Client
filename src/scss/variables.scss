@@ -2,6 +2,7 @@
 $primary-text: #001632;
 $primary-bg: #fdfdfd;
 $secondary-text: #00a3ff;
+$secondary-text-hov: #2ab1ff;
 $secondary-bg: #f0f4f9;
 $low-text: #19be72;
 $low-bg: #ddf7ec;
@@ -9,6 +10,8 @@ $med-text: #ef911a;
 $med-bg: #ffefd5;
 $high-text: #ff5756;
 $high-bg: #ffe2e2;
+$logo-red: #b90b0a;
+$logo-blue: #005f95;
 
 //gap
 $xs-gap: 0.5rem;
@@ -24,3 +27,6 @@ $l-br: 1.5rem;
 //media-queries
 $tablet: 768px;
 $desktop: 992px;
+
+//transition
+$all: all 0.3s ease-in-out;

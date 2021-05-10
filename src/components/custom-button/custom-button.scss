@@ -1,0 +1,20 @@
+@import "../../scss/variables.scss";
+
+.custom-button {
+	border: none;
+	outline: none;
+	color: $primary-bg;
+	background-color: $secondary-text;
+	padding: $xs-gap $s-gap;
+	border-radius: $s-br;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+	display: block;
+	transition: $all;
+
+	&:hover {
+		background-color: $secondary-text-hov;
+	}
+}

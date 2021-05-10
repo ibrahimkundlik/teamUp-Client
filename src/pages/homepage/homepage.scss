@@ -1,22 +1,8 @@
 @import "../../scss/variables.scss";
 
 .homepage-container {
-	width: 100vw;
-	min-height: 100vh;
-	background-color: #cbcfe4;
-	background-image: url("../../images/background.svg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding: $m-gap $s-gap;
-
-	@media screen and (min-width: $desktop) {
-		padding: $s-gap $l-gap;
-	}
-
-	.max-container {
-		max-width: 1400px;
-		margin: 0 auto $s-gap auto;
-	}
+	max-width: 1400px;
+	margin: 0 auto $s-gap auto;
 
 	.navbar {
 		display: flex;
@@ -113,9 +99,9 @@
 			p {
 				margin: $m-gap 0 $l-gap 0;
 				strong {
-					color: #b90b0a;
+					color: $logo-red;
 					span {
-						color: #005f95;
+						color: $logo-blue;
 					}
 				}
 			}

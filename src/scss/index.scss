@@ -49,15 +49,16 @@ li {
 	list-style: none;
 }
 
-button {
-	border: none;
-	outline: none;
-	color: $primary-bg;
-	background-color: $secondary-text;
-	padding: $xs-gap $s-gap;
-	border-radius: $s-br;
-	cursor: pointer;
-	font-weight: 600;
-	letter-spacing: 1px;
-	display: block;
+.App {
+	width: 100vw;
+	min-height: 100vh;
+	background-color: #cbcfe4;
+	background-image: url("../images/background.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: $m-gap $s-gap;
+
+	@media screen and (min-width: $desktop) {
+		padding: $s-gap $l-gap;
+	}
 }
