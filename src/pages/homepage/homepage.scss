@@ -1,136 +1,126 @@
 @import "../../scss/variables.scss";
 
-.homepage-container {
+.hero-section {
+	text-align: center;
+	display: flex;
+	flex-flow: column nowrap;
+	position: relative;
 	max-width: 1400px;
 	margin: 0 auto $s-gap auto;
 
-	.navbar {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
+	@media screen and (min-width: $desktop) {
+		text-align: left;
+		flex-flow: row-reverse nowrap;
 		align-items: center;
+		margin-top: 4rem;
 	}
 
-	.hero-section {
-		text-align: center;
-		display: flex;
-		flex-flow: column nowrap;
-		position: relative;
+	@media screen and (min-width: 1200px) {
+		margin-top: 3rem;
+	}
+
+	.hero-image {
+		width: 90%;
+		max-width: 400px;
+		margin: $m-gap auto;
 
 		@media screen and (min-width: $desktop) {
-			text-align: left;
-			flex-flow: row-reverse nowrap;
-			align-items: center;
-			margin-top: 4rem;
+			width: 60%;
+			max-width: 640px;
 		}
 
 		@media screen and (min-width: 1200px) {
-			margin-top: 3rem;
+			width: 50%;
 		}
 
-		.hero-image {
-			width: 90%;
-			max-width: 400px;
-			margin: $m-gap auto;
+		img {
+			border: 2px solid gray;
+			border-radius: $m-br;
+		}
+	}
 
-			@media screen and (min-width: $desktop) {
-				width: 60%;
-				max-width: 640px;
-			}
-
-			@media screen and (min-width: 1200px) {
-				width: 50%;
-			}
-
-			img {
-				border: 2px solid gray;
-				border-radius: $m-br;
-			}
+	.hero-text {
+		@media screen and (min-width: $desktop) {
+			width: 40%;
+			padding-right: $s-gap;
 		}
 
-		.hero-text {
+		@media screen and (min-width: 1200px) {
+			width: 50%;
+		}
+
+		h1 {
+			span {
+				font-size: 1.6rem;
+				display: block;
+				margin-top: $xs-gap;
+			}
+
 			@media screen and (min-width: $desktop) {
-				width: 40%;
-				padding-right: $s-gap;
-			}
+				width: 100%;
+				text-align: center;
+				position: absolute;
+				top: -15%;
 
-			@media screen and (min-width: 1200px) {
-				width: 50%;
-			}
-
-			h1 {
 				span {
-					font-size: 1.6rem;
+					font-size: 1.3rem;
+					display: inline-block;
+					padding-left: $s-gap;
+					padding-top: $xs-gap;
+					margin-left: $s-gap;
+					border-left: 3px solid $primary-text;
+				}
+			}
+
+			@media screen and (min-width: 1200px) {
+				font-size: 2.6rem;
+				position: unset;
+				text-align: unset;
+
+				span {
+					font-size: 1.8rem;
 					display: block;
-					margin-top: $xs-gap;
-				}
-
-				@media screen and (min-width: $desktop) {
-					width: 100%;
-					text-align: center;
-					position: absolute;
-					top: -15%;
-
-					span {
-						font-size: 1.3rem;
-						display: inline-block;
-						padding-left: $s-gap;
-						padding-top: $xs-gap;
-						margin-left: $s-gap;
-						border-left: 3px solid $primary-text;
-					}
-				}
-
-				@media screen and (min-width: 1200px) {
-					font-size: 2.6rem;
-					position: unset;
-					text-align: unset;
-
-					span {
-						font-size: 1.8rem;
-						display: block;
-						border: none;
-						padding: 0;
-						margin: 0;
-					}
+					border: none;
+					padding: 0;
+					margin: 0;
 				}
 			}
+		}
 
-			p {
-				margin: $m-gap 0 $l-gap 0;
-				strong {
-					color: $logo-red;
-					span {
-						color: $logo-blue;
-					}
+		p {
+			margin: $m-gap 0 $l-gap 0;
+			strong {
+				color: $logo-red;
+				span {
+					color: $logo-blue;
 				}
 			}
+		}
 
-			.trial-btn {
-				margin: $xs-gap auto $s-gap auto;
-				position: relative;
+		.trial-btn {
+			margin: $xs-gap auto $s-gap auto;
+			position: relative;
 
-				&::after {
-					content: "*Recommended";
-					position: absolute;
-					top: -45%;
-					right: 1%;
-					color: #333;
-					font-size: 0.7rem;
-				}
-
-				@media screen and (min-width: $desktop) {
-					margin: $xs-gap auto $s-gap 0;
-				}
+			&::after {
+				content: "*Recommended";
+				position: absolute;
+				top: -45%;
+				right: 1%;
+				color: #333;
+				font-size: 0.7rem;
 			}
 
-			.signup-btn {
-				width: 150px;
-				margin: 0 auto $s-gap auto;
+			@media screen and (min-width: $desktop) {
+				margin: $xs-gap auto $s-gap 0;
+			}
+		}
 
-				@media screen and (min-width: $desktop) {
-					margin: $xs-gap auto $s-gap 0;
-				}
+		.signup-btn {
+			width: 150px;
+			margin: 0 auto $s-gap auto;
+
+			@media screen and (min-width: $desktop) {
+				margin: $xs-gap auto $s-gap 0;
 			}
 		}
 	}
