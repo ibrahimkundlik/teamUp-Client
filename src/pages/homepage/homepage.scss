@@ -1,10 +1,10 @@
-@import "../scss/variables.scss";
+@import "../../scss/variables.scss";
 
 .homepage-container {
 	width: 100vw;
 	min-height: 100vh;
 	background-color: #cbcfe4;
-	background-image: url("../images/background.svg");
+	background-image: url("../../images/background.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: $m-gap $s-gap;

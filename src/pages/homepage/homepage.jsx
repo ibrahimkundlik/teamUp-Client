@@ -1,7 +1,7 @@
 import React from "react";
 import "./homepage.scss";
-import dashboardImg from "../images/dashboard.png";
-import Logo from "../components/logo.component";
+import dashboardImg from "../../images/dashboard.png";
+import Logo from "../../components/logo/logo";
 
 const HomePage = () => {
 	return (
