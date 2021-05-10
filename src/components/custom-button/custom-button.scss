@@ -9,12 +9,25 @@
 	border-radius: $s-br;
 	cursor: pointer;
 	font-weight: 600;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	letter-spacing: 1px;
 	display: block;
 	transition: $all;
 
 	&:hover {
 		background-color: $secondary-text-hov;
+	}
+}
+
+.trial-btn {
+	position: relative;
+
+	&::after {
+		content: "*Recommended";
+		position: absolute;
+		top: -45%;
+		right: 1%;
+		color: #6b6b6b;
+		font-size: 0.7rem;
 	}
 }

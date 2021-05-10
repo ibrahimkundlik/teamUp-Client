@@ -27,7 +27,7 @@ const HomePage = () => {
 					Login with TRIAL account
 				</CustomButton>
 				<Link to="/signup">
-					<CustomButton className="signup-btn">Sign up</CustomButton>
+					<CustomButton className="signup-btn">Signup</CustomButton>
 				</Link>
 			</div>
 		</div>

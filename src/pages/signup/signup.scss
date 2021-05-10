@@ -1,5 +1,58 @@
 @import "../../scss/variables.scss";
 
 .signup-container {
-	color: red;
+	width: 100%;
+	max-width: 550px;
+	background-color: $primary-bg;
+	padding: $m-gap;
+	margin: $l-gap auto $m-gap auto;
+	border-radius: $s-br;
+	box-shadow: $box-shadow;
+
+	@media screen and (min-width: $desktop) {
+		margin: $s-gap auto;
+		padding-bottom: $xs-gap;
+	}
+
+	h2 {
+		width: 100%;
+		text-align: center;
+	}
+
+	.signup-btn {
+		width: 80%;
+		margin: $m-gap auto;
+	}
+
+	.other-auths {
+		text-align: center;
+
+		p {
+			font-size: 0.8rem;
+		}
+		button {
+			margin: $xs-gap auto;
+		}
+		.trial-btn {
+			width: 80%;
+			margin-top: $s-gap;
+		}
+
+		@media screen and (min-width: $desktop) {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+
+			p:nth-child(1) {
+				width: 100%;
+			}
+			button {
+				margin: $s-gap 0;
+			}
+			.trial-btn {
+				width: unset;
+			}
+		}
+	}
 }

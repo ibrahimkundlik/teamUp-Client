@@ -1,0 +1,35 @@
+@import "../../scss/variables.scss";
+
+.custom-input {
+	margin: $s-gap 0;
+	position: relative;
+
+	label {
+		display: block;
+		margin: $xs-gap 0;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+		border: 2px solid #ca8fe3;
+		padding: $xs-gap $s-gap $xs-gap 2.5rem;
+		border-radius: 5px;
+
+		&:focus {
+			outline: none;
+			border: 2px solid #a61ee0;
+		}
+	}
+
+	.input-icon {
+		font-size: 1.5rem;
+		position: absolute;
+		left: 2.5%;
+		bottom: 13%;
+
+		svg {
+			display: flex;
+		}
+	}
+}

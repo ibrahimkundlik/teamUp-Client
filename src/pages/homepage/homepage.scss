@@ -5,7 +5,7 @@
 	display: flex;
 	flex-flow: column nowrap;
 	position: relative;
-	max-width: 1400px;
+	max-width: $max-width;
 	margin: 0 auto $s-gap auto;
 
 	@media screen and (min-width: $desktop) {
@@ -100,15 +100,6 @@
 		.trial-btn {
 			margin: $xs-gap auto $s-gap auto;
 			position: relative;
-
-			&::after {
-				content: "*Recommended";
-				position: absolute;
-				top: -45%;
-				right: 1%;
-				color: #333;
-				font-size: 0.7rem;
-			}
 
 			@media screen and (min-width: $desktop) {
 				margin: $xs-gap auto $s-gap 0;
