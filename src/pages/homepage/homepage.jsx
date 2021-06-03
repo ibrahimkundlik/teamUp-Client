@@ -3,23 +3,8 @@ import "./homepage.scss";
 import dashboardImg from "../../images/dashboard.png";
 import CustomButton from "../../components/custom-button/custom-button";
 import { Link } from "react-router-dom";
-//redux
-// import { useDispatch } from "react-redux";
-// import { createPost } from "../../redux/posts/posts.action";
 
 const HomePage = () => {
-	// const dispatch = useDispatch();
-
-	// const postRequest = () => {
-	// 	const postData = {
-	// 		title: "second post",
-	// 		message: "saving second post request",
-	// 		creator: "haris",
-	// 		tags: ["5", "3", "25"],
-	// 	};
-	// 	dispatch(createPost(postData));
-	// };
-
 	return (
 		<div className="hero-section">
 			<div className="hero-image">
@@ -38,7 +23,7 @@ const HomePage = () => {
 					</strong>{" "}
 					you will complete projects faster and with less overhead”
 				</p>
-				<CustomButton className="trial-btn" onClick={postRequest}>
+				<CustomButton className="trial-btn">
 					Login with TRIAL account
 				</CustomButton>
 				<Link to="/signup">
