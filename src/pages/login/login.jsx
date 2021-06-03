@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./login.scss";
 import CustomInput from "../../components/custom-input/custom-input";
 import CustomButton from "../../components/custom-button/custom-button";
+import Spinner from "../../components/spinner/spinner";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import { Link } from "react-router-dom";
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startLogin } from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
 
@@ -18,6 +19,7 @@ const Login = () => {
 	const [formData, setFormData] = useState(INITIAL_LOGIN_DATA);
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const auth = useSelector((state) => state.auth);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +28,6 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(startLogin(formData, history));
-		setFormData(INITIAL_LOGIN_DATA);
 	};
 
 	return (
@@ -56,8 +57,14 @@ const Login = () => {
 				required
 				inputIcon={<HiOutlineLockClosed />}
 			/>
+			{auth.errorRes && (
+				<div className="message-modal">
+					<p>{auth.errorRes}</p>
+				</div>
+			)}
 			<CustomButton type="submit" className="login-btn">
-				Log In
+				<p>Log In</p>
+				{auth.loading && <Spinner />}
 			</CustomButton>
 			<div className="other-auths">
 				<p>Don't have an acoount ?</p>

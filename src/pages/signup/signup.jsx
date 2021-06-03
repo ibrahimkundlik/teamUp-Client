@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./signup.scss";
 import CustomInput from "../../components/custom-input/custom-input";
 import CustomButton from "../../components/custom-button/custom-button";
+import Spinner from "../../components/spinner/spinner";
 import {
 	HiOutlineMail,
 	HiUserCircle,
@@ -9,7 +10,9 @@ import {
 	HiLockClosed,
 	HiOutlineLockClosed,
 } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { startSignup } from "../../redux/user/user.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const INITIAL_SIGNUP_DATA = {
 	firstname: "",
@@ -21,6 +24,9 @@ const INITIAL_SIGNUP_DATA = {
 
 const SignUp = () => {
 	const [formData, setFormData] = useState(INITIAL_SIGNUP_DATA);
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const auth = useSelector((state) => state.auth);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +34,7 @@ const SignUp = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setFormData(INITIAL_SIGNUP_DATA);
+		dispatch(startSignup(formData, history));
 	};
 
 	return (
@@ -72,7 +78,7 @@ const SignUp = () => {
 				type="password"
 				name="password"
 				label="Password"
-				placeholder="Enter your password"
+				placeholder="Minimum length of 8 chars"
 				onChange={handleChange}
 				value={formData.password}
 				required
@@ -88,8 +94,14 @@ const SignUp = () => {
 				required
 				inputIcon={<HiOutlineLockClosed />}
 			/>
+			{auth.errorRes && (
+				<div className="message-modal">
+					<p>{auth.errorRes}</p>
+				</div>
+			)}
 			<CustomButton type="submit" className="signup-btn">
-				Sign Up
+				<p>Sign Up</p>
+				{auth.loading && <Spinner />}
 			</CustomButton>
 			<div className="other-auths">
 				<p>Already have an acoount ?</p>

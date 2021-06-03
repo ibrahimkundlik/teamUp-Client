@@ -24,7 +24,7 @@ const App = () => {
 	useEffect(() => {
 		console.log("useEffect 2");
 		setCurrentUser(JSON.parse(localStorage.getItem("profile")));
-	}, [auth]);
+	}, [auth.userRes]);
 
 	useEffect(() => {
 		console.log("useEffect 3");

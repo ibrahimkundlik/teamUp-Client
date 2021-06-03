@@ -19,9 +19,27 @@
 		text-align: center;
 	}
 
+	.message-modal {
+		width: 100%;
+		font-size: 0.85rem;
+		text-align: center;
+		color: $logo-red;
+		transform: translateY($xs-gap);
+	}
+
+	.spinner {
+		width: 30px;
+		height: 30px;
+		margin-left: $m-gap;
+	}
+
 	.signup-btn {
 		width: 80%;
 		margin: $m-gap auto;
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.other-auths {

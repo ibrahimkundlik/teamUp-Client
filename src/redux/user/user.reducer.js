@@ -13,6 +13,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 		case userActionType.AUTH_START:
 			return { ...state, loading: true };
 		case userActionType.LOGIN_SUCCESS:
+		case userActionType.SIGNUP_SUCCESS:
 			localStorage.setItem(
 				"profile",
 				JSON.stringify({
