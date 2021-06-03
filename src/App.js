@@ -6,20 +6,20 @@ import Navbar from "./components/navbar/navbar";
 import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
 import { Route, Switch, withRouter } from "react-router-dom";
 //redux
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "./redux/user/user.action";
+// import { useDispatch, useSelector } from "react-redux";
+// import { login } from "./redux/user/user.action";
 
 const App = ({ location: { pathname } }) => {
-	const dispatch = useDispatch();
-	const auth = useSelector((state) => state.auth);
+	// const dispatch = useDispatch();
+	// const auth = useSelector((state) => state.auth);
 
-	useEffect(() => {
-		const data = {
-			email: "masckwils@live.com",
-			password: "12345678",
-		};
-		dispatch(login(data));
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	const data = {
+	// 		email: "masckwils@live.com",
+	// 		password: "12345678",
+	// 	};
+	// 	dispatch(login(data));
+	// }, [dispatch]);
 
 	return (
 		<div className="App">
