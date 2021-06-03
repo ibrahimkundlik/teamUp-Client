@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import rootReducer from "./redux/root";
+import rootReducer from "./redux/root.reducer";
 
 const middlewares = [thunk];
 if (process.env.NODE_ENV === "development") {

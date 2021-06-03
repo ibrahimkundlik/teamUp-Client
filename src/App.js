@@ -7,14 +7,18 @@ import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
 import { Route, Switch, withRouter } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "./redux/posts/posts.action";
+import { login } from "./redux/user/user.action";
 
 const App = ({ location: { pathname } }) => {
 	const dispatch = useDispatch();
-	const posts = useSelector((state) => state.posts);
+	const auth = useSelector((state) => state.auth);
 
 	useEffect(() => {
-		dispatch(getPosts());
+		const data = {
+			email: "masckwils@live.com",
+			password: "12345678",
+		};
+		dispatch(login(data));
 	}, [dispatch]);
 
 	return (
