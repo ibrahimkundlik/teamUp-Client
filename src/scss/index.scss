@@ -52,7 +52,7 @@ li {
 .App {
 	width: 100vw;
 	min-height: 100vh;
-	background-color: #cbcfe4;
+	background-color: $main-bg;
 	background-image: url("../images/background.svg");
 	background-repeat: no-repeat;
 	background-size: cover;

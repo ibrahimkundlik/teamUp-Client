@@ -4,7 +4,7 @@ import * as api from "../../api/api-call";
 const fetchError = (error) => {
 	let errorMessage = error.message;
 	if (error.response) {
-		errorMessage = error.response.data.message;
+		errorMessage = error.response.data;
 	}
 	return errorMessage;
 };

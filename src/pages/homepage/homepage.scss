@@ -100,6 +100,7 @@
 		.trial-btn {
 			margin: $xs-gap auto $s-gap auto;
 			position: relative;
+			display: block;
 
 			@media screen and (min-width: $desktop) {
 				margin: $xs-gap auto $s-gap 0;
@@ -109,6 +110,7 @@
 		.signup-btn {
 			width: 150px;
 			margin: 0 auto $s-gap auto;
+			display: block;
 
 			@media screen and (min-width: $desktop) {
 				margin: $xs-gap auto $s-gap 0;

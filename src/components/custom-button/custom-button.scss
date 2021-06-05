@@ -11,11 +11,15 @@
 	font-weight: 600;
 	font-size: 0.9rem;
 	letter-spacing: 1px;
-	display: block;
+	display: inline-block;
 	transition: $all;
 
 	&:hover {
 		background-color: $secondary-text-hov;
+	}
+
+	a {
+		color: $primary-bg;
 	}
 }
 
@@ -23,7 +27,7 @@
 	position: relative;
 
 	&::after {
-		content: "*Recommended";
+		content: "*Recommended (Testing)";
 		position: absolute;
 		top: -45%;
 		right: 1%;

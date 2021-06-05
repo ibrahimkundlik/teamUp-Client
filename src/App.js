@@ -40,7 +40,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<ScrollToTop />
-			{location.pathname !== "/dashboard" && (
+			{location.pathname !== "/teams" && (
 				<Navbar showLogin={location.pathname === "/"} />
 			)}
 			<Switch>
