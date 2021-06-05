@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-	baseURL: "http://localhost:5000",
+	baseURL: "http://192.168.8.108:5000",
 });
 
 API.interceptors.request.use((req) => {
@@ -13,5 +13,8 @@ API.interceptors.request.use((req) => {
 	return req;
 });
 
-export const login = (formData) => API.post(`/users/login`, formData);
-export const signup = (formData) => API.post(`/users/signup`, formData);
+export const login = (formData) => API.post("/users/login", formData);
+export const signup = (formData) => API.post("/users/signup", formData);
+
+export const getTeams = () => API.get("/teams");
+export const createTeam = (teamData) => API.post("/teams", teamData);

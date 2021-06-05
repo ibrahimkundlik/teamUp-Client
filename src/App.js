@@ -5,6 +5,7 @@ import Login from "./pages/login/login";
 import Teams from "./pages/teams/teams";
 import Navbar from "./components/navbar/navbar";
 import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
+import ErrorPage from "./components/error-page/error-page";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import decode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,7 +41,9 @@ const App = () => {
 	return (
 		<div className="App">
 			<ScrollToTop />
-			<Navbar showLogin={location.pathname === "/"} />
+			{location.pathname !== "/teams" && (
+				<Navbar showLogin={location.pathname === "/"} />
+			)}
 			<Switch>
 				<Route
 					exact
@@ -58,6 +61,7 @@ const App = () => {
 					render={() => (currentUser ? <Redirect to="/teams" /> : <SignUp />)}
 				/>
 				<Route exact path="/teams" component={Teams} />
+				<Route path="/*" component={ErrorPage} />
 			</Switch>
 		</div>
 	);

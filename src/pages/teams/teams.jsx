@@ -12,8 +12,9 @@ const Teams = () => {
 	if (auth.userRes === null) {
 		return <Redirect to="/" />;
 	}
+
 	return (
-		<div>
+		<div className="teams-container">
 			Teams Page
 			<button onClick={() => dispatch(logout())}>Logout</button>
 		</div>

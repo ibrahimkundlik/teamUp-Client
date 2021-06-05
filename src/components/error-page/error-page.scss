@@ -1,0 +1,34 @@
+@import "../../scss/variables.scss";
+
+.error-page-cont {
+	text-align: center;
+	width: 100%;
+
+	.error-image-cont {
+		margin: 2rem auto 1rem auto;
+		width: 50%;
+		max-width: 275px;
+		transform: rotate(-30deg);
+	}
+
+	.error-head {
+		margin: $s-gap auto;
+		color: $logo-red;
+	}
+
+	.error-para {
+		margin: $s-gap auto;
+		width: 80%;
+		line-height: 1.7;
+		color: $primary-text;
+	}
+
+	button {
+		display: inline-block;
+		margin: $xs-gap auto;
+
+		a {
+			color: $primary-text;
+		}
+	}
+}
