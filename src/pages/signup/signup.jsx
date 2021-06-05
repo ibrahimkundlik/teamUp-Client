@@ -13,6 +13,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { startSignup } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
+import { selectAuth } from "../../redux/user/user.selector";
 
 const INITIAL_SIGNUP_DATA = {
 	firstname: "",
@@ -26,7 +27,7 @@ const SignUp = () => {
 	const [formData, setFormData] = useState(INITIAL_SIGNUP_DATA);
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const auth = useSelector((state) => state.auth);
+	const auth = useSelector(selectAuth);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });

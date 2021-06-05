@@ -10,38 +10,37 @@ import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import decode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, checkUser } from "./redux/user/user.action";
+import { selectAuth, selectAuthToken } from "./redux/user/user.selector";
 
 const App = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
-	const auth = useSelector((state) => state.auth);
+	const auth = useSelector(selectAuth);
+	const authToken = useSelector(selectAuthToken);
 	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
-		console.log("useEffect 1");
 		dispatch(checkUser());
 	}, [dispatch]);
 
 	useEffect(() => {
-		console.log("useEffect 2");
 		setCurrentUser(JSON.parse(localStorage.getItem("profile")));
 	}, [auth.userRes]);
 
 	useEffect(() => {
-		console.log("useEffect 3");
-		const token = currentUser?.token;
+		const token = authToken;
 		if (token) {
 			const decodedToken = decode(token);
 			if (decodedToken.exp * 1000 < new Date().getTime()) {
 				dispatch(logout());
 			}
 		}
-	}, [currentUser, dispatch]);
+	}, [authToken, location, dispatch]);
 
 	return (
 		<div className="App">
 			<ScrollToTop />
-			{location.pathname !== "/teams" && (
+			{location.pathname !== "/dashboard" && (
 				<Navbar showLogin={location.pathname === "/"} />
 			)}
 			<Switch>

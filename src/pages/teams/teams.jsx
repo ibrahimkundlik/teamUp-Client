@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./teams.scss";
+import Spinner from "../../components/spinner/spinner";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { logout } from "../../redux/user/user.action";
+import { getTeams } from "../../redux/teams/teams.action";
 
 const Teams = () => {
-	const auth = useSelector((state) => state.auth);
+	const { auth, teams } = useSelector((state) => state);
 	const dispatch = useDispatch();
 
-	if (auth.userRes === null) {
-		return <Redirect to="/" />;
+	useEffect(() => {
+		console.log("getTeams - useEffect");
+		dispatch(getTeams());
+	}, [dispatch]);
+
+	// if (auth.userRes === null) {
+	// 	return <Redirect to="/login" />;
+	// }
+
+	if (teams.loading) {
+		return <Spinner />;
 	}
 
 	return (
@@ -20,4 +31,5 @@ const Teams = () => {
 		</div>
 	);
 };
+
 export default Teams;

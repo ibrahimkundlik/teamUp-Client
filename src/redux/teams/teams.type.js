@@ -1,0 +1,6 @@
+export const teamActionType = {
+	FETCH_START: "FETCH_START",
+	GET_TEAMS: "GET_TEAMS",
+	CREATE_TEAM: "CREATE_TEAM",
+	FETCH_FAILURE: "FETCH_FAILURE",
+};

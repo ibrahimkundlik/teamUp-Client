@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogin } from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
+import { selectAuth } from "../../redux/user/user.selector";
 
 const INITIAL_LOGIN_DATA = {
 	email: "",
@@ -19,7 +20,7 @@ const Login = () => {
 	const [formData, setFormData] = useState(INITIAL_LOGIN_DATA);
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const auth = useSelector((state) => state.auth);
+	const auth = useSelector(selectAuth);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
