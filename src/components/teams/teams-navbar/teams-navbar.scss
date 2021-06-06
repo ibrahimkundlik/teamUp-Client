@@ -1,0 +1,21 @@
+@import "../../../scss/variables.scss";
+
+.teams-navbar-cont {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	overflow-x: hidden;
+
+	@media screen and (min-width: $desktop) {
+		margin-top: $xs-gap;
+	}
+
+	.teamUp-logo-cont {
+		width: 150px;
+
+		.logo-text {
+			font-size: 1.4rem;
+		}
+	}
+}

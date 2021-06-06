@@ -1,6 +1,6 @@
 import React from "react";
 
-const TeamsList = () => {
+const TeamsList = ({ teams }) => {
 	return <div>Teams List</div>;
 };
 

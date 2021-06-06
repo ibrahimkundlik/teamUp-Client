@@ -1,0 +1,56 @@
+@import "../../scss/variables.scss";
+
+.user-profile-cont {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+	cursor: pointer;
+
+	.user-profile-modal {
+		position: fixed;
+		right: $s-gap;
+		top: 5.7rem;
+		text-align: center;
+		padding: $s-gap $m-gap;
+		border-radius: $s-br;
+		background: $primary-bg;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(2000px);
+		transition: all 0.3s ease-in-out;
+		cursor: default;
+
+		@media screen and (min-width: $desktop) {
+			right: $l-gap;
+			top: 5.3rem;
+		}
+
+		p {
+			margin: $xs-gap;
+		}
+
+		.user-name {
+			text-transform: capitalize;
+		}
+
+		.user-image {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			margin: 0 auto;
+		}
+	}
+
+	.show-profile {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(0px);
+	}
+}

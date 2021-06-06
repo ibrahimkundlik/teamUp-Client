@@ -27,8 +27,8 @@ const Teams = () => {
 				<TeamsError teams={teams} />
 			) : (
 				<>
-					<TeamsNavbar />
-					<TeamsList />
+					<TeamsNavbar user={auth.userRes?.user} />
+					<TeamsList teams={teams.teamsRes} />
 				</>
 			)}
 		</div>

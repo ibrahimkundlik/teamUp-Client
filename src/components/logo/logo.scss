@@ -5,12 +5,13 @@
 	flex-flow: row nowrap;
 	align-items: center;
 	width: max-content;
+	cursor: default;
 
 	.logo-image {
 		width: 50px;
 	}
 
-	h2 {
+	.logo-text {
 		margin-left: $xs-gap;
 		font-size: 1.8rem;
 

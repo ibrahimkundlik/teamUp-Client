@@ -1,0 +1,19 @@
+@import "../../scss/variables.scss";
+
+.custom-icon-cont {
+	background: $primary-bg;
+	color: $secondary-text;
+	border: 2px solid $secondary-text;
+	border-radius: $s-br;
+	padding: $xs-gap;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	width: max-content;
+	font-weight: 700;
+
+	svg {
+		font-size: 1.6rem;
+	}
+}
