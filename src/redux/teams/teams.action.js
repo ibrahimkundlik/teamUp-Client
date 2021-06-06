@@ -17,7 +17,7 @@ export const getTeams = () => async (dispatch) => {
 		const { data } = await api.getTeams();
 		dispatch({
 			type: teamActionType.GET_TEAMS,
-			payload: data,
+			payload: data.teams,
 		});
 	} catch (error) {
 		dispatch({

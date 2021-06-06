@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import HomePage from "./pages/homepage/homepage";
 import SignUp from "./pages/signup/signup";
 import Login from "./pages/login/login";
@@ -17,15 +17,10 @@ const App = () => {
 	const dispatch = useDispatch();
 	const auth = useSelector(selectAuth);
 	const authToken = useSelector(selectAuthToken);
-	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
 		dispatch(checkUser());
 	}, [dispatch]);
-
-	useEffect(() => {
-		setCurrentUser(JSON.parse(localStorage.getItem("profile")));
-	}, [auth.userRes]);
 
 	useEffect(() => {
 		const token = authToken;
@@ -47,17 +42,19 @@ const App = () => {
 				<Route
 					exact
 					path="/"
-					render={() => (currentUser ? <Redirect to="/teams" /> : <HomePage />)}
+					render={() =>
+						auth.userRes ? <Redirect to="/teams" /> : <HomePage />
+					}
 				/>
 				<Route
 					exact
 					path="/login"
-					render={() => (currentUser ? <Redirect to="/teams" /> : <Login />)}
+					render={() => (auth.userRes ? <Redirect to="/teams" /> : <Login />)}
 				/>
 				<Route
 					exact
 					path="/signup"
-					render={() => (currentUser ? <Redirect to="/teams" /> : <SignUp />)}
+					render={() => (auth.userRes ? <Redirect to="/teams" /> : <SignUp />)}
 				/>
 				<Route exact path="/teams" component={Teams} />
 				<Route path="/*" component={ErrorPage} />

@@ -59,8 +59,9 @@ export const startSignup = (formData, history) => async (dispatch) => {
 	}
 };
 
-export const logout = () => {
-	return {
+export const logout = (history) => async (dispatch) => {
+	dispatch({
 		type: userActionType.LOGOUT,
-	};
+	});
+	history.push("/");
 };

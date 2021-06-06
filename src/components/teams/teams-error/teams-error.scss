@@ -1,0 +1,29 @@
+@import "../../../scss/variables.scss";
+
+.teams-error-modal {
+	text-align: center;
+
+	p {
+		color: $logo-red;
+		margin: $l-gap 0 $m-gap 0;
+		font-weight: 500;
+		width: 100%;
+	}
+
+	h5 {
+		width: 100%;
+		margin-bottom: $m-gap;
+		word-spacing: 3px;
+	}
+
+	.redirects {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+
+		h4 {
+			margin: 0 $m-gap;
+		}
+	}
+}
