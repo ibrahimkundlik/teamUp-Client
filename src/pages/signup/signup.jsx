@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signup.scss";
 import CustomInput from "../../components/custom-input/custom-input";
 import CustomButton from "../../components/custom-button/custom-button";
 import Spinner from "../../components/spinner/spinner";
 import {
 	HiOutlineMail,
-	HiUserCircle,
 	HiOutlineUserCircle,
-	HiLockClosed,
 	HiOutlineLockClosed,
 } from "react-icons/hi";
 import { Link, useHistory } from "react-router-dom";
-import { startSignup } from "../../redux/user/user.action";
+import { startSignup, clearErrorRes } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
 
@@ -38,6 +36,10 @@ const SignUp = () => {
 		dispatch(startSignup(formData, history));
 	};
 
+	useEffect(() => {
+		dispatch(clearErrorRes());
+	}, [dispatch]);
+
 	return (
 		<form
 			className="signup-container"
@@ -45,63 +47,70 @@ const SignUp = () => {
 			onSubmit={handleSubmit}
 		>
 			<h2>Create Account</h2>
-			<CustomInput
-				type="text"
-				name="firstname"
-				label="First Name"
-				placeholder="John"
-				onChange={handleChange}
-				value={formData.firstname}
-				required
-				inputIcon={<HiOutlineUserCircle />}
-			/>
-			<CustomInput
-				type="text"
-				name="lastname"
-				label="Last Name"
-				placeholder="Doe"
-				onChange={handleChange}
-				value={formData.lastname}
-				required
-				inputIcon={<HiUserCircle />}
-			/>
-			<CustomInput
-				type="email"
-				name="email"
-				label="Email"
-				placeholder="Enter your email"
-				onChange={handleChange}
-				value={formData.email}
-				required
-				inputIcon={<HiOutlineMail />}
-			/>
-			<CustomInput
-				type="password"
-				name="password"
-				label="Password"
-				placeholder="Minimum length of 8 chars"
-				onChange={handleChange}
-				value={formData.password}
-				required
-				inputIcon={<HiLockClosed />}
-			/>
-			<CustomInput
-				type="password"
-				name="confirmPassword"
-				label="Confirm Password"
-				placeholder="Confirm your password"
-				onChange={handleChange}
-				value={formData.confirmPassword}
-				required
-				inputIcon={<HiOutlineLockClosed />}
-			/>
+			<div className="signup-input-cont">
+				<CustomInput
+					type="text"
+					name="firstname"
+					label="First Name"
+					placeholder="John"
+					onChange={handleChange}
+					value={formData.firstname}
+					required
+					inputIcon={<HiOutlineUserCircle />}
+					className="name-field"
+				/>
+				<CustomInput
+					type="text"
+					name="lastname"
+					label="Last Name"
+					placeholder="Doe"
+					onChange={handleChange}
+					value={formData.lastname}
+					required
+					inputIcon={<HiOutlineUserCircle />}
+					className="name-field"
+				/>
+				<CustomInput
+					type="email"
+					name="email"
+					label="Email"
+					placeholder="Enter your email"
+					onChange={handleChange}
+					value={formData.email}
+					required
+					inputIcon={<HiOutlineMail />}
+					className="email-field"
+				/>
+				<CustomInput
+					type="password"
+					name="password"
+					label="Password"
+					placeholder="Minimum length of 8 chars"
+					onChange={handleChange}
+					value={formData.password}
+					required
+					inputIcon={<HiOutlineLockClosed />}
+					className="password-field"
+				/>
+				<CustomInput
+					type="password"
+					name="confirmPassword"
+					label="Confirm Password"
+					placeholder="Confirm your password"
+					onChange={handleChange}
+					value={formData.confirmPassword}
+					required
+					inputIcon={<HiOutlineLockClosed />}
+					className="password-field"
+				/>
+			</div>
 			{auth.errorRes && (
 				<div className="message-modal">
 					<p>{auth.errorRes}</p>
 				</div>
 			)}
 			<CustomButton type="submit" className="signup-btn">
-				<p>Sign Up</p>
+				<p>Signup</p>
 				{auth.loading && <Spinner />}
 			</CustomButton>
 			<div className="other-auths">

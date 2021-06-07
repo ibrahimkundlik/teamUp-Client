@@ -5,4 +5,5 @@ export const userActionType = {
 	AUTH_FAILURE: "AUTH_FAILURE",
 	LOGOUT: "LOGOUT",
 	CHECK_USER: "CHECK_USER",
+	CLEAR_ERROR: "CLEAR_ERROR",
 };

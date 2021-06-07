@@ -65,3 +65,9 @@ export const logout = (history) => async (dispatch) => {
 	});
 	history.push("/");
 };
+
+export const clearErrorRes = () => {
+	return {
+		type: userActionType.CLEAR_ERROR,
+	};
+};

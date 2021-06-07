@@ -30,7 +30,7 @@ const UserProfile = ({ user }) => {
 			</CustomIcon>
 			<div className={`${visible ? "show-profile " : ""}user-profile-modal`}>
 				<img
-					src={`https://ui-avatars.com/api/?background=19be72&color=fdfdfd&bold=true&name=${user.name}`}
+					src={`https://ui-avatars.com/api/?background=19be72&color=fdfdfd&bold=true&font-size=0.4&name=${user.name}`}
 					alt={user.name}
 					className="user-image"
 				/>

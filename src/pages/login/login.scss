@@ -24,6 +24,7 @@
 		font-size: 0.85rem;
 		text-align: center;
 		color: $logo-red;
+		font-weight: 700;
 		transform: translateY($xs-gap);
 	}
 
@@ -45,9 +46,13 @@
 	.other-auths {
 		text-align: center;
 
-		p {
+		p:nth-child(1) {
 			font-size: 0.8rem;
-			margin-bottom: $s-gap;
+			margin-bottom: $xs-gap;
+		}
+		p:nth-child(3) {
+			font-size: 0.8rem;
+			margin: $xs-gap 0;
 		}
 		button {
 			margin: $xs-gap auto;

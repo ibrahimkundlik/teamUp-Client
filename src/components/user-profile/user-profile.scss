@@ -22,18 +22,17 @@
 		transform: scale(0);
 		transition: all 0.3s ease-in-out;
 
-		p {
-			margin: $xs-gap;
-		}
-
 		.user-name {
 			text-transform: capitalize;
+			margin-top: $xs-gap;
+		}
+		.user-email {
+			margin-bottom: $xs-gap;
 		}
 
 		.user-image {
-			width: 45px;
-			height: 45px;
-			border-radius: 50%;
+			width: 50px;
+			border-radius: 20%;
 			margin: 0 auto;
 		}
 	}

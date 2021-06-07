@@ -55,6 +55,6 @@ li {
 	padding: 1.5rem $s-gap;
 
 	@media screen and (min-width: $desktop) {
-		padding: $s-gap $l-gap;
+		padding: $s-gap $l-gap $l-gap $l-gap;
 	}
 }

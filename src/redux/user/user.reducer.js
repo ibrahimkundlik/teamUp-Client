@@ -31,6 +31,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
 		case userActionType.LOGOUT:
 			localStorage.clear();
 			return { ...state, loading: false, userRes: null, errorRes: null };
+		case userActionType.CLEAR_ERROR:
+			return { ...state, errorRes: null };
 		default:
 			return state;
 	}
