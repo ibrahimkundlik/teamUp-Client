@@ -3,12 +3,13 @@ import "./teams.scss";
 import Spinner from "../../components/spinner/spinner";
 import TeamsError from "../../components/teams/teams-error/teams-error";
 import TeamsNavbar from "../../components/teams/teams-navbar/teams-navbar";
-import TeamsList from "../../components/teams/teams-list/teams-list";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { getTeams } from "../../redux/teams/teams.action";
 import { selectAuth } from "../../redux/user/user.selector";
 import { selectTeams } from "../../redux/teams/teams.selector";
+import NewUserTeams from "../../components/teams/new-user-teams/new-user-teams";
+import ExistUserTeams from "../../components/teams/exist-user-teams/exist-user-teams";
 
 const Teams = () => {
 	const auth = useSelector(selectAuth);
@@ -28,7 +29,7 @@ const Teams = () => {
 			) : (
 				<>
 					<TeamsNavbar user={auth.userRes?.user} />
-					<TeamsList teams={teams.teamsRes} />
+					{teams.teamsRes.length === 0 ? <NewUserTeams /> : <ExistUserTeams />}
 				</>
 			)}
 		</div>

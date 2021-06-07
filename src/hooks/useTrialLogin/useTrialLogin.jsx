@@ -11,8 +11,6 @@ export const useTrialLogin = () => {
 		password: "qwerty123",
 	};
 
-	console.log("hooks login");
-
 	return () => {
 		dispatch(startLogin(trialData, history));
 	};
