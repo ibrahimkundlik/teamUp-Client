@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogin, clearErrorRes } from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
 import { selectAuth } from "../../redux/user/user.selector";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
 
 const INITIAL_LOGIN_DATA = {
 	email: "",
@@ -18,8 +19,9 @@ const INITIAL_LOGIN_DATA = {
 
 const Login = () => {
 	const [formData, setFormData] = useState(INITIAL_LOGIN_DATA);
-	const dispatch = useDispatch();
 	const history = useHistory();
+	const dispatch = useDispatch();
+	const trialLogin = useTrialLogin();
 	const auth = useSelector(selectAuth);
 
 	const handleChange = (e) => {
@@ -68,7 +70,7 @@ const Login = () => {
 				</div>
 			)}
 			<CustomButton type="submit" className="login-btn">
-				<p>Log In</p>
+				<p>Login</p>
 				{auth.loading && <Spinner />}
 			</CustomButton>
 			<div className="other-auths">
@@ -81,7 +83,11 @@ const Login = () => {
 				<p>
 					<strong>OR</strong>
 				</p>
-				<CustomButton type="button" className="trial-btn">
+				<CustomButton
+					type="button"
+					className="trial-btn"
+					onClick={() => trialLogin()}
+				>
 					Login with TRIAL account
 				</CustomButton>
 			</div>

@@ -87,8 +87,8 @@
 			}
 		}
 
-		p {
-			margin: $m-gap 0 $l-gap 0;
+		.hero-desc {
+			margin: $m-gap 0 $m-gap 0;
 			strong {
 				color: $logo-red;
 				span {
@@ -97,19 +97,34 @@
 			}
 		}
 
+		.error-modal {
+			color: $logo-red;
+			font-weight: 700;
+			margin-top: $xs-gap;
+		}
+
 		.trial-btn {
-			margin: $xs-gap auto $s-gap auto;
+			margin: 0 auto;
 			position: relative;
-			display: block;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+
+			.spinner {
+				width: 25px;
+				height: 25px;
+				margin-left: $s-gap;
+			}
 
 			@media screen and (min-width: $desktop) {
-				margin: $xs-gap auto $s-gap 0;
+				margin: $m-gap 0 $xs-gap 0;
 			}
 		}
 
 		.signup-btn {
 			width: 150px;
-			margin: 0 auto $s-gap auto;
+			margin: 0 auto $m-gap auto;
 			display: block;
 
 			@media screen and (min-width: $desktop) {

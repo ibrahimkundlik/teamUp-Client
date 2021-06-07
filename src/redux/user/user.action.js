@@ -2,14 +2,9 @@ import * as api from "../../api/api-call";
 import { userActionType } from "./user.type";
 
 export const checkUser = () => {
-	let userData = null;
-	const user = JSON.parse(localStorage.getItem("profile"));
-	if (user) {
-		userData = user;
-	}
 	return {
 		type: userActionType.CHECK_USER,
-		payload: userData,
+		payload: JSON.parse(localStorage.getItem("profile")),
 	};
 };
 

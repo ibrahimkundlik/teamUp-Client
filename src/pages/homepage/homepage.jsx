@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./homepage.scss";
 import dashboardImg from "../../images/dashboard.png";
 import CustomButton from "../../components/custom-button/custom-button";
 import { Link } from "react-router-dom";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAuth } from "../../redux/user/user.selector";
+import Spinner from "../../components/spinner/spinner";
+import { clearErrorRes } from "../../redux/user/user.action";
 
 const HomePage = () => {
+	const dispatch = useDispatch();
+	const trialLogin = useTrialLogin();
+	const auth = useSelector(selectAuth);
+
+	useEffect(() => {
+		dispatch(clearErrorRes());
+	}, [dispatch]);
+
 	return (
 		<div className="hero-section">
 			<div className="hero-image">
@@ -15,7 +28,7 @@ const HomePage = () => {
 					Task Management
 					<span>Made Delightfully Simple</span>
 				</h1>
-				<p>
+				<p className="hero-desc">
 					“With{" "}
 					<strong>
 						team
@@ -23,12 +36,14 @@ const HomePage = () => {
 					</strong>{" "}
 					you will complete projects faster and with less overhead”
 				</p>
-				<CustomButton className="trial-btn">
-					Login with TRIAL account
-				</CustomButton>
 				<Link to="/signup">
 					<CustomButton className="signup-btn">Signup</CustomButton>
 				</Link>
+				<CustomButton className="trial-btn" onClick={() => trialLogin()}>
+					<span>Login with TRIAL account</span>
+					{auth.loading && <Spinner />}
+				</CustomButton>
+				{auth.errorRes && <p className="error-modal">{auth.errorRes}</p>}
 			</div>
 		</div>
 	);

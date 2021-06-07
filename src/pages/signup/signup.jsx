@@ -12,6 +12,7 @@ import { Link, useHistory } from "react-router-dom";
 import { startSignup, clearErrorRes } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
 
 const INITIAL_SIGNUP_DATA = {
 	firstname: "",
@@ -23,8 +24,9 @@ const INITIAL_SIGNUP_DATA = {
 
 const SignUp = () => {
 	const [formData, setFormData] = useState(INITIAL_SIGNUP_DATA);
-	const dispatch = useDispatch();
 	const history = useHistory();
+	const dispatch = useDispatch();
+	const trialLogin = useTrialLogin();
 	const auth = useSelector(selectAuth);
 
 	const handleChange = (e) => {
@@ -123,7 +125,11 @@ const SignUp = () => {
 				<p>
 					<strong>OR</strong>
 				</p>
-				<CustomButton type="button" className="trial-btn">
+				<CustomButton
+					type="button"
+					className="trial-btn"
+					onClick={() => trialLogin()}
+				>
 					Login with TRIAL account
 				</CustomButton>
 			</div>
