@@ -52,7 +52,7 @@ li {
 	background-image: url("../images/background.svg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	padding: $m-gap $s-gap;
+	padding: 1.5rem $s-gap;
 
 	@media screen and (min-width: $desktop) {
 		padding: $s-gap $l-gap;

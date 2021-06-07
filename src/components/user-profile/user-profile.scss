@@ -1,33 +1,26 @@
 @import "../../scss/variables.scss";
 
 .user-profile-cont {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	position: relative;
-	cursor: pointer;
+	.user-profile-icon {
+		border-radius: 50%;
+		border-color: $low-bg;
+		color: $primary-text;
+		background: linear-gradient(-45.72deg, #a2facf 7.09%, #6a9dd8 96.61%);
+	}
 
 	.user-profile-modal {
-		position: fixed;
-		right: $s-gap;
-		top: 5.7rem;
+		position: absolute;
+		right: 0;
+		top: 55px;
 		text-align: center;
 		padding: $s-gap $m-gap;
 		border-radius: $s-br;
 		background: $primary-bg;
+		cursor: default;
 		opacity: 0;
 		visibility: hidden;
-		transform: translateX(2000px);
+		transform: scale(0);
 		transition: all 0.3s ease-in-out;
-		cursor: default;
-
-		@media screen and (min-width: $desktop) {
-			right: $l-gap;
-			top: 5.3rem;
-		}
 
 		p {
 			margin: $xs-gap;
@@ -38,12 +31,9 @@
 		}
 
 		.user-image {
-			width: 40px;
-			height: 40px;
+			width: 45px;
+			height: 45px;
 			border-radius: 50%;
-			background-position: center;
-			background-size: contain;
-			background-repeat: no-repeat;
 			margin: 0 auto;
 		}
 	}
@@ -51,6 +41,6 @@
 	.show-profile {
 		opacity: 1;
 		visibility: visible;
-		transform: translateX(0px);
+		transform: scale(1);
 	}
 }
