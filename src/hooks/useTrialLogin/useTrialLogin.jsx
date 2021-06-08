@@ -7,7 +7,7 @@ export const useTrialLogin = () => {
 	const history = useHistory();
 
 	const trialData = {
-		email: "markwayne@live.com",
+		email: "brucewayne@live.com",
 		password: "qwerty123",
 	};
 

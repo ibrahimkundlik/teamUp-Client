@@ -15,7 +15,7 @@
 	transition: $all;
 
 	&:hover {
-		background-color: $secondary-text-hov;
+		opacity: 0.9;
 	}
 
 	a {
@@ -26,10 +26,6 @@
 .trial-btn {
 	position: relative;
 	background-color: $high-text;
-
-	&:hover {
-		background-color: #fd6868;
-	}
 
 	&::after {
 		content: "*Recommended (Testing)";

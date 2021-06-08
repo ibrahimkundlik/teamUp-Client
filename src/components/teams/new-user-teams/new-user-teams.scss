@@ -53,10 +53,6 @@
 			justify-content: space-evenly;
 			margin: $xs-gap auto;
 			gap: $s-gap;
-
-			&:hover {
-				opacity: 0.9;
-			}
 		}
 
 		.create-btn {
