@@ -5,7 +5,7 @@ import CustomIcon from "../custom-icon/custom-icon";
 import { logout } from "../../redux/user/user.action";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useClickOutside } from "../../hooks/useClickOutside/useClickOutside";
+import { useClickOutside } from "../../hooks/useClickOutside/useClickOutside.js";
 import { FaUserAstronaut } from "react-icons/fa";
 
 const UserProfile = ({ user }) => {

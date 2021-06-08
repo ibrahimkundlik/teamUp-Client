@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { startLogin, clearErrorRes } from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
 import { selectAuth } from "../../redux/user/user.selector";
-import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
 
 const INITIAL_LOGIN_DATA = {
 	email: "",

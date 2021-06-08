@@ -12,7 +12,8 @@ import { Link, useHistory } from "react-router-dom";
 import { startSignup, clearErrorRes } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
-import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
+import { userActionType } from "../../redux/user/user.type";
 
 const INITIAL_SIGNUP_DATA = {
 	firstname: "",
@@ -35,6 +36,22 @@ const SignUp = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (formData.password !== formData.confirmPassword) {
+			dispatch({
+				type: userActionType.AUTH_FAILURE,
+				payload: "Passwords don't match. Kindly re-enter your both passwords.",
+			});
+			return;
+		}
+		if (formData.password.length < 8) {
+			dispatch({
+				type: userActionType.AUTH_FAILURE,
+				payload:
+					"Password length is too small. Kindly re-enter your both passwords with minimum length of 8 characters.",
+			});
+			return;
+		}
+
 		dispatch(startSignup(formData, history));
 	};
 

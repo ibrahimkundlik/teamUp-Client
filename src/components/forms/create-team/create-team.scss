@@ -1,0 +1,20 @@
+@import "../../../scss/variables.scss";
+
+.abs-form-cont {
+	background: $secondary-bg;
+	padding: $m-gap;
+	border-radius: $s-br;
+
+	h3 {
+		text-align: center;
+	}
+
+	.team-description input {
+		height: 100px;
+	}
+
+	.custom-button {
+		display: block;
+		margin: $m-gap auto 0 auto;
+	}
+}

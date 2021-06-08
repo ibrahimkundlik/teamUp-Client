@@ -1,0 +1,42 @@
+@import "../../scss/variables.scss";
+
+.custom-textarea {
+	position: relative;
+
+	label {
+		display: block;
+		margin: $xs-gap 0;
+	}
+
+	textarea {
+		display: block;
+		width: 100%;
+		height: 120px;
+		border: 2px solid #ca8fe3;
+		padding: $xs-gap $s-gap $xs-gap 2.5rem;
+		border-radius: 5px;
+
+		&:focus {
+			outline: none;
+			border: 2px solid #a61ee0;
+
+			&::placeholder {
+				opacity: 0;
+			}
+		}
+
+		&::placeholder {
+			font-size: 0.9rem;
+		}
+	}
+
+	.input-icon {
+		font-size: 1.5rem;
+		position: absolute;
+		transform: translate(10px, 13px);
+
+		svg {
+			display: flex;
+		}
+	}
+}

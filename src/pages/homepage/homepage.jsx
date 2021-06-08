@@ -3,7 +3,7 @@ import "./homepage.scss";
 import dashboardImg from "../../images/dashboard.png";
 import CustomButton from "../../components/custom-button/custom-button";
 import { Link } from "react-router-dom";
-import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin";
+import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
 import Spinner from "../../components/spinner/spinner";
