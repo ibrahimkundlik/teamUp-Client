@@ -27,17 +27,18 @@
 			justify-content: space-between;
 			align-items: center;
 		}
+
+		@media screen and (min-width: $desktop) {
+			max-width: 850px;
+		}
 	}
 
 	.start-option {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: $s-gap;
+		margin-bottom: $m-gap;
 
 		.option-img {
-			width: 50%;
+			width: 80%;
+			margin: 0 auto;
 		}
 
 		svg {
@@ -49,7 +50,9 @@
 			display: flex;
 			flex-flow: row nowrap;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: space-evenly;
+			margin: $xs-gap auto;
+			gap: $s-gap;
 
 			&:hover {
 				opacity: 0.9;
@@ -58,35 +61,35 @@
 
 		.create-btn {
 			background: $low-text;
-			width: 175px;
 		}
 		.join-btn {
 			background: $high-text;
-			width: 175px;
-			order: 1;
 		}
 
 		&:nth-child(2) {
 			.option-img {
-				order: 2;
+				-webkit-transform: scaleX(-1);
+				transform: scaleX(-1);
 			}
 		}
 
 		@media screen and (min-width: $tablet) {
-			flex-flow: row wrap;
-
 			.option-img {
 				width: 90%;
-				margin: 0 auto;
 			}
 			.custom-button {
-				width: 245px;
 				margin: $s-gap auto;
 			}
 			&:nth-child(2) {
 				.option-img {
 					order: 1;
 				}
+			}
+		}
+
+		@media screen and (min-width: $desktop) {
+			.option-img {
+				width: 75%;
 			}
 		}
 	}

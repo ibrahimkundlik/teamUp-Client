@@ -37,7 +37,7 @@ const HomePage = () => {
 					you will complete projects faster and with less overhead”
 				</p>
 				<Link to="/signup">
-					<CustomButton className="signup-btn">Signup</CustomButton>
+					<CustomButton className="signup-btn">Signup for free</CustomButton>
 				</Link>
 				<CustomButton className="trial-btn" onClick={() => trialLogin()}>
 					<span>Login with TRIAL account</span>
