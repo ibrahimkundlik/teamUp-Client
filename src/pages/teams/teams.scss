@@ -10,5 +10,33 @@
 
 	.user-teams-cont {
 		position: relative;
+
+		.abs-form-cont {
+			width: 100%;
+			max-width: 480px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform: scale(0) translateX(-50%);
+			visibility: hidden;
+			opacity: 0;
+			transition: all 0.5s ease-in-out;
+
+			.close-icon {
+				position: absolute;
+				font-size: 2rem;
+				color: $logo-red;
+				top: 1.6rem;
+				right: 2rem;
+				cursor: pointer;
+			}
+		}
+
+		.form-visible {
+			left: 50%;
+			transform: scale(1) translateX(-50%);
+			visibility: visible;
+			opacity: 1;
+		}
 	}
 }

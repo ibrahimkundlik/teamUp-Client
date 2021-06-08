@@ -13,7 +13,11 @@ const NewUserTeams = () => {
 
 	return (
 		<>
-			<div className="new-user-teams-cont">
+			<div
+				className={`new-user-teams-cont ${
+					showCreateForm || showJoinForm ? "hide-teams-cont" : ""
+				}`}
+			>
 				<h3 className="new-user-head">
 					Welcome to <span>team</span>
 					<span>Up</span>
@@ -27,6 +31,7 @@ const NewUserTeams = () => {
 						<CustomButton
 							className="create-btn"
 							onClick={() => {
+								window.scrollTo(0, 0);
 								setShowCreateForm(true);
 								setShowJoinForm(false);
 							}}
@@ -40,6 +45,7 @@ const NewUserTeams = () => {
 						<CustomButton
 							className="join-btn"
 							onClick={() => {
+								window.scrollTo(0, 0);
 								setShowJoinForm(true);
 								setShowCreateForm(false);
 							}}
@@ -53,10 +59,10 @@ const NewUserTeams = () => {
 			{
 				<CreateTeam
 					showCreateForm={showCreateForm}
-					setShowCreateForm={setShowCreateForm}
+					handleClose={setShowCreateForm}
 				/>
 			}
-			{showJoinForm && <JoinTeam />}
+			{<JoinTeam showJoinForm={showJoinForm} handleClose={setShowJoinForm} />}
 		</>
 	);
 };

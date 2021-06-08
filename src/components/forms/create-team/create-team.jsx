@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./create-team.scss";
 import CustomInput from "../../custom-input/custom-input";
-import { RiTeamLine, RiMessage2Line, RiUserSearchLine } from "react-icons/ri";
+import { RiTeamLine, RiMessage2Line } from "react-icons/ri";
 import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
 import { useSelector } from "react-redux";
 import { selectAuthUser } from "../../../redux/user/user.selector";
-import { useClickOutside } from "../../../hooks/useClickOutside/useClickOutside";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const INITIAL_DATA = {
 	name: "",
@@ -14,12 +14,9 @@ const INITIAL_DATA = {
 	members: [],
 };
 
-const CreateTeam = ({ showCreateForm, setShowCreateForm }) => {
+const CreateTeam = ({ showCreateForm, handleClose }) => {
 	const [formData, setFormData] = useState(INITIAL_DATA);
 	const user = useSelector(selectAuthUser);
-	const ref = useRef();
-
-	useClickOutside(ref, () => setShowCreateForm(false));
 
 	const handleChange = (e) => {
 		setFormData({
@@ -44,11 +41,11 @@ const CreateTeam = ({ showCreateForm, setShowCreateForm }) => {
 	};
 
 	return (
-		<div
-			className={`${showCreateForm ? "form-visible " : ""}abs-form-cont`}
-			ref={ref}
-		>
-			<h3>New Team</h3>
+		<div className={`${showCreateForm ? "form-visible " : ""}abs-form-cont`}>
+			<h3>Create new team</h3>
+			<div className="close-icon" onClick={() => handleClose(false)}>
+				<AiFillCloseCircle />
+			</div>
 			<form
 				autoComplete="off"
 				onSubmit={handleSubmit}
