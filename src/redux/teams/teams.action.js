@@ -26,3 +26,21 @@ export const getTeams = () => async (dispatch) => {
 		});
 	}
 };
+
+export const createTeam = (teamData) => async (dispatch) => {
+	try {
+		dispatch({
+			type: teamActionType.FETCH_START,
+		});
+		const { data } = await api.createTeam(teamData);
+		dispatch({
+			type: teamActionType.CREATE_TEAM,
+			payload: data.team,
+		});
+	} catch (error) {
+		dispatch({
+			type: teamActionType.FETCH_FAILURE,
+			payload: fetchError(error),
+		});
+	}
+};

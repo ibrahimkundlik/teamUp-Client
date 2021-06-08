@@ -4,9 +4,10 @@ import CustomInput from "../../custom-input/custom-input";
 import { RiTeamLine, RiMessage2Line } from "react-icons/ri";
 import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectAuthUser } from "../../../redux/user/user.selector";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { createTeam } from "../../../redux/teams/teams.action";
 
 const INITIAL_DATA = {
 	name: "",
@@ -17,6 +18,7 @@ const INITIAL_DATA = {
 const CreateTeam = ({ showCreateForm, handleClose }) => {
 	const [formData, setFormData] = useState(INITIAL_DATA);
 	const user = useSelector(selectAuthUser);
+	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
 		setFormData({
@@ -38,6 +40,7 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 			],
 		};
 		console.log(newTeamData);
+		dispatch(createTeam(newTeamData));
 	};
 
 	return (

@@ -11,6 +11,12 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 		case teamActionType.FETCH_START:
 			return { ...state, loading: true };
 		case teamActionType.CREATE_TEAM:
+			return {
+				...state,
+				loading: false,
+				errorRes: null,
+				teamsRes: [...state.teamsRes, action.payload],
+			};
 		case teamActionType.GET_TEAMS:
 			return {
 				...state,
