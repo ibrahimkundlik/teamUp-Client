@@ -5,6 +5,9 @@
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: center;
+	opacity: 1;
+	visibility: visible;
+	transition: all 0.3s ease-in-out;
 
 	& > * {
 		width: 100%;
@@ -32,10 +35,8 @@
 	.team-actions-head {
 		width: 100%;
 		margin-bottom: $s-gap;
-		text-align: center;
 
 		@media screen and (min-width: $tablet) {
-			text-align: left;
 			margin-bottom: $m-gap;
 		}
 	}
@@ -122,4 +123,9 @@
 	@media screen and (min-width: $desktop) {
 		display: none;
 	}
+}
+
+.hide-exist-teams {
+	opacity: 0;
+	visibility: hidden;
 }

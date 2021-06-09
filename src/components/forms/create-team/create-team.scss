@@ -7,6 +7,10 @@
 
 	.team-description input {
 		height: 100px;
+
+		@media screen and (min-width: $tablet) {
+			height: 128px;
+		}
 	}
 
 	.custom-button {
