@@ -1,1 +1,68 @@
 @import "../../../scss/variables.scss";
+
+.exist-user-teams-cont {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	& > * {
+		width: 100%;
+	}
+
+	.team-actions {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: $m-gap auto 0 auto;
+	}
+
+	.team-actions-head {
+		width: 100%;
+		margin-bottom: $s-gap;
+		text-align: center;
+	}
+
+	.current-teams {
+		margin: $m-gap auto 0 auto;
+
+		.teams-list {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: stretch;
+			gap: $s-gap;
+
+			.team {
+				background: $secondary-bg;
+				width: 100%;
+				padding: $m-gap $s-gap;
+				border-radius: $s-br;
+
+				.team-description {
+					margin: $s-gap 0;
+					line-height: 1.7;
+				}
+
+				.custom-button {
+					margin-top: $s-gap;
+				}
+			}
+		}
+	}
+}
+
+.disp-lg {
+	display: none;
+	@media screen and (min-width: $desktop) {
+		display: block;
+	}
+}
+
+.disp-sm {
+	display: block;
+	@media screen and (min-width: $desktop) {
+		display: none;
+	}
+}

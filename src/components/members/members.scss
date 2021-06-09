@@ -5,6 +5,10 @@
 	flex-flow: row nowrap;
 	align-items: center;
 
+	h5 {
+		margin-right: $s-gap;
+	}
+
 	.member,
 	.remaining-members {
 		width: 40px;
@@ -17,22 +21,23 @@
 		place-items: center;
 		background: $secondary-bg;
 		cursor: default;
+		border: 2px solid #6a84a7;
 	}
 
-	.member:nth-child(1) {
+	.member:nth-child(2) {
 		margin-left: 0px;
 		background: linear-gradient(271.72deg, #a2facf 7.09%, #64acff 96.61%);
 	}
-	.member:nth-child(2) {
+	.member:nth-child(3) {
 		background: linear-gradient(130deg, #3bf0e4 -6.8%, #bca1f7 70%);
 	}
-	.member:nth-child(3) {
+	.member:nth-child(4) {
 		background: linear-gradient(87.54deg, #bea6ec -6.8%, #e7a3a4 84.14%);
 	}
-	.member:nth-child(4) {
+	.member:nth-child(5) {
 		background: linear-gradient(90deg, #73ddc2, #6dace4);
 	}
-	.member:nth-child(5) {
+	.member:nth-child(6) {
 		background: linear-gradient(90deg, #b793cf, #72a5d1);
 	}
 	.remaining-members {
