@@ -48,14 +48,8 @@
 			margin: 0 auto;
 		}
 
-		svg {
-			color: $primary-bg;
-			font-size: 2.2rem;
-		}
-
 		.custom-button {
 			margin: $xs-gap auto;
-			gap: $s-gap;
 		}
 
 		.create-btn {
@@ -78,11 +72,6 @@
 			}
 			.custom-button {
 				margin: $s-gap auto;
-			}
-			&:nth-child(2) {
-				.option-img {
-					order: 1;
-				}
 			}
 		}
 

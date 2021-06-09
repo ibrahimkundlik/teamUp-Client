@@ -2,6 +2,8 @@
 
 .teams-container {
 	position: relative;
+	max-width: $max-width;
+	margin: 0 auto;
 
 	.spinner-cont {
 		width: 100%;

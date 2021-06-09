@@ -18,7 +18,7 @@
 	justify-content: center;
 
 	&:hover {
-		opacity: 0.9;
+		opacity: 0.8;
 	}
 
 	a {
@@ -29,6 +29,12 @@
 		width: 30px;
 		height: 30px;
 		margin-left: $s-gap;
+	}
+
+	svg {
+		color: $primary-bg;
+		font-size: 1.8rem;
+		margin-right: $xs-gap;
 	}
 }
 

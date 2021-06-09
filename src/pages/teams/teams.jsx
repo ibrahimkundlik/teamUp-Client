@@ -33,7 +33,10 @@ const Teams = () => {
 						{teams.teamsRes.length === 0 ? (
 							<NewUserTeams teams={teams} />
 						) : (
-							<ExistUserTeams />
+							<ExistUserTeams
+								teams={teams.teamsRes}
+								username={auth.userRes?.user?.name}
+							/>
 						)}
 					</div>
 				</>
