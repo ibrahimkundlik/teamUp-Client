@@ -16,12 +16,50 @@
 		justify-content: space-between;
 		align-items: center;
 		margin: $m-gap auto 0 auto;
+
+		.custom-button {
+			padding: $xs-gap;
+		}
+
+		@media screen and (min-width: 450px) {
+			max-width: 430px;
+			.custom-button {
+				padding: $xs-gap $s-gap;
+			}
+		}
 	}
 
 	.team-actions-head {
 		width: 100%;
 		margin-bottom: $s-gap;
 		text-align: center;
+
+		@media screen and (min-width: $tablet) {
+			text-align: left;
+			margin-bottom: $m-gap;
+		}
+	}
+
+	@media screen and (min-width: $tablet) {
+		.exist-user-head {
+			width: max-content;
+		}
+		.team-actions {
+			width: max-content;
+			max-width: unset;
+			margin: 0;
+			justify-content: flex-end;
+			gap: 0 $s-gap;
+			position: relative;
+
+			.team-actions-head {
+				position: absolute;
+				bottom: -75%;
+				left: 30%;
+				width: unset;
+				margin-bottom: 0;
+			}
+		}
 	}
 
 	.current-teams {
@@ -30,23 +68,42 @@
 		.teams-list {
 			display: flex;
 			flex-flow: row wrap;
-			justify-content: space-between;
 			align-items: stretch;
-			gap: $s-gap;
+			gap: $m-gap $s-gap;
 
 			.team {
-				background: $secondary-bg;
 				width: 100%;
+				max-width: 480px;
+				margin: 0 auto;
 				padding: $m-gap $s-gap;
 				border-radius: $s-br;
+				background-color: $secondary-bg;
+				background-image: url("../../../images/curves.svg");
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: bottom 0px right -25px;
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: flex-start;
+
+				@media screen and (min-width: $tablet) {
+					width: 48.8%;
+					max-width: 540px;
+					margin: 0;
+				}
+
+				@media screen and (min-width: 1200px) {
+					width: 32.2%;
+				}
 
 				.team-description {
 					margin: $s-gap 0;
 					line-height: 1.7;
+					flex: 1;
 				}
 
 				.custom-button {
-					margin-top: $s-gap;
+					margin-top: 1.5rem;
 				}
 			}
 		}

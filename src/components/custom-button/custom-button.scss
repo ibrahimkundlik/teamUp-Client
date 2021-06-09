@@ -16,6 +16,7 @@
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: center;
+	gap: 0 $xs-gap;
 
 	&:hover {
 		opacity: 0.8;
@@ -34,7 +35,6 @@
 	svg {
 		color: $primary-bg;
 		font-size: 1.8rem;
-		margin-right: $xs-gap;
 	}
 }
 

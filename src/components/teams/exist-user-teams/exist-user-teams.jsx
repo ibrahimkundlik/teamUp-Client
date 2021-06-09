@@ -5,6 +5,7 @@ import {
 	AiOutlinePlusCircle,
 	AiOutlineAppstoreAdd,
 	AiOutlineMergeCells,
+	AiOutlineReconciliation,
 } from "react-icons/ai";
 import Members from "../../members/members";
 
@@ -45,7 +46,10 @@ const ExistUserTeams = ({ teams, username }) => {
 								<h3>{name}</h3>
 								<p className="team-description">{description}</p>
 								<Members members={members} />
-								<CustomButton>Dashboard</CustomButton>
+								<CustomButton>
+									Dashboard
+									<AiOutlineReconciliation />
+								</CustomButton>
 							</li>
 						);
 					})}
