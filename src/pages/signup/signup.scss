@@ -4,14 +4,14 @@
 	width: 100%;
 	max-width: 550px;
 	background-color: $primary-bg;
-	padding: $m-gap;
+	padding: $m-gap $s-gap;
 	margin: $l-gap auto $m-gap auto;
 	border-radius: $s-br;
 	box-shadow: $box-shadow;
 
 	@media screen and (min-width: $desktop) {
 		margin: $s-gap auto;
-		padding-bottom: $xs-gap;
+		padding: $m-gap $m-gap $xs-gap $m-gap;
 		max-width: 650px;
 
 		.signup-input-cont {
@@ -50,19 +50,9 @@
 		transform: translateY(0.7rem);
 	}
 
-	.spinner {
-		width: 30px;
-		height: 30px;
-		margin-left: $m-gap;
-	}
-
 	.signup-btn {
-		width: 80%;
+		width: 50%;
 		margin: $m-gap auto;
-		display: flex;
-		flex-flow: row nowrap;
-		align-items: center;
-		justify-content: center;
 	}
 
 	.other-auths {
@@ -80,24 +70,20 @@
 			margin: $xs-gap auto;
 		}
 		.trial-btn {
-			width: 90%;
-			margin-top: $s-gap;
+			margin-top: 1.5rem;
 		}
 
 		@media screen and (min-width: $desktop) {
 			display: flex;
 			flex-flow: row wrap;
 			justify-content: space-between;
-			align-items: baseline;
+			align-items: center;
 
 			p:nth-child(1) {
 				width: 100%;
 			}
 			button {
 				margin: $s-gap 0;
-			}
-			.trial-btn {
-				width: unset;
 			}
 		}
 	}

@@ -11,8 +11,11 @@
 	font-weight: 600;
 	font-size: 0.9rem;
 	letter-spacing: 1px;
-	display: inline-block;
 	transition: $all;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
 
 	&:hover {
 		opacity: 0.9;
@@ -21,11 +24,18 @@
 	a {
 		color: $primary-bg;
 	}
+
+	.spinner {
+		width: 30px;
+		height: 30px;
+		margin-left: $s-gap;
+	}
 }
 
 .trial-btn {
 	position: relative;
 	background-color: $high-text;
+	padding: $xs-gap $s-gap;
 
 	&::after {
 		content: "*Recommended (Testing)";

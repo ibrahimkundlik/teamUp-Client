@@ -39,7 +39,6 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 				},
 			],
 		};
-		console.log(newTeamData);
 		dispatch(createTeam(newTeamData));
 	};
 

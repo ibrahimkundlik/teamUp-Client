@@ -58,3 +58,15 @@ li {
 		padding: $s-gap $l-gap $l-gap $l-gap;
 	}
 }
+
+.error-message-modal {
+	font-size: 0.85rem;
+	color: $logo-red;
+	font-weight: 500;
+	line-height: 1.8;
+	border: 1px solid $logo-red;
+	background: $high-bg;
+	border-radius: $s-br;
+	padding: $xs-gap $s-gap;
+	width: max-content;
+}

@@ -19,6 +19,10 @@
 		margin: $s-gap 0 $m-gap 0;
 	}
 
+	.error-message-modal {
+		margin: -$s-gap auto $m-gap auto;
+	}
+
 	.new-user-options {
 		max-width: 500px;
 		margin: 0 auto;
@@ -50,10 +54,6 @@
 		}
 
 		.custom-button {
-			display: flex;
-			flex-flow: row nowrap;
-			align-items: center;
-			justify-content: space-evenly;
 			margin: $xs-gap auto;
 			gap: $s-gap;
 		}

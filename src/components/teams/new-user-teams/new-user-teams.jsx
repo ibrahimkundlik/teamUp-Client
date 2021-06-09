@@ -7,7 +7,7 @@ import { AiOutlinePlusCircle, AiOutlineAppstoreAdd } from "react-icons/ai";
 import CreateTeam from "../../forms/create-team/create-team";
 import JoinTeam from "../../forms/join-team/join-team";
 
-const NewUserTeams = () => {
+const NewUserTeams = ({ teams }) => {
 	const [showCreateForm, setShowCreateForm] = useState(false);
 	const [showJoinForm, setShowJoinForm] = useState(false);
 
@@ -25,6 +25,13 @@ const NewUserTeams = () => {
 				<p className="new-user-desc">
 					Here are some things for you to get started.
 				</p>
+				{teams.errorRes && (
+					<p className="error-message-modal">
+						Could not complete the previous request.
+						<br />
+						{teams.errorRes}
+					</p>
+				)}
 				<div className="new-user-options">
 					<article className="start-option">
 						<img src={newTeamImg} alt="new-team" className="option-img" />

@@ -31,7 +31,7 @@ const Teams = () => {
 					<TeamsNavbar user={auth.userRes?.user} />
 					<div className="user-teams-cont">
 						{teams.teamsRes.length === 0 ? (
-							<NewUserTeams />
+							<NewUserTeams teams={teams} />
 						) : (
 							<ExistUserTeams />
 						)}
