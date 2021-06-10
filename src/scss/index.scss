@@ -59,7 +59,8 @@ li {
 	}
 }
 
-.error-message-modal {
+.error-message-modal,
+.success-message-modal {
 	font-size: 0.85rem;
 	font-weight: 500;
 	line-height: 1.8;
@@ -68,9 +69,15 @@ li {
 	border-radius: $s-br;
 	padding: $xs-gap;
 	text-align: center;
+	max-width: 500px;
 
 	.error-highlight {
 		text-decoration: underline;
 		color: $logo-red;
 	}
+}
+
+.success-message-modal {
+	background: $low-bg;
+	border-color: seagreen;
 }

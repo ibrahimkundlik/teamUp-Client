@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "../../custom-button/custom-button";
 import "./exist-user-teams.scss";
 import {
@@ -10,6 +10,8 @@ import {
 import Members from "../../members/members";
 import CreateTeam from "../../forms/create-team/create-team";
 import JoinTeam from "../../forms/join-team/join-team";
+import { useSelector } from "react-redux";
+import { selectTeams } from "../../../redux/teams/teams.selector";
 
 const INITIAL_STATE = {
 	newTeam: false,
@@ -19,6 +21,8 @@ const INITIAL_STATE = {
 
 const ExistUserTeams = ({ teams, username }) => {
 	const [teamForm, setTeamForm] = useState(INITIAL_STATE);
+	const { errorRes, successRes } = useSelector(selectTeams);
+	const successMssgRef = useRef();
 
 	const handleCloseForm = () => {
 		setTeamForm(INITIAL_STATE);
@@ -28,6 +32,18 @@ const ExistUserTeams = ({ teams, username }) => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
+	useEffect(() => {
+		console.log("useEffect - successRes");
+		let timeout = setTimeout(() => {
+			successMssgRef.current.style.transform = "scale(0)";
+			successMssgRef.current.style.opacity = 0;
+			successMssgRef.current.style.marginTop = "-2rem";
+		}, 3000);
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [successRes]);
 
 	return (
 		<>
@@ -74,6 +90,19 @@ const ExistUserTeams = ({ teams, username }) => {
 						<h4 className="disp-sm">Requests</h4>
 					</CustomButton>
 				</div>
+				{errorRes && (
+					<p className="error-message-modal">
+						Could not complete the previous request.{" "}
+						<span className="error-highlight">
+							{typeof errorRes === "string" && errorRes}
+						</span>
+					</p>
+				)}
+				{successRes && (
+					<p className="success-message-modal" ref={successMssgRef}>
+						{successRes}
+					</p>
+				)}
 				<div className="current-teams">
 					<h4 className="team-actions-head">Your current teams:</h4>
 					<ul className="teams-list">

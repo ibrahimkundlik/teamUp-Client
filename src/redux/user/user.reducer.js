@@ -2,8 +2,8 @@ import { userActionType } from "./user.type";
 
 const INITIAL_STATE = {
 	loading: false,
-	errorRes: null,
 	userRes: null,
+	errorRes: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

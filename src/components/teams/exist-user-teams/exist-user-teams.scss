@@ -13,6 +13,15 @@
 		width: 100%;
 	}
 
+	.error-message-modal,
+	.success-message-modal {
+		margin: $m-gap auto 0 auto;
+		transition: $all;
+		@media screen and (min-width: $tablet) and (max-width: $desktop) {
+			margin-top: $l-gap;
+		}
+	}
+
 	.team-actions {
 		display: flex;
 		flex-flow: row wrap;

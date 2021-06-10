@@ -27,9 +27,8 @@ const NewUserTeams = ({ teams }) => {
 				</p>
 				{teams.errorRes && (
 					<p className="error-message-modal">
-						Could not complete the previous request.
-						<br />
-						{teams.errorRes}
+						Could not complete the previous request.{" "}
+						<span className="error-highlight">{teams.errorRes}</span>
 					</p>
 				)}
 				<div className="new-user-options">
