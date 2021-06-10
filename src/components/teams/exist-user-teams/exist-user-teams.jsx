@@ -34,7 +34,6 @@ const ExistUserTeams = ({ teams, username }) => {
 	}, []);
 
 	useEffect(() => {
-		console.log("useEffect - successRes");
 		let timeout = setTimeout(() => {
 			successMssgRef.current.style.transform = "scale(0)";
 			successMssgRef.current.style.opacity = 0;

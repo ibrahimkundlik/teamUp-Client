@@ -28,6 +28,9 @@
 
 			.email-field {
 				width: 100%;
+				input {
+					padding-left: $l-gap;
+				}
 			}
 
 			.custom-input {
