@@ -13,8 +13,12 @@
 		}
 	}
 
+	.error-message-modal {
+		margin-top: $s-gap;
+	}
+
 	.custom-button {
 		display: block;
-		margin: $m-gap auto 0 auto;
+		margin: $s-gap auto 0 auto;
 	}
 }

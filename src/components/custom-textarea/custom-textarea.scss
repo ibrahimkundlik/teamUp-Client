@@ -8,6 +8,13 @@
 		margin: $xs-gap 0;
 	}
 
+	.ip-required::after {
+		content: "*";
+		position: absolute;
+		color: $logo-red;
+		margin-left: 5px;
+	}
+
 	textarea {
 		display: block;
 		width: 100%;

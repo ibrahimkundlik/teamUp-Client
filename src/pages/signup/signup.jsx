@@ -8,7 +8,7 @@ import {
 	HiOutlineUserCircle,
 	HiOutlineLockClosed,
 } from "react-icons/hi";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { startSignup, clearErrorRes } from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
@@ -48,6 +48,17 @@ const SignUp = () => {
 				type: userActionType.AUTH_FAILURE,
 				payload:
 					"Password length is too small. Kindly re-enter your both passwords with minimum length of 8 characters.",
+			});
+			return;
+		}
+		if (
+			formData.firstname.trim().length === 0 ||
+			formData.lastname.trim().length === 0
+		) {
+			dispatch({
+				type: userActionType.AUTH_FAILURE,
+				payload:
+					"Kindly enter your Firstname and Lastname correctly. Currently only spaces are detected.",
 			});
 			return;
 		}
@@ -134,11 +145,13 @@ const SignUp = () => {
 			</CustomButton>
 			<div className="other-auths">
 				<p>Already have an acoount ?</p>
-				<Link to="/login">
-					<CustomButton type="button" className="login-btn">
-						Login
-					</CustomButton>
-				</Link>
+				<CustomButton
+					type="button"
+					className="login-btn"
+					onClick={() => history.push("/login")}
+				>
+					Login
+				</CustomButton>
 				<p>
 					<strong>OR</strong>
 				</p>

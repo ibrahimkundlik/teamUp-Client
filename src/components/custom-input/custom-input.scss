@@ -7,6 +7,14 @@
 	label {
 		display: block;
 		margin: $xs-gap 0;
+		position: relative;
+	}
+
+	.ip-required::after {
+		content: "*";
+		position: absolute;
+		color: $logo-red;
+		margin-left: 5px;
 	}
 
 	input {

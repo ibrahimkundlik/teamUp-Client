@@ -4,7 +4,6 @@ import CustomInput from "../../components/custom-input/custom-input";
 import CustomButton from "../../components/custom-button/custom-button";
 import Spinner from "../../components/spinner/spinner";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
-import { Link } from "react-router-dom";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { startLogin, clearErrorRes } from "../../redux/user/user.action";
@@ -75,11 +74,13 @@ const Login = () => {
 			</CustomButton>
 			<div className="other-auths">
 				<p>Don't have an acoount ?</p>
-				<Link to="/signup">
-					<CustomButton type="button" className="signup-btn">
-						Signup
-					</CustomButton>
-				</Link>
+				<CustomButton
+					type="button"
+					className="signup-btn"
+					onClick={() => history.push("/signup")}
+				>
+					Signup
+				</CustomButton>
 				<p>
 					<strong>OR</strong>
 				</p>

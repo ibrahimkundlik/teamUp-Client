@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./homepage.scss";
 import dashboardImg from "../../images/dashboard.png";
 import CustomButton from "../../components/custom-button/custom-button";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
@@ -11,6 +11,7 @@ import { clearErrorRes } from "../../redux/user/user.action";
 
 const HomePage = () => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const trialLogin = useTrialLogin();
 	const auth = useSelector(selectAuth);
 
@@ -36,9 +37,12 @@ const HomePage = () => {
 					</strong>{" "}
 					you will complete projects faster and with less overhead”
 				</p>
-				<Link to="/signup">
-					<CustomButton className="signup-btn">Signup for free</CustomButton>
-				</Link>
+				<CustomButton
+					className="signup-btn"
+					onClick={() => history.push("/signup")}
+				>
+					Signup for free
+				</CustomButton>
 				<CustomButton className="trial-btn" onClick={() => trialLogin()}>
 					<span>Login with TRIAL account</span>
 					{auth.loading && <Spinner />}

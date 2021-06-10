@@ -17,6 +17,7 @@ const INITIAL_DATA = {
 
 const CreateTeam = ({ showCreateForm, handleClose }) => {
 	const [formData, setFormData] = useState(INITIAL_DATA);
+	const [inputError, setInputError] = useState(null);
 	const user = useSelector(selectAuthUser);
 	const dispatch = useDispatch();
 
@@ -39,7 +40,17 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 				},
 			],
 		};
+		if (newTeamData.name.trim().length === 0) {
+			setInputError("team name");
+			return;
+		}
+		if (newTeamData.description.trim().length === 0) {
+			setInputError("team description");
+			return;
+		}
+
 		dispatch(createTeam(newTeamData));
+		setInputError(null);
 	};
 
 	return (
@@ -74,6 +85,13 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 					inputIcon={<RiMessage2Line />}
 					className="team-description"
 				/>
+				{inputError && (
+					<p className="error-message-modal">
+						Kindly enter your{" "}
+						<span className="error-highlight">{inputError}</span> correctly.
+						Currently only spaces are detected.
+					</p>
+				)}
 				<CustomButton type="submit">Create new team</CustomButton>
 			</form>
 		</div>
