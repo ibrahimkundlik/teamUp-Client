@@ -1,4 +1,5 @@
 import { userActionType } from "./user.type";
+import { generatePayload } from "./user.utils";
 
 const INITIAL_STATE = {
 	loading: false,
@@ -33,6 +34,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, loading: false, userRes: null, errorRes: null };
 		case userActionType.CLEAR_ERROR:
 			return { ...state, errorRes: null };
+		case userActionType.UPDATE_USER:
+		case userActionType.UPDATE_TEAMS:
+			const completePayload = {
+				token: state.userRes?.token,
+				user: generatePayload(action, state),
+			};
+			localStorage.setItem(
+				"profile",
+				JSON.stringify({
+					...completePayload,
+				})
+			);
+			return { ...state, userRes: completePayload };
 		default:
 			return state;
 	}

@@ -1,5 +1,6 @@
 import { teamActionType } from "./teams.type";
 import * as api from "../../api/api-call";
+import { userActionType } from "../user/user.type";
 
 const fetchError = (error) => {
 	let errorMessage = error.message;
@@ -19,6 +20,10 @@ export const getTeams = () => async (dispatch) => {
 			type: teamActionType.GET_TEAMS,
 			payload: data.teams,
 		});
+		dispatch({
+			type: userActionType.UPDATE_TEAMS,
+			payload: data.teams.map((team) => team._id),
+		});
 	} catch (error) {
 		dispatch({
 			type: teamActionType.FETCH_FAILURE,
@@ -36,6 +41,10 @@ export const createTeam = (teamData) => async (dispatch) => {
 		dispatch({
 			type: teamActionType.CREATE_TEAM,
 			payload: data.team,
+		});
+		dispatch({
+			type: userActionType.UPDATE_USER,
+			payload: data.user,
 		});
 	} catch (error) {
 		dispatch({

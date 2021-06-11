@@ -11,3 +11,13 @@ export const selectAuthUser = createSelector(
 	[selectAuth],
 	(auth) => auth.userRes?.user
 );
+
+export const selectTeams = createSelector(
+	[selectAuthUser],
+	(user) => user?.teams
+);
+
+export const selectSentRequests = createSelector(
+	[selectAuthUser],
+	(user) => user?.sentRequests
+);

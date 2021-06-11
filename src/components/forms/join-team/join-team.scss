@@ -37,3 +37,25 @@
 		}
 	}
 }
+
+.search-result-cont {
+	.teams-list {
+		margin-top: $s-gap;
+
+		.team {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: $s-gap;
+
+			.custom-button {
+				margin: 0;
+				font-size: 0.8rem;
+				svg {
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}

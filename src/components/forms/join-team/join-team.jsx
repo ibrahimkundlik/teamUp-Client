@@ -1,22 +1,54 @@
 import React from "react";
 import "./join-team.scss";
-import { AiFillCloseCircle, AiOutlineFileSearch } from "react-icons/ai";
+import {
+	AiFillCloseCircle,
+	AiOutlineFileSearch,
+	AiOutlineTeam,
+	AiOutlineCheckCircle,
+	AiOutlineSend,
+} from "react-icons/ai";
 import CustomInput from "../../custom-input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
 import { searchCollection } from "../../../redux/search/search.action";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../spinner/spinner";
+import {
+	selectSentRequests,
+	selectTeams,
+} from "../../../redux/user/user.selector";
 
 const DisplaySearchTeams = ({ teams }) => {
+	const userTeams = useSelector(selectTeams);
+	const userSentRequests = useSelector(selectSentRequests);
+
 	return (
 		<div className="search-result-cont">
 			<h4>Search results:</h4>
-			{teams.length === 0 ? (
-				<p>No teams found!</p>
-			) : (
-				teams.map((team) => <p>{team.name}</p>)
-			)}
+			<ul className="teams-list">
+				{teams.length === 0 ? (
+					<p>No teams found!</p>
+				) : (
+					teams.map((team) => (
+						<li key={team._id} className="team">
+							<p>{team.name}</p>
+							{userTeams.findIndex((id) => id === team._id) >= 0 ? (
+								<CustomButton>
+									<p>Member</p> <AiOutlineTeam />
+								</CustomButton>
+							) : userSentRequests.findIndex((id) => id === team._id) >= 0 ? (
+								<CustomButton>
+									<p>Request sent</p> <AiOutlineCheckCircle />
+								</CustomButton>
+							) : (
+								<CustomButton>
+									<p>Join</p> <AiOutlineSend />
+								</CustomButton>
+							)}
+						</li>
+					))
+				)}
+			</ul>
 		</div>
 	);
 };
