@@ -1,1 +1,34 @@
 @import "../../../scss/variables.scss";
+
+.join-team-cont {
+	.search-teams-form {
+		margin: $s-gap 0;
+
+		.input-icon {
+			bottom: 25%;
+		}
+
+		@media screen and (min-width: $tablet) {
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: center;
+			justify-content: space-between;
+
+			.custom-button,
+			.custom-input input {
+				margin: 0;
+				padding-top: $xs-gap;
+				padding-bottom: $xs-gap;
+				font-size: 1rem;
+			}
+
+			.custom-input {
+				width: 73%;
+			}
+
+			.custom-button {
+				border: 2px solid $secondary-text;
+			}
+		}
+	}
+}
