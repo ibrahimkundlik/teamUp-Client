@@ -5,9 +5,10 @@
 	max-width: $max-width;
 	margin: 0 auto;
 
-	.spinner-cont {
-		width: 100%;
-		height: calc(100vh - 8rem);
+	.spinner-fullscreen {
+		height: calc(100vh - 7rem);
+		display: grid;
+		place-items: center;
 	}
 
 	.user-teams-cont {

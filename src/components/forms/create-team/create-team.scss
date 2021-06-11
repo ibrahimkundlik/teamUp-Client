@@ -2,8 +2,12 @@
 
 .abs-form-cont {
 	background: $secondary-bg;
-	padding: $m-gap;
+	padding: $m-gap $s-gap;
 	border-radius: $s-br;
+
+	@media screen and (min-width: $tablet) {
+		padding: $m-gap;
+	}
 
 	.team-description input {
 		height: 100px;

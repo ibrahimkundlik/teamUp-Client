@@ -23,7 +23,9 @@ const Teams = () => {
 	return (
 		<div className="teams-container">
 			{teams.loading ? (
-				<Spinner />
+				<div className="spinner-fullscreen">
+					<Spinner />
+				</div>
 			) : auth.userRes === null ? (
 				<TeamsError teams={teams} />
 			) : (

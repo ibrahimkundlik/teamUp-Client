@@ -13,8 +13,14 @@ API.interceptors.request.use((req) => {
 	return req;
 });
 
+//users
 export const login = (formData) => API.post("/users/login", formData);
 export const signup = (formData) => API.post("/users/signup", formData);
 
+//teams
 export const getTeams = () => API.get("/teams");
 export const createTeam = (teamData) => API.post("/teams", teamData);
+
+//common
+export const searchCollection = (query, collection) =>
+	API.get(`/${collection}/search?searchQuery=${query}`);

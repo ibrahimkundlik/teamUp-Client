@@ -1,6 +1,11 @@
 @import "../../../scss/variables.scss";
 
 .join-team-cont {
+	.spinner {
+		width: 30px;
+		height: 30px;
+	}
+
 	.search-teams-form {
 		margin: $s-gap 0;
 
