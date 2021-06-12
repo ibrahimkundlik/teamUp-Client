@@ -53,7 +53,7 @@ const App = () => {
 				/>
 				<Route
 					path="/teams"
-					render={() => (auth.userRes === null ? <AuthError /> : <Teams />)}
+					render={() => (auth.userRes ? <Teams /> : <AuthError />)}
 				/>
 				<Route path="*" component={ErrorPage} />
 			</Switch>

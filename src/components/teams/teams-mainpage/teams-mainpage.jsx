@@ -45,13 +45,13 @@ const TeamsMainpage = () => {
 				<>
 					<TeamsNavbar user={auth.userRes?.user} />
 					<div className="user-teams-cont">
-						{teams.teamsRes.length === 0 ? (
-							<NewUserTeams teams={teams} />
-						) : (
+						{teams.teamsRes.length !== 0 ? (
 							<ExistUserTeams
 								teams={teams.teamsRes}
 								username={auth.userRes?.user?.name}
 							/>
+						) : (
+							<NewUserTeams teams={teams} />
 						)}
 					</div>
 				</>

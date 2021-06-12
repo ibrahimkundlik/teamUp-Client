@@ -29,11 +29,10 @@ const UserProfile = ({ user }) => {
 				<FaUserAstronaut />
 			</CustomIcon>
 			<div className={`${visible ? "show-profile " : ""}user-profile-modal`}>
-				<img
-					src={`https://ui-avatars.com/api/?background=19be72&color=fdfdfd&bold=true&font-size=0.4&name=${user.name}`}
-					alt={user.name}
-					className="user-image"
-				/>
+				<p className="user-image">
+					{user.name.split(" ")[0][0]}
+					{user.name.split(" ")[1][0]}
+				</p>
 				<p className="user-name">{user.name}</p>
 				<p className="user-email">{user.email}</p>
 				<CustomButton onClick={handleLogout}>Logout</CustomButton>
