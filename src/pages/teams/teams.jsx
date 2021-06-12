@@ -1,19 +1,16 @@
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import Dash from "../../components/dashboard/dashboard";
+import Dashboard from "../../components/dashboard/dashboard";
 import ErrorPage from "../../components/error-page/error-page";
+import TeamsMainpage from "../../components/teams/teams-mainpage/teams-mainpage";
 
 const Teams = () => {
 	let { path } = useRouteMatch();
 
 	return (
 		<Switch>
-			<Route exact path={path}>
-				<h3>Teams Page</h3>
-			</Route>
-			<Route path={`${path}/dashboard/:id`}>
-				<Dash />
-			</Route>
+			<Route exact path={path} component={TeamsMainpage} />
+			<Route path={`${path}/dashboard/:id`} component={Dashboard} />
 			<Route path="*" component={ErrorPage} />
 		</Switch>
 	);

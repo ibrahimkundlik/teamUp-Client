@@ -35,9 +35,11 @@ const ExistUserTeams = ({ teams, username }) => {
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
-			successMssgRef.current.style.transform = "scale(0)";
-			successMssgRef.current.style.opacity = 0;
-			successMssgRef.current.style.marginTop = "-2rem";
+			if (successMssgRef.current) {
+				successMssgRef.current.style.transform = "scale(0)";
+				successMssgRef.current.style.opacity = 0;
+				successMssgRef.current.style.marginTop = "-2rem";
+			}
 		}, 3000);
 		return () => {
 			clearTimeout(timeout);

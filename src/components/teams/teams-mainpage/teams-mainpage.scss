@@ -9,6 +9,11 @@
 		height: calc(100vh - 7rem);
 		display: grid;
 		place-items: center;
+		align-content: center;
+
+		.custom-button {
+			margin-top: $m-gap;
+		}
 	}
 
 	.user-teams-cont {

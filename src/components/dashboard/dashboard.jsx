@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const Dash = () => {
+const Dashboard = () => {
 	const { id } = useParams();
 
 	return (
@@ -12,4 +12,4 @@ const Dash = () => {
 	);
 };
 
-export default Dash;
+export default Dashboard;
