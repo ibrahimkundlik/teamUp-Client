@@ -10,6 +10,7 @@ import { startLogin, clearErrorRes } from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
 import { selectAuth } from "../../redux/user/user.selector";
 import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
+import Navbar from "../../components/navbar/navbar";
 
 const INITIAL_LOGIN_DATA = {
 	email: "",
@@ -37,62 +38,65 @@ const Login = () => {
 	}, [dispatch]);
 
 	return (
-		<form
-			className="login-container"
-			autoComplete="off"
-			onSubmit={handleSubmit}
-		>
-			<h2>Welcome Back!</h2>
-			<CustomInput
-				type="email"
-				name="email"
-				label="Email"
-				placeholder="Enter your email"
-				onChange={handleChange}
-				value={formData.email}
-				required
-				inputIcon={<HiOutlineMail />}
-			/>
-			<CustomInput
-				type="password"
-				name="password"
-				label="Password"
-				placeholder="Enter your password"
-				onChange={handleChange}
-				value={formData.password}
-				required
-				inputIcon={<HiOutlineLockClosed />}
-			/>
-			{auth.errorRes && (
-				<div className="message-modal">
-					<p>{auth.errorRes}</p>
+		<>
+			<Navbar showLogin={false} />
+			<form
+				className="login-container"
+				autoComplete="off"
+				onSubmit={handleSubmit}
+			>
+				<h2>Welcome Back!</h2>
+				<CustomInput
+					type="email"
+					name="email"
+					label="Email"
+					placeholder="Enter your email"
+					onChange={handleChange}
+					value={formData.email}
+					required
+					inputIcon={<HiOutlineMail />}
+				/>
+				<CustomInput
+					type="password"
+					name="password"
+					label="Password"
+					placeholder="Enter your password"
+					onChange={handleChange}
+					value={formData.password}
+					required
+					inputIcon={<HiOutlineLockClosed />}
+				/>
+				{auth.errorRes && (
+					<div className="message-modal">
+						<p>{auth.errorRes}</p>
+					</div>
+				)}
+				<CustomButton type="submit" className="login-btn">
+					<p>Login</p>
+					{auth.loading && <Spinner />}
+				</CustomButton>
+				<div className="other-auths">
+					<p>Don't have an acoount ?</p>
+					<CustomButton
+						type="button"
+						className="signup-btn"
+						onClick={() => history.push("/signup")}
+					>
+						Signup
+					</CustomButton>
+					<p>
+						<strong>OR</strong>
+					</p>
+					<CustomButton
+						type="button"
+						className="trial-btn"
+						onClick={() => trialLogin()}
+					>
+						Login with TRIAL account
+					</CustomButton>
 				</div>
-			)}
-			<CustomButton type="submit" className="login-btn">
-				<p>Login</p>
-				{auth.loading && <Spinner />}
-			</CustomButton>
-			<div className="other-auths">
-				<p>Don't have an acoount ?</p>
-				<CustomButton
-					type="button"
-					className="signup-btn"
-					onClick={() => history.push("/signup")}
-				>
-					Signup
-				</CustomButton>
-				<p>
-					<strong>OR</strong>
-				</p>
-				<CustomButton
-					type="button"
-					className="trial-btn"
-					onClick={() => trialLogin()}
-				>
-					Login with TRIAL account
-				</CustomButton>
-			</div>
-		</form>
+			</form>
+		</>
 	);
 };
 

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
 import Spinner from "../../components/spinner/spinner";
 import { clearErrorRes } from "../../redux/user/user.action";
+import Navbar from "../../components/navbar/navbar";
 
 const HomePage = () => {
 	const dispatch = useDispatch();
@@ -20,36 +21,39 @@ const HomePage = () => {
 	}, [dispatch]);
 
 	return (
-		<div className="hero-section">
-			<div className="hero-image">
-				<img src={dashboardImg} alt="teamUp dashboard" />
+		<>
+			<Navbar showLogin={true} />
+			<div className="hero-section">
+				<div className="hero-image">
+					<img src={dashboardImg} alt="teamUp dashboard" />
+				</div>
+				<div className="hero-text">
+					<h1>
+						Task Management
+						<span>Made Delightfully Simple</span>
+					</h1>
+					<p className="hero-desc">
+						“With{" "}
+						<strong>
+							team
+							<span>Up</span>
+						</strong>{" "}
+						you will complete projects faster and with less overhead”
+					</p>
+					<CustomButton
+						className="signup-btn"
+						onClick={() => history.push("/signup")}
+					>
+						Signup for free
+					</CustomButton>
+					<CustomButton className="trial-btn" onClick={() => trialLogin()}>
+						<span>Login with TRIAL account</span>
+						{auth.loading && <Spinner />}
+					</CustomButton>
+					{auth.errorRes && <p className="error-modal">{auth.errorRes}</p>}
+				</div>
 			</div>
-			<div className="hero-text">
-				<h1>
-					Task Management
-					<span>Made Delightfully Simple</span>
-				</h1>
-				<p className="hero-desc">
-					“With{" "}
-					<strong>
-						team
-						<span>Up</span>
-					</strong>{" "}
-					you will complete projects faster and with less overhead”
-				</p>
-				<CustomButton
-					className="signup-btn"
-					onClick={() => history.push("/signup")}
-				>
-					Signup for free
-				</CustomButton>
-				<CustomButton className="trial-btn" onClick={() => trialLogin()}>
-					<span>Login with TRIAL account</span>
-					{auth.loading && <Spinner />}
-				</CustomButton>
-				{auth.errorRes && <p className="error-modal">{auth.errorRes}</p>}
-			</div>
-		</div>
+		</>
 	);
 };
 
