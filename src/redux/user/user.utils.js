@@ -1,10 +1,14 @@
-import { userActionType } from "./user.type";
+//utils
 
-export const generatePayload = (action, state) => {
-	if (action.type === userActionType.UPDATE_USER) {
-		return action.payload;
-	}
-	if (action.type === userActionType.UPDATE_TEAMS) {
-		return { ...state.userRes?.user, teams: action.payload };
-	}
+export const generatePayload = (state, payload) => {
+	return { ...state.userRes?.user, [payload.field]: payload.value };
+};
+
+export const saveToLocalStorage = (key, value) => {
+	localStorage.setItem(
+		key,
+		JSON.stringify({
+			...value,
+		})
+	);
 };

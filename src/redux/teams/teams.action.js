@@ -21,8 +21,11 @@ export const getTeams = () => async (dispatch) => {
 			payload: data.teams,
 		});
 		dispatch({
-			type: userActionType.UPDATE_TEAMS,
-			payload: data.teams.map((team) => team._id),
+			type: userActionType.UPDATE_AUTH_USER,
+			payload: {
+				field: "teams",
+				value: data.userTeams,
+			},
 		});
 	} catch (error) {
 		dispatch({
@@ -43,8 +46,11 @@ export const createTeam = (teamData) => async (dispatch) => {
 			payload: data.team,
 		});
 		dispatch({
-			type: userActionType.UPDATE_USER,
-			payload: data.user,
+			type: userActionType.UPDATE_AUTH_USER,
+			payload: {
+				field: "teams",
+				value: data.userTeams,
+			},
 		});
 	} catch (error) {
 		dispatch({

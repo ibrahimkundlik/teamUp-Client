@@ -26,10 +26,10 @@
 
 		.user-name {
 			text-transform: capitalize;
-			margin-top: $xs-gap;
+			margin-top: $s-gap;
 		}
 		.user-email {
-			margin-bottom: $xs-gap;
+			margin: 2px 0 $s-gap 0;
 		}
 		.user-image {
 			width: 50px;
