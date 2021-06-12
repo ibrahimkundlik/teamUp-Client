@@ -1,13 +1,7 @@
 @import "../../../scss/variables.scss";
 
-.abs-form-cont {
-	background: $secondary-bg;
-	padding: $m-gap $s-gap;
-	border-radius: $s-br;
-
-	@media screen and (min-width: $tablet) {
-		padding: $m-gap;
-	}
+.create-team-cont {
+	max-width: 500px;
 
 	.team-description input {
 		height: 100px;

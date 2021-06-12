@@ -54,7 +54,11 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 	};
 
 	return (
-		<div className={`${showCreateForm ? "form-visible " : ""}abs-form-cont`}>
+		<div
+			className={`${
+				showCreateForm ? "form-visible " : ""
+			}abs-form-cont create-team-cont`}
+		>
 			<h3>Create new team</h3>
 			<div className="close-icon" onClick={() => handleClose(false)}>
 				<AiFillCloseCircle />

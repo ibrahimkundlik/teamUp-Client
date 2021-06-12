@@ -16,6 +16,8 @@ API.interceptors.request.use((req) => {
 //users
 export const login = (formData) => API.post("/users/login", formData);
 export const signup = (formData) => API.post("/users/signup", formData);
+export const joinRequest = (details, adminId) =>
+	API.patch(`/users/request/${adminId}`, details);
 
 //teams
 export const getTeams = () => API.get("/teams");

@@ -1,6 +1,8 @@
 @import "../../../scss/variables.scss";
 
 .join-team-cont {
+	max-width: 600px;
+
 	.spinner {
 		width: 30px;
 		height: 30px;
@@ -11,6 +13,10 @@
 
 		.input-icon {
 			bottom: 25%;
+		}
+
+		.custom-button {
+			margin: $s-gap auto 0 auto;
 		}
 
 		@media screen and (min-width: $tablet) {
@@ -28,7 +34,7 @@
 			}
 
 			.custom-input {
-				width: 73%;
+				width: 78%;
 			}
 
 			.custom-button {
@@ -47,7 +53,9 @@
 			flex-flow: row nowrap;
 			justify-content: space-between;
 			align-items: center;
-			margin-bottom: $s-gap;
+			margin: $s-gap 0;
+			padding: 5px 0 5px $xs-gap;
+			border-left: 4px solid $secondary-text;
 
 			.custom-button {
 				margin: 0;
@@ -55,6 +63,21 @@
 				svg {
 					font-size: 1.2rem;
 				}
+				&:hover {
+					opacity: 1;
+				}
+			}
+
+			.member-btn {
+				background: $low-text;
+				cursor: default;
+			}
+			.request-btn {
+				background: $med-text;
+				cursor: default;
+			}
+			.join-btn {
+				background: $high-text;
 			}
 		}
 	}

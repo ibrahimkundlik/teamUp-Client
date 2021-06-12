@@ -1,24 +1,54 @@
 import { searchActionType } from "./search.type";
 import * as api from "../../api/api-call";
+import { userActionType } from "../user/user.type";
 
-export const searchCollection = (query, collection) => async (dispatch) => {
+const catchError = (error) => {
+	let errorMessage = error.message;
+	if (error.response) {
+		errorMessage = error.response.data.message;
+	}
+	return errorMessage;
+};
+
+export const searchCollectionAction =
+	(query, collection) => async (dispatch) => {
+		try {
+			dispatch({
+				type: searchActionType.SEARCH_START,
+			});
+			const { data } = await api.searchCollection(query, collection);
+			dispatch({
+				type: searchActionType.SEARCH_SUCCESS,
+				payload: data.result,
+			});
+		} catch (error) {
+			dispatch({
+				type: searchActionType.SEARCH_FAILURE,
+				payload: catchError(error),
+			});
+		}
+	};
+
+export const joinRequestAction = (details, adminId) => async (dispatch) => {
 	try {
 		dispatch({
 			type: searchActionType.SEARCH_START,
 		});
-		const { data } = await api.searchCollection(query, collection);
+		const { data } = await api.joinRequest(details, adminId);
 		dispatch({
-			type: searchActionType.SEARCH_SUCCESS,
-			payload: data.result,
+			type: searchActionType.SEARCH_STOP,
+		});
+		dispatch({
+			type: userActionType.UPDATE_AUTH_USER,
+			payload: {
+				field: "sentRequests",
+				value: data.user,
+			},
 		});
 	} catch (error) {
-		let errorMessage = error.message;
-		if (error.response) {
-			errorMessage = error.response.data.message;
-		}
 		dispatch({
 			type: searchActionType.SEARCH_FAILURE,
-			payload: errorMessage,
+			payload: catchError(error),
 		});
 	}
 };

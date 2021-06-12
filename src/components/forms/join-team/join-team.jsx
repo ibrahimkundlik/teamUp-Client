@@ -10,17 +10,35 @@ import {
 import CustomInput from "../../custom-input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
-import { searchCollection } from "../../../redux/search/search.action";
+import {
+	joinRequestAction,
+	searchCollectionAction,
+} from "../../../redux/search/search.action";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../spinner/spinner";
 import {
+	selectAuthUser,
 	selectSentRequests,
 	selectTeams,
 } from "../../../redux/user/user.selector";
 
 const DisplaySearchTeams = ({ teams }) => {
+	const dispatch = useDispatch();
+	const user = useSelector(selectAuthUser);
 	const userTeams = useSelector(selectTeams);
 	const userSentRequests = useSelector(selectSentRequests);
+
+	const handleJoinRequest = (team) => {
+		const joinDetails = {
+			userName: user.name,
+			teamName: team.name,
+			teamId: team._id,
+		};
+
+		const admin = team.members.find((member) => member.level === "admin");
+
+		dispatch(joinRequestAction(joinDetails, admin._id));
+	};
 
 	return (
 		<div className="search-result-cont">
@@ -33,15 +51,18 @@ const DisplaySearchTeams = ({ teams }) => {
 						<li key={team._id} className="team">
 							<p>{team.name}</p>
 							{userTeams.findIndex((id) => id === team._id) >= 0 ? (
-								<CustomButton>
+								<CustomButton className="member-btn">
 									<p>Member</p> <AiOutlineTeam />
 								</CustomButton>
 							) : userSentRequests.findIndex((id) => id === team._id) >= 0 ? (
-								<CustomButton>
+								<CustomButton className="request-btn">
 									<p>Request sent</p> <AiOutlineCheckCircle />
 								</CustomButton>
 							) : (
-								<CustomButton>
+								<CustomButton
+									className="join-btn"
+									onClick={() => handleJoinRequest(team)}
+								>
 									<p>Join</p> <AiOutlineSend />
 								</CustomButton>
 							)}
@@ -60,7 +81,7 @@ const JoinTeam = ({ showJoinForm, handleClose }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(searchCollection(state.searchQuery, "teams"));
+		dispatch(searchCollectionAction(state.searchQuery, "teams"));
 	};
 
 	return (

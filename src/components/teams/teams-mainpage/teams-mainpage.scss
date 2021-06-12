@@ -21,7 +21,6 @@
 
 		.abs-form-cont {
 			width: 100%;
-			max-width: 500px;
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -29,14 +28,25 @@
 			visibility: hidden;
 			opacity: 0;
 			transition: all 0.5s ease-in-out;
+			background: $secondary-bg;
+			padding: $m-gap $s-gap;
+			border-radius: $s-br;
+
+			@media screen and (min-width: $tablet) {
+				padding: $m-gap;
+			}
 
 			.close-icon {
 				position: absolute;
 				font-size: 2rem;
 				color: $logo-red;
 				top: 1.6rem;
-				right: 2rem;
+				right: $s-gap;
 				cursor: pointer;
+
+				@media screen and (min-width: $tablet) {
+					right: $m-gap;
+				}
 			}
 		}
 
