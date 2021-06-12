@@ -1,18 +1,15 @@
-@import "../../../scss/variables.scss";
+@import "../../scss/variables.scss";
 
-.teams-error-modal {
+.auth-error-modal {
 	text-align: center;
+	margin-top: 25vh;
 
-	p {
+	.error-type {
 		color: $logo-red;
-		margin: $l-gap 0 $m-gap 0;
-		font-weight: 500;
-		width: 100%;
 	}
 
-	h5 {
-		width: 100%;
-		margin-bottom: $m-gap;
+	.error-mssg {
+		margin: $m-gap 0;
 		word-spacing: 3px;
 	}
 
@@ -21,9 +18,14 @@
 		flex-flow: row wrap;
 		justify-content: center;
 		align-items: center;
+		margin: $m-gap 0;
 
 		h4 {
 			margin: 0 $m-gap;
 		}
+	}
+
+	.home-btn {
+		margin: 0 auto;
 	}
 }

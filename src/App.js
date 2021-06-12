@@ -3,10 +3,11 @@ import HomePage from "./pages/homepage/homepage";
 import SignUp from "./pages/signup/signup";
 import Login from "./pages/login/login";
 import Teams from "./pages/teams/teams";
+import AuthError from "./components/auth-error/auth-error";
 import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
 import ErrorPage from "./components/error-page/error-page";
-import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import decode from "jwt-decode";
+import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, checkUser } from "./redux/user/user.action";
 import { selectAuth, selectAuthToken } from "./redux/user/user.selector";
@@ -50,7 +51,10 @@ const App = () => {
 					path="/signup"
 					render={() => (auth.userRes ? <Redirect to="/teams" /> : <SignUp />)}
 				/>
-				<Route path="/teams" component={Teams} />
+				<Route
+					path="/teams"
+					render={() => (auth.userRes === null ? <AuthError /> : <Teams />)}
+				/>
 				<Route path="*" component={ErrorPage} />
 			</Switch>
 		</div>

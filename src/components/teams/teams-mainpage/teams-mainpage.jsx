@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./teams-mainpage.scss";
-
 import Spinner from "../../spinner/spinner";
-import TeamsError from "../../teams/teams-error/teams-error";
+import TeamsError from "../../auth-error/auth-error";
 import TeamsNavbar from "../../teams/teams-navbar/teams-navbar";
 import NewUserTeams from "../../teams/new-user-teams/new-user-teams";
 import ExistUserTeams from "../../teams/exist-user-teams/exist-user-teams";
