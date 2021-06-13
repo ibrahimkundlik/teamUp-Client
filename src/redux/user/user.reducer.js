@@ -34,7 +34,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			return { ...state, loading: false, userRes: null, errorRes: null };
 
 		case userActionType.CLEAR_ERROR:
-			return { ...state, errorRes: null };
+			return { ...state, errorRes: null, successRes: null };
 
 		case userActionType.UPDATE_AUTH_USER:
 			const completePayload = {

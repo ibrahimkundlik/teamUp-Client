@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./member-request.scss";
 import CustomButton from "../../custom-button/custom-button";
 import Spinner from "../../spinner/spinner";
@@ -8,12 +8,25 @@ import {
 	selectAuth,
 	selectJoinRequests,
 } from "../../../redux/user/user.selector";
-import { memberRequestAction } from "../../../redux/user/user.action";
+import {
+	clearErrorRes,
+	memberRequestAction,
+} from "../../../redux/user/user.action";
 
 const MemberRequest = ({ showMemberRequest, handleClose }) => {
 	const requests = useSelector(selectJoinRequests);
 	const dispatch = useDispatch();
 	const { loading, errorRes, successRes } = useSelector(selectAuth);
+
+	useEffect(() => {
+		console.log("nxncbnxcbnc");
+		let timeout = setTimeout(() => {
+			dispatch(clearErrorRes());
+		}, 3000);
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [successRes, dispatch]);
 
 	const handleRequest = (type, request) => {
 		const requestData = {
@@ -22,7 +35,6 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 			requestId: request._id,
 			type,
 		};
-		console.log(requestData);
 		dispatch(memberRequestAction(requestData));
 	};
 
@@ -91,17 +103,3 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 };
 
 export default MemberRequest;
-
-// {errorRes && (
-//   <p className="error-message-modal">
-//     Could not complete the previous request.{" "}
-//     <span className="error-highlight">
-//       {typeof errorRes === "string" && errorRes}
-//     </span>
-//   </p>
-// )}
-// {successRes && (
-//   <p className="success-message-modal" ref={successMssgRef}>
-//     {successRes}
-//   </p>
-// )}
