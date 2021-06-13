@@ -6,9 +6,8 @@ import joinTeamImg from "../../../images/join_team.svg";
 import { AiOutlinePlusCircle, AiOutlineAppstoreAdd } from "react-icons/ai";
 import CreateTeam from "../../forms/create-team/create-team";
 import JoinTeam from "../../forms/join-team/join-team";
-import ErrorMessageModal from "../../message-modals/error-message-modal";
 
-const NewUserTeams = ({ teams }) => {
+const NewUserTeams = () => {
 	const [showCreateForm, setShowCreateForm] = useState(false);
 	const [showJoinForm, setShowJoinForm] = useState(false);
 
@@ -26,7 +25,6 @@ const NewUserTeams = ({ teams }) => {
 				<p className="new-user-desc">
 					Here are some things for you to get started.
 				</p>
-				{teams.errorRes && <ErrorMessageModal errorMssg={teams.errorRes} />}
 				<div className="new-user-options">
 					<article className="start-option">
 						<img src={newTeamImg} alt="new-team" className="option-img" />

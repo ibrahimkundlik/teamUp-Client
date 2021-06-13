@@ -1,56 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./teams-mainpage.scss";
-import Spinner from "../../spinner/spinner";
-import CustomButton from "../../custom-button/custom-button";
 import TeamsNavbar from "../../teams/teams-navbar/teams-navbar";
 import NewUserTeams from "../../teams/new-user-teams/new-user-teams";
 import ExistUserTeams from "../../teams/exist-user-teams/exist-user-teams";
-import ErrorMessageModal from "../../message-modals/error-message-modal";
-import { useSelector, useDispatch } from "react-redux";
-import { getTeams } from "../../../redux/teams/teams.action";
+import { useSelector } from "react-redux";
 import { selectAuth } from "../../../redux/user/user.selector";
-import { selectTeams } from "../../../redux/teams/teams.selector";
-import { logout } from "../../../redux/user/user.action";
-import { useHistory } from "react-router-dom";
 
-const TeamsMainpage = () => {
+const TeamsMainpage = ({ teams }) => {
 	const auth = useSelector(selectAuth);
-	const teams = useSelector(selectTeams);
-	const dispatch = useDispatch();
-	const history = useHistory();
-
-	useEffect(() => {
-		dispatch(getTeams());
-	}, [dispatch]);
 
 	return (
-		<div className="teams-container">
-			{teams.loading ? (
-				<div className="spinner-fullscreen">
-					<Spinner />
-				</div>
-			) : teams.errorRes ? (
-				<div className="spinner-fullscreen">
-					<ErrorMessageModal errorMssg={teams.errorRes} />
-					<CustomButton onClick={() => dispatch(logout(history))}>
-						Logout
-					</CustomButton>
-				</div>
-			) : (
-				<>
-					<TeamsNavbar user={auth.userRes?.user} />
-					<div className="user-teams-cont">
-						{teams.teamsRes.length !== 0 ? (
-							<ExistUserTeams
-								teams={teams.teamsRes}
-								username={auth.userRes?.user?.name}
-							/>
-						) : (
-							<NewUserTeams teams={teams} />
-						)}
-					</div>
-				</>
-			)}
+		<div className="teams-mainpage-container">
+			<TeamsNavbar user={auth.userRes?.user} />
+			<div className="user-teams-cont">
+				{teams.length !== 0 ? (
+					<ExistUserTeams teams={teams} username={auth.userRes?.user?.name} />
+				) : (
+					<NewUserTeams />
+				)}
+			</div>
 		</div>
 	);
 };

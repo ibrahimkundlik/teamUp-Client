@@ -100,12 +100,14 @@ const ExistUserTeams = ({ teams, username }) => {
 						<h4 className="disp-sm">Requests</h4>
 					</CustomButton>
 				</div>
-				{errorRes && <ErrorMessageModal errorMssg={errorRes} />}
-				{successRes && (
-					<p className="success-message-modal" ref={successMssgRef}>
-						{successRes}
-					</p>
-				)}
+				<div>
+					{errorRes && <ErrorMessageModal errorMssg={errorRes} />}
+					{successRes && (
+						<p className="success-message-modal" ref={successMssgRef}>
+							{successRes}
+						</p>
+					)}
+				</div>
 				<div className="current-teams">
 					<h4 className="team-actions-head">Your current teams:</h4>
 					<ul className="teams-list">

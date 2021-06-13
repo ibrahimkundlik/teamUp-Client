@@ -5,14 +5,18 @@ import { useParams } from "react-router-dom";
 import { selectAuthUser } from "../../redux/user/user.selector";
 import TeamsNavbar from "../teams/teams-navbar/teams-navbar";
 
-const Dashboard = () => {
+const Dashboard = ({ teams }) => {
 	const { id } = useParams();
 	const user = useSelector(selectAuthUser);
 
+	if (teams.length === 0) {
+		return <p>NO TEAMS TO SHOW</p>;
+	}
+
 	return (
-		<div className="dashboard-cont">
+		<div className="dashboard-container">
 			<TeamsNavbar user={user} />
-			<h5>{id}</h5>
+			<h3>{id}</h3>
 		</div>
 	);
 };

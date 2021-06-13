@@ -1,20 +1,9 @@
 @import "../../../scss/variables.scss";
 
-.teams-container {
+.teams-mainpage-container {
 	position: relative;
 	max-width: $max-width;
 	margin: 0 auto;
-
-	.spinner-fullscreen {
-		height: calc(100vh - 7rem);
-		display: grid;
-		place-items: center;
-		align-content: center;
-
-		.custom-button {
-			margin-top: $m-gap;
-		}
-	}
 
 	.user-teams-cont {
 		position: relative;
