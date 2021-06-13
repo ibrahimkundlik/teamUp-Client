@@ -18,6 +18,8 @@ export const login = (formData) => API.post("/users/login", formData);
 export const signup = (formData) => API.post("/users/signup", formData);
 export const joinRequest = (details, adminId) =>
 	API.patch(`/users/request/${adminId}`, details);
+export const memberRequest = (requestData) =>
+	API.patch("/users/add-member", requestData);
 
 //teams
 export const getTeams = () => API.get("/teams");

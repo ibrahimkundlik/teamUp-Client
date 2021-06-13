@@ -3,4 +3,5 @@ export const teamActionType = {
 	GET_TEAMS: "GET_TEAMS",
 	CREATE_TEAM: "CREATE_TEAM",
 	FETCH_FAILURE: "FETCH_FAILURE",
+	UPDATE_TEAM: "UPDATE_TEAM",
 };

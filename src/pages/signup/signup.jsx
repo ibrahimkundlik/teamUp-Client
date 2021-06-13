@@ -39,14 +39,14 @@ const SignUp = () => {
 		e.preventDefault();
 		if (formData.password !== formData.confirmPassword) {
 			dispatch({
-				type: userActionType.AUTH_FAILURE,
+				type: userActionType.REQ_FAILURE,
 				payload: "Passwords don't match. Kindly re-enter your both passwords.",
 			});
 			return;
 		}
 		if (formData.password.length < 8) {
 			dispatch({
-				type: userActionType.AUTH_FAILURE,
+				type: userActionType.REQ_FAILURE,
 				payload:
 					"Password length is too small. Kindly re-enter your both passwords with minimum length of 8 characters.",
 			});
@@ -57,7 +57,7 @@ const SignUp = () => {
 			formData.lastname.trim().length === 0
 		) {
 			dispatch({
-				type: userActionType.AUTH_FAILURE,
+				type: userActionType.REQ_FAILURE,
 				payload:
 					"Kindly enter your Firstname and Lastname correctly. Currently only spaces are detected.",
 			});

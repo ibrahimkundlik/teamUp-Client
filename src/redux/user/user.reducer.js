@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 	loading: false,
 	userRes: null,
 	errorRes: null,
+	successRes: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -12,8 +13,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
 		case userActionType.CHECK_USER:
 			return { ...state, userRes: action.payload };
 
-		case userActionType.AUTH_START:
-			return { ...state, loading: true };
+		case userActionType.REQ_START:
+			return { ...state, loading: true, successRes: null, errorRes: null };
 
 		case userActionType.LOGIN_SUCCESS:
 		case userActionType.SIGNUP_SUCCESS:
@@ -25,7 +26,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				userRes: action.payload,
 			};
 
-		case userActionType.AUTH_FAILURE:
+		case userActionType.REQ_FAILURE:
 			return { ...state, loading: false, errorRes: action.payload };
 
 		case userActionType.LOGOUT:
@@ -41,7 +42,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				user: generatePayload(state, action.payload),
 			};
 			saveToLocalStorage("profile", completePayload);
-			return { ...state, userRes: completePayload };
+			return {
+				...state,
+				loading: false,
+				userRes: completePayload,
+				successRes: action.payload?.mssg ? action.payload?.mssg : null,
+			};
 
 		default:
 			return state;

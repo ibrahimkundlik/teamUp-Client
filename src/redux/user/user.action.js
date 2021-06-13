@@ -1,4 +1,5 @@
 import * as api from "../../api/api-call";
+import { teamActionType } from "../teams/teams.type";
 import { userActionType } from "./user.type";
 
 export const checkUser = () => {
@@ -19,7 +20,7 @@ const authError = (error) => {
 export const startLogin = (formData, history) => async (dispatch) => {
 	try {
 		dispatch({
-			type: userActionType.AUTH_START,
+			type: userActionType.REQ_START,
 		});
 		const { data } = await api.login(formData);
 		dispatch({
@@ -29,7 +30,7 @@ export const startLogin = (formData, history) => async (dispatch) => {
 		history.push("/teams");
 	} catch (error) {
 		dispatch({
-			type: userActionType.AUTH_FAILURE,
+			type: userActionType.REQ_FAILURE,
 			payload: authError(error),
 		});
 	}
@@ -38,7 +39,7 @@ export const startLogin = (formData, history) => async (dispatch) => {
 export const startSignup = (formData, history) => async (dispatch) => {
 	try {
 		dispatch({
-			type: userActionType.AUTH_START,
+			type: userActionType.REQ_START,
 		});
 		const { data } = await api.signup(formData);
 		dispatch({
@@ -48,7 +49,7 @@ export const startSignup = (formData, history) => async (dispatch) => {
 		history.push("/teams");
 	} catch (error) {
 		dispatch({
-			type: userActionType.AUTH_FAILURE,
+			type: userActionType.REQ_FAILURE,
 			payload: authError(error),
 		});
 	}
@@ -65,4 +66,36 @@ export const clearErrorRes = () => {
 	return {
 		type: userActionType.CLEAR_ERROR,
 	};
+};
+
+export const memberRequestAction = (requestData) => async (dispatch) => {
+	try {
+		dispatch({
+			type: userActionType.REQ_START,
+		});
+		const { data } = await api.memberRequest(requestData);
+		dispatch({
+			type: userActionType.UPDATE_AUTH_USER,
+			payload: {
+				field: "joinRequests",
+				value: data.admin,
+				mssg: `User request ${requestData.type}ed.`,
+			},
+		});
+		if (requestData.type === "accept") {
+			dispatch({
+				type: teamActionType.UPDATE_TEAM,
+				payload: {
+					field: "members",
+					value: data.team,
+					teamId: requestData.teamId,
+				},
+			});
+		}
+	} catch (error) {
+		dispatch({
+			type: userActionType.REQ_FAILURE,
+			payload: authError(error),
+		});
+	}
 };
