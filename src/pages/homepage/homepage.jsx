@@ -7,7 +7,7 @@ import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
 import Spinner from "../../components/spinner/spinner";
-import { clearErrorRes } from "../../redux/user/user.action";
+import { clearMessageResAction } from "../../redux/user/user.action";
 import Navbar from "../../components/navbar/navbar";
 
 const HomePage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
 	const auth = useSelector(selectAuth);
 
 	useEffect(() => {
-		dispatch(clearErrorRes());
+		dispatch(clearMessageResAction());
 	}, [dispatch]);
 
 	return (

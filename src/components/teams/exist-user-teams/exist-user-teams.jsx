@@ -13,6 +13,7 @@ import JoinTeam from "../../forms/join-team/join-team";
 import { useSelector } from "react-redux";
 import { selectTeams } from "../../../redux/teams/teams.selector";
 import MemberRequest from "../../forms/member-request/member-request";
+import ErrorMessageModal from "../../message-modals/error-message-modal";
 
 const INITIAL_STATE = {
 	newTeam: false,
@@ -98,14 +99,7 @@ const ExistUserTeams = ({ teams, username }) => {
 						<h4 className="disp-sm">Requests</h4>
 					</CustomButton>
 				</div>
-				{errorRes && (
-					<p className="error-message-modal">
-						Could not complete the previous request.{" "}
-						<span className="error-highlight">
-							{typeof errorRes === "string" && errorRes}
-						</span>
-					</p>
-				)}
+				{errorRes && <ErrorMessageModal errorMssg={errorRes} />}
 				{successRes && (
 					<p className="success-message-modal" ref={successMssgRef}>
 						{successRes}

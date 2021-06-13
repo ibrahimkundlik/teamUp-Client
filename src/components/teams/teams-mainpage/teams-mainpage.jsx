@@ -5,7 +5,7 @@ import CustomButton from "../../custom-button/custom-button";
 import TeamsNavbar from "../../teams/teams-navbar/teams-navbar";
 import NewUserTeams from "../../teams/new-user-teams/new-user-teams";
 import ExistUserTeams from "../../teams/exist-user-teams/exist-user-teams";
-
+import ErrorMessageModal from "../../message-modals/error-message-modal";
 import { useSelector, useDispatch } from "react-redux";
 import { getTeams } from "../../../redux/teams/teams.action";
 import { selectAuth } from "../../../redux/user/user.selector";
@@ -31,12 +31,7 @@ const TeamsMainpage = () => {
 				</div>
 			) : teams.errorRes ? (
 				<div className="spinner-fullscreen">
-					<p className="error-message-modal">
-						Could not complete the previous request.{" "}
-						<span className="error-highlight">
-							{typeof teams.errorRes === "string" && teams.errorRes}
-						</span>
-					</p>
+					<ErrorMessageModal errorMssg={teams.errorRes} />
 					<CustomButton onClick={() => dispatch(logout(history))}>
 						Logout
 					</CustomButton>

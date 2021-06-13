@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 import CustomInput from "../../custom-input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
+import ErrorMessageModal from "../../message-modals/error-message-modal";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
 import {
 	joinRequestAction,
@@ -119,12 +120,7 @@ const JoinTeam = ({ showJoinForm, handleClose }) => {
 			{search.loading ? (
 				<Spinner />
 			) : search.errorRes ? (
-				<p className="error-message-modal">
-					Could not complete the search request.{" "}
-					<span className="error-highlight">
-						{typeof search.errorRes === "string" && search.errorRes}
-					</span>
-				</p>
+				<ErrorMessageModal errorMssg={search.errorRes} />
 			) : search.searchRes ? (
 				<DisplaySearchTeams teams={search.searchRes} />
 			) : null}

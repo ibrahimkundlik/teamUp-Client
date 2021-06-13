@@ -6,7 +6,10 @@ import Spinner from "../../components/spinner/spinner";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { startLogin, clearErrorRes } from "../../redux/user/user.action";
+import {
+	startLogin,
+	clearMessageResAction,
+} from "../../redux/user/user.action";
 import { useHistory } from "react-router-dom";
 import { selectAuth } from "../../redux/user/user.selector";
 import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
@@ -34,7 +37,7 @@ const Login = () => {
 	};
 
 	useEffect(() => {
-		dispatch(clearErrorRes());
+		dispatch(clearMessageResAction());
 	}, [dispatch]);
 
 	return (

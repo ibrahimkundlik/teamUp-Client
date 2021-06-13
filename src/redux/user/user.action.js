@@ -62,9 +62,9 @@ export const logout = (history) => async (dispatch) => {
 	history.push("/");
 };
 
-export const clearErrorRes = () => {
+export const clearMessageResAction = () => {
 	return {
-		type: userActionType.CLEAR_ERROR,
+		type: userActionType.CLEAR_MESSAGE_RES,
 	};
 };
 

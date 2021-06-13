@@ -9,7 +9,10 @@ import {
 	HiOutlineLockClosed,
 } from "react-icons/hi";
 import { useHistory } from "react-router-dom";
-import { startSignup, clearErrorRes } from "../../redux/user/user.action";
+import {
+	startSignup,
+	clearMessageResAction,
+} from "../../redux/user/user.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../redux/user/user.selector";
 import { useTrialLogin } from "../../hooks/useTrialLogin/useTrialLogin.js";
@@ -68,7 +71,7 @@ const SignUp = () => {
 	};
 
 	useEffect(() => {
-		dispatch(clearErrorRes());
+		dispatch(clearMessageResAction());
 	}, [dispatch]);
 
 	return (

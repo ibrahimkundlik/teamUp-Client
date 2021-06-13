@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./member-request.scss";
 import CustomButton from "../../custom-button/custom-button";
 import Spinner from "../../spinner/spinner";
+import ErrorMessageModal from "../../message-modals/error-message-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,7 +10,7 @@ import {
 	selectJoinRequests,
 } from "../../../redux/user/user.selector";
 import {
-	clearErrorRes,
+	clearMessageResAction,
 	memberRequestAction,
 } from "../../../redux/user/user.action";
 
@@ -21,7 +22,7 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 	useEffect(() => {
 		console.log("nxncbnxcbnc");
 		let timeout = setTimeout(() => {
-			dispatch(clearErrorRes());
+			dispatch(clearMessageResAction());
 		}, 3000);
 		return () => {
 			clearTimeout(timeout);
@@ -56,14 +57,7 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 
 			<div className="message-modal">
 				{loading && <Spinner />}
-				{errorRes && (
-					<p className="error-message-modal">
-						Could not complete the previous request.{" "}
-						<span className="error-highlight">
-							{typeof errorRes === "string" && errorRes}
-						</span>
-					</p>
-				)}
+				{errorRes && <ErrorMessageModal errorMssg={errorRes} />}
 				{successRes && <p className="success-message-modal">{successRes}</p>}
 			</div>
 
