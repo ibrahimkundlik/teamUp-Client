@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { selectTeams } from "../../../redux/teams/teams.selector";
 import MemberRequest from "../../forms/member-request/member-request";
 import ErrorMessageModal from "../../message-modals/error-message-modal";
+import { Link } from "react-router-dom";
 
 const INITIAL_STATE = {
 	newTeam: false,
@@ -115,10 +116,12 @@ const ExistUserTeams = ({ teams, username }) => {
 									<h3>{name}</h3>
 									<p className="team-description">{description}</p>
 									<Members members={members} />
-									<CustomButton>
-										Dashboard
-										<AiOutlineReconciliation />
-									</CustomButton>
+									<Link to={`/teams/dashboard/${_id}`}>
+										<CustomButton>
+											Dashboard
+											<AiOutlineReconciliation />
+										</CustomButton>
+									</Link>
 								</li>
 							);
 						})}

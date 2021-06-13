@@ -10,7 +10,7 @@ const Teams = () => {
 	return (
 		<Switch>
 			<Route exact path={path} component={TeamsMainpage} />
-			<Route path={`${path}/dashboard/:id`} component={Dashboard} />
+			<Route exact path={`${path}/dashboard/:id`} component={Dashboard} />
 			<Route path="*" component={ErrorPage} />
 		</Switch>
 	);

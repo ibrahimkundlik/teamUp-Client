@@ -1,20 +1,19 @@
 import React from "react";
 import CustomIcon from "../../custom-icon/custom-icon";
 import CustomInput from "../../custom-input/custom-input";
+import CustomButton from "../../custom-button/custom-button";
 import Logo from "../../logo/logo";
 import UserProfile from "../../user-profile/user-profile";
 import "./teams-navbar.scss";
-//redux
-import { useLocation } from "react-router-dom";
-//icons
+import { useLocation, Link } from "react-router-dom";
 import {
 	AiOutlineHome,
 	AiOutlinePlus,
-	AiOutlineBell,
 	AiOutlineSetting,
 	AiOutlineInfoCircle,
 	AiOutlineSearch,
 } from "react-icons/ai";
+import { FiActivity } from "react-icons/fi";
 
 const TeamsNavbar = ({ user }) => {
 	const location = useLocation();
@@ -22,42 +21,46 @@ const TeamsNavbar = ({ user }) => {
 	return (
 		<div className="teams-navbar-cont">
 			{location.pathname === "/teams" ? (
-				<>
+				<nav className="teams-navbar">
 					<Logo />
 					<UserProfile user={user} />
-				</>
+				</nav>
 			) : (
-				<>
-					<CustomIcon>
-						<AiOutlineHome />
-					</CustomIcon>
-					<form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
-						<CustomInput
-							type="search"
-							name="searchTask"
-							label="Search Task"
-							placeholder="Search Task"
-							// onChange={handleChange}
-							// value={formData.firstname}
-							required
-							inputIcon={<AiOutlineSearch />}
-						/>
-					</form>
-					<CustomIcon>
-						<AiOutlinePlus />
-						<p>New Task</p>
-					</CustomIcon>
-					<CustomIcon>
-						<AiOutlineBell />
-					</CustomIcon>
-					<CustomIcon>
-						<AiOutlineInfoCircle />
-					</CustomIcon>
-					<CustomIcon>
-						<AiOutlineSetting />
-					</CustomIcon>
-					<UserProfile user={user} />
-				</>
+				<nav className="dashboard-navbar">
+					<div className="dashboard-nav1">
+						<Link to="/teams">
+							<CustomIcon>
+								<AiOutlineHome />
+							</CustomIcon>
+						</Link>
+						<form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+							<CustomInput
+								type="search"
+								name="searchTask"
+								placeholder="Search task"
+								required
+								inputIcon={<AiOutlineSearch />}
+								className="search-task"
+							/>
+						</form>
+					</div>
+					<div className="dashboard-nav2">
+						<CustomButton className="new-task-btn">
+							<AiOutlinePlus />
+							<p>New Task</p>
+						</CustomButton>
+						<CustomIcon>
+							<FiActivity />
+						</CustomIcon>
+						<CustomIcon>
+							<AiOutlineInfoCircle />
+						</CustomIcon>
+						<CustomIcon>
+							<AiOutlineSetting />
+						</CustomIcon>
+						<UserProfile user={user} />
+					</div>
+				</nav>
 			)}
 		</div>
 	);

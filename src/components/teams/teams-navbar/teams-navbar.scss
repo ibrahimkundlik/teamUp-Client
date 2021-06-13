@@ -1,6 +1,7 @@
 @import "../../../scss/variables.scss";
 
-.teams-navbar-cont {
+// teams-navbar
+.teams-navbar-cont .teams-navbar {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
@@ -15,6 +16,93 @@
 		width: 150px;
 		.logo-text {
 			font-size: 1.5rem;
+		}
+	}
+}
+
+// dashboard-navbar
+.teams-navbar-cont .dashboard-navbar {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: $m-gap;
+	position: relative;
+
+	@media screen and (min-width: $desktop) {
+		flex-flow: row nowrap;
+	}
+
+	& > * {
+		width: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		gap: $xs-gap;
+	}
+
+	.user-profile-cont {
+		position: absolute;
+		right: 0;
+		top: $s-gap;
+		.user-profile-icon {
+			border-color: $primary-bg;
+		}
+		@media screen and (min-width: $desktop) {
+			position: initial;
+			.user-profile-modal {
+				top: 75px;
+			}
+		}
+	}
+
+	.dashboard-nav1 {
+		width: 80%;
+		margin-bottom: $xs-gap;
+
+		@media screen and (min-width: $desktop) {
+			width: 40%;
+			margin-bottom: 0;
+			gap: $s-gap;
+		}
+
+		.search-task {
+			input {
+				border-color: $secondary-text;
+				border-radius: $s-br;
+				padding-top: 0.6rem;
+				padding-bottom: 0.6rem;
+				@media screen and (min-width: $desktop) {
+					padding-top: 7px;
+					padding-bottom: 7px;
+				}
+			}
+			.input-icon {
+				bottom: 24%;
+				left: 4%;
+				color: $secondary-text;
+				@media screen and (min-width: $desktop) {
+					left: 3%;
+					bottom: 20%;
+				}
+			}
+		}
+	}
+
+	.dashboard-nav2 {
+		@media screen and (min-width: $desktop) {
+			width: 60%;
+			justify-content: flex-end;
+			gap: $s-gap;
+		}
+		.new-task-btn {
+			margin-right: auto;
+			border: 2px solid $secondary-text;
+			padding: $xs-gap;
+			@media screen and (min-width: $desktop) {
+				padding: 5px;
+				margin-right: 0;
+			}
 		}
 	}
 }

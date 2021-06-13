@@ -20,7 +20,6 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 	const { loading, errorRes, successRes } = useSelector(selectAuth);
 
 	useEffect(() => {
-		console.log("nxncbnxcbnc");
 		let timeout = setTimeout(() => {
 			dispatch(clearMessageResAction());
 		}, 3000);
