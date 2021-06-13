@@ -1,0 +1,33 @@
+@import "../../../scss/variables.scss";
+
+.member-request-cont {
+	max-width: 550px;
+
+	.requests-cont {
+		margin: $m-gap 0 $s-gap 0;
+
+		.request {
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center;
+			margin: $m-gap 0;
+			border-right: 4px solid $secondary-text;
+
+			.request-mssg {
+				width: 100%;
+				margin-bottom: $xs-gap;
+				span {
+					font-weight: 700;
+				}
+			}
+
+			.accept-btn {
+				background: $low-text;
+			}
+			.reject-btn {
+				background: $high-text;
+				margin-left: $s-gap;
+			}
+		}
+	}
+}

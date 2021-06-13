@@ -12,6 +12,7 @@ import CreateTeam from "../../forms/create-team/create-team";
 import JoinTeam from "../../forms/join-team/join-team";
 import { useSelector } from "react-redux";
 import { selectTeams } from "../../../redux/teams/teams.selector";
+import MemberRequest from "../../forms/member-request/member-request";
 
 const INITIAL_STATE = {
 	newTeam: false,
@@ -85,7 +86,13 @@ const ExistUserTeams = ({ teams, username }) => {
 						<h4 className="disp-lg">Join existing teams</h4>
 						<h4 className="disp-sm">Join</h4>
 					</CustomButton>
-					<CustomButton className="request-btn">
+					<CustomButton
+						className="request-btn"
+						onClick={() => {
+							setTeamForm({ ...teamForm, memberRequest: true });
+							window.scrollTo(0, 0);
+						}}
+					>
 						<AiOutlineMergeCells />
 						<h4 className="disp-lg">Team requests</h4>
 						<h4 className="disp-sm">Requests</h4>
@@ -132,7 +139,10 @@ const ExistUserTeams = ({ teams, username }) => {
 				showJoinForm={teamForm.joinTeam}
 				handleClose={handleCloseForm}
 			/>
-			{teamForm.memberRequest && <p>Member request</p>}
+			<MemberRequest
+				showMemberRequest={teamForm.memberRequest}
+				handleClose={handleCloseForm}
+			/>
 		</>
 	);
 };

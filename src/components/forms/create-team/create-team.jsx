@@ -60,7 +60,7 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 			}abs-form-cont create-team-cont`}
 		>
 			<h3>Create new team</h3>
-			<div className="close-icon" onClick={() => handleClose(false)}>
+			<div className="close-icon" onClick={() => handleClose()}>
 				<AiFillCloseCircle />
 			</div>
 			<form
@@ -103,30 +103,3 @@ const CreateTeam = ({ showCreateForm, handleClose }) => {
 };
 
 export default CreateTeam;
-
-// <div className="added-users">
-// 	<p>Added members:</p>
-// 	{formData.members.length < 2 ? (
-// 		<p className="no-users-added">
-// 			Currently no team members added ...
-// 		</p>
-// 	) : (
-// 		<p>added</p>
-// 	)}
-// </d
-// <div className="search-user-cont">
-// 	<CustomInput
-// 		type="search"
-// 		name="searchUser"
-// 		label="Add team members"
-// 		placeholder="Enter user's name"
-// 		onChange={(e) => setSearchQuery(e.target.value)}
-// 		value={searchQuery}
-// 		inputIcon={<RiUserSearchLine />}
-// 		className="search-user"
-// 	/>
-// 	<CustomButton type="button">Search</CustomButton>
-// 	<div className="search-user-result">
-// 		<p>Search results:</p>
-// 	</div>
-// </div>

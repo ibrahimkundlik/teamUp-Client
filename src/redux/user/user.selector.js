@@ -21,3 +21,8 @@ export const selectSentRequests = createSelector(
 	[selectAuthUser],
 	(user) => user?.sentRequests
 );
+
+export const selectJoinRequests = createSelector(
+	[selectAuthUser],
+	(user) => user?.joinRequests
+);

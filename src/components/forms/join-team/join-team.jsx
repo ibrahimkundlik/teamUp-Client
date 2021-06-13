@@ -94,7 +94,7 @@ const JoinTeam = ({ showJoinForm, handleClose }) => {
 			<div
 				className="close-icon"
 				onClick={() => {
-					handleClose(false);
+					handleClose();
 				}}
 			>
 				<AiFillCloseCircle />
