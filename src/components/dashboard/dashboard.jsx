@@ -1,16 +1,18 @@
 import React from "react";
 import "./dashboard.scss";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { selectAuthUser } from "../../redux/user/user.selector";
 import TeamsNavbar from "../teams/teams-navbar/teams-navbar";
+import { selectSuccessRes } from "../../redux/teams/teams.selector";
 
 const Dashboard = ({ teams }) => {
 	const { id } = useParams();
 	const user = useSelector(selectAuthUser);
+	const teamsLoaded = useSelector(selectSuccessRes);
 
-	if (teams.length === 0) {
-		return <p>NO TEAMS TO SHOW</p>;
+	if (teamsLoaded === "All teams loaded successfully." && teams.length === 0) {
+		return <Redirect to="/teams" />;
 	}
 
 	return (

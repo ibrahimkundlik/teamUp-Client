@@ -47,6 +47,16 @@ const Teams = () => {
 						path={`${path}/dashboard/:id`}
 						render={() => <Dashboard teams={teams.teamsRes} />}
 					/>
+					<Route
+						exact
+						path={`${path}/settings`}
+						render={() => <h4>SETTINGS PAGE</h4>}
+					/>
+					<Route
+						exact
+						path={`${path}/info`}
+						render={() => <h4>INFO PAGE</h4>}
+					/>
 					<Route path="*" component={ErrorPage} />
 				</Switch>
 			)}

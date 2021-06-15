@@ -17,6 +17,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 0 $xs-gap;
+	-webkit-tap-highlight-color: transparent;
 
 	&:hover {
 		opacity: 0.8;

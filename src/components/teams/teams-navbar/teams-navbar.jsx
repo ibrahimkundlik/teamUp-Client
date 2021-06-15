@@ -52,12 +52,16 @@ const TeamsNavbar = ({ user }) => {
 						<CustomIcon>
 							<FiActivity />
 						</CustomIcon>
-						<CustomIcon>
-							<AiOutlineInfoCircle />
-						</CustomIcon>
-						<CustomIcon>
-							<AiOutlineSetting />
-						</CustomIcon>
+						<Link to="/teams/settings">
+							<CustomIcon>
+								<AiOutlineSetting />
+							</CustomIcon>
+						</Link>
+						<Link to="/teams/info">
+							<CustomIcon>
+								<AiOutlineInfoCircle />
+							</CustomIcon>
+						</Link>
 						<UserProfile user={user} />
 					</div>
 				</nav>

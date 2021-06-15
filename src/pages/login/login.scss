@@ -7,7 +7,7 @@
 	padding: $m-gap $s-gap;
 	margin: $l-gap auto $m-gap auto;
 	border-radius: $s-br;
-	box-shadow: $box-shadow;
+	box-shadow: $box-shadow-lg;
 
 	@media screen and (min-width: $desktop) {
 		margin: $s-gap auto;

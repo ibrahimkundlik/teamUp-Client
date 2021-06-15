@@ -59,6 +59,12 @@ li {
 	}
 }
 
+//common styling
+
+.close-icon {
+	-webkit-tap-highlight-color: transparent;
+}
+
 .error-message-modal,
 .success-message-modal {
 	font-size: 0.85rem;
