@@ -1,0 +1,52 @@
+@import "../../scss/variables.scss";
+
+.custom-select {
+	position: relative;
+	width: max-content;
+
+	select {
+		user-select: none;
+		appearance: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-webkit-padding-end: 20px;
+		-moz-padding-end: 20px;
+		-webkit-padding-start: 2px;
+		-moz-padding-start: 2px;
+
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		color: $primary-text;
+		border: 2px solid $secondary-text;
+		outline: none;
+		background: $primary-bg;
+		font-size: 16px;
+		margin: 0;
+		padding: $xs-gap $s-gap;
+		border-radius: $s-br;
+
+		width: 150px;
+
+		option {
+			display: none;
+		}
+	}
+
+	.select-icon {
+		color: $secondary-text;
+		position: absolute;
+		top: 30%;
+		right: 10%;
+	}
+
+	.option-list-mod {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: $xs-gap $s-gap;
+		border-radius: $s-br;
+	}
+}
