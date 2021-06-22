@@ -7,6 +7,8 @@ import { selectAuthUser } from "../../redux/user/user.selector";
 import TeamsNavbar from "../teams/teams-navbar/teams-navbar";
 import { selectSuccessRes } from "../../redux/teams/teams.selector";
 import DashboardTeam from "./dashboard-team/dashboard-team";
+import CustomButton from "../custom-button/custom-button";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const Dashboard = ({ teams }) => {
 	const { id } = useParams();
@@ -33,10 +35,19 @@ const Dashboard = ({ teams }) => {
 					<div className="create-task-img">
 						<img src={createTaskImg} alt="create-task" />
 					</div>
-					<p>Currently there are no tasks added in this team.</p>
+					<div className="no-task-desc">
+						<p>Currently there are no tasks added in this team.</p>
+						<CustomButton className="new-task-btn">
+							<AiOutlinePlus />
+							<p>Add New Task</p>
+						</CustomButton>
+					</div>
 				</div>
 			) : (
-				<p>Tasks present</p>
+				<div className="dashboard-with-tasks">
+					<DashboardTeam loadTeam={team} />
+					<p>Tasks Present -- Edit Needed</p>
+				</div>
 			)}
 		</div>
 	);

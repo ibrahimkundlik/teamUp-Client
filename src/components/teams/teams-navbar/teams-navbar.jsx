@@ -37,7 +37,7 @@ const TeamsNavbar = ({ user }) => {
 							<CustomInput
 								type="search"
 								name="searchTask"
-								placeholder="Search task"
+								placeholder="Search Task"
 								required
 								inputIcon={<AiOutlineSearch />}
 								className="search-task"

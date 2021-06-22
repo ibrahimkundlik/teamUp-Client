@@ -1,1 +1,41 @@
 @import "../../../scss/variables.scss";
+
+.dashboard-team-cont {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+
+	@media screen and (min-width: $desktop) {
+		flex-flow: row nowrap;
+		margin-bottom: $s-gap;
+	}
+
+	.team-name {
+		text-transform: capitalize;
+		width: 100%;
+	}
+
+	.team-members-cont {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: $s-gap 0 $m-gap 0;
+		width: 100%;
+
+		@media screen and (min-width: $desktop) {
+			margin: 0;
+			justify-content: flex-end;
+			gap: $m-gap;
+		}
+
+		.members-cont h5 {
+			display: none;
+			@media screen and (min-width: $tablet) {
+				display: unset;
+			}
+		}
+	}
+}

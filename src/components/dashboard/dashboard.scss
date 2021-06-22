@@ -4,4 +4,22 @@
 	position: relative;
 	max-width: $max-width;
 	margin: 0 auto;
+
+	.dashboard-no-tasks {
+		.create-task-img {
+			width: 80%;
+			max-width: 320px;
+			margin: 0 auto;
+		}
+
+		.no-task-desc {
+			margin-top: $s-gap;
+			font-weight: 700;
+			text-align: center;
+
+			.custom-button {
+				margin: $s-gap auto 0 auto;
+			}
+		}
+	}
 }

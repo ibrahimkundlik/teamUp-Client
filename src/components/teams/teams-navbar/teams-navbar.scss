@@ -27,10 +27,12 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: $m-gap;
+	margin-top: -$s-gap;
 	position: relative;
 
 	@media screen and (min-width: $desktop) {
 		flex-flow: row nowrap;
+		margin-top: -$xs-gap;
 	}
 
 	& > * {
@@ -100,7 +102,7 @@
 			border: 2px solid $secondary-text;
 			padding: $xs-gap;
 			@media screen and (min-width: $desktop) {
-				padding: 5px;
+				padding: 5px $s-gap 5px $xs-gap;
 				margin-right: 0;
 			}
 		}
