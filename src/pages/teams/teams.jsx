@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./teams.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
-import Dashboard from "../../components/dashboard/dashboard";
+import Dashboard from "../../components/dashboard/dashboard-container/dashboard";
 import ErrorPage from "../../components/error-page/error-page";
 import TeamsMainpage from "../../components/teams/teams-mainpage/teams-mainpage";
 import { getTeams } from "../../redux/teams/teams.action";

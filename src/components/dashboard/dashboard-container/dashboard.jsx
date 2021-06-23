@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./dashboard.scss";
-import createTaskImg from "../../images/create_task.svg";
+import createTaskImg from "../../../images/create_task.svg";
 import { useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { selectAuthUser } from "../../redux/user/user.selector";
-import TeamsNavbar from "../teams/teams-navbar/teams-navbar";
-import { selectSuccessRes } from "../../redux/teams/teams.selector";
-import DashboardTeam from "./dashboard-team/dashboard-team";
-import CustomButton from "../custom-button/custom-button";
+import { selectAuthUser } from "../../../redux/user/user.selector";
+import TeamsNavbar from "../../teams/teams-navbar/teams-navbar";
+import { selectSuccessRes } from "../../../redux/teams/teams.selector";
+import DashboardTeam from "../dashboard-team/dashboard-team";
+import CustomButton from "../../custom-button/custom-button";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const Dashboard = ({ teams }) => {
