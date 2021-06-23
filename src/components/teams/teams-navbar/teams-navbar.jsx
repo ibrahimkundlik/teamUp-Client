@@ -15,7 +15,7 @@ import {
 } from "react-icons/ai";
 import { FiActivity } from "react-icons/fi";
 
-const TeamsNavbar = ({ user }) => {
+const TeamsNavbar = ({ user, openCreateTaskForm }) => {
 	const location = useLocation();
 
 	return (
@@ -45,7 +45,10 @@ const TeamsNavbar = ({ user }) => {
 						</form>
 					</div>
 					<div className="dashboard-nav2">
-						<CustomButton className="new-task-btn">
+						<CustomButton
+							className="new-task-btn"
+							onClick={() => openCreateTaskForm()}
+						>
 							<AiOutlinePlus />
 							<p>New Task</p>
 						</CustomButton>
