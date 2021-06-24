@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./create-task.scss";
 import { AiFillCloseCircle } from "react-icons/ai";
 import CustomInput from "../../custom-input/custom-input";
@@ -7,6 +7,7 @@ import CustomSelect from "../../custom-select/custom-select";
 import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
 import AssignMembers from "../../assign-members/assign-members";
+import { useInputState } from "../../../hooks/useInputState/useInputState";
 
 const taskType = [
 	{
@@ -59,24 +60,44 @@ const taskPriority = [
 	},
 ];
 
+const INITIAL_STATE = {
+	name: "",
+	type: "",
+	priority: "",
+	description: "",
+};
+
 const CreateTask = ({ handleCloseForm, members }) => {
+	const [assigned, setAssigned] = useState([]);
+	const [state, bindState] = useInputState(INITIAL_STATE);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(assigned);
+		console.log(state);
+	};
+
 	return (
 		<div className="create-task-cont">
 			<h2>Create new task</h2>
 			<div className="close-icon" onClick={() => handleCloseForm()}>
 				<AiFillCloseCircle />
 			</div>
-			<form autoComplete="off" className="create-task-form">
+			<form
+				autoComplete="off"
+				className="create-task-form"
+				onSubmit={handleSubmit}
+			>
 				<CustomInput
 					type="text"
 					name="name"
 					label="Task name"
 					placeholder="Enter task name"
-					// onChange={handleChange}
-					// value={formData.name}
 					required
 					inputIcon={<BiTask />}
 					className="task-name"
+					{...bindState}
+					value={state.name}
 				/>
 				<CustomSelect
 					options={taskType}
@@ -84,6 +105,8 @@ const CreateTask = ({ handleCloseForm, members }) => {
 					name="type"
 					id="type-select"
 					required
+					{...bindState}
+					value={state.type}
 				/>
 				<CustomSelect
 					options={taskPriority}
@@ -91,18 +114,24 @@ const CreateTask = ({ handleCloseForm, members }) => {
 					name="priority"
 					id="priority-select"
 					required
+					{...bindState}
+					value={state.priority}
 				/>
 				<CustomTextarea
 					name="description"
 					label="Description"
 					placeholder="Enter your task description"
-					// onChange={handleChange}
-					// value={formData.description}
 					required
 					inputIcon={<BiMessageDetail />}
 					className="task-description"
+					{...bindState}
+					value={state.description}
 				/>
-				<AssignMembers members={members} />
+				<AssignMembers
+					members={members}
+					existingMembers={assigned}
+					setAssigned={setAssigned}
+				/>
 				<CustomButton className="create-task-btn">Create task</CustomButton>
 			</form>
 		</div>
@@ -110,21 +139,3 @@ const CreateTask = ({ handleCloseForm, members }) => {
 };
 
 export default CreateTask;
-
-// {
-// 	"name": "new task 2 22 222",
-// 	"type": "pending",
-// 	"difficulty": "medium",
-// 	"assigned": [
-// 			{
-// 					"username": "Clark Kent",
-// 					"userId": "60c4ebb319133a44a8fb1526"
-// 			},
-// 			{
-// 					"username": "Bruce Wayne",
-// 					"userId": "60c458f833b9ba19288892c7"
-// 			}
-// 	],
-// 	"description": "nxcm nxmcn mxncm mxncm mnxcm nxmcn",
-// 	"teamId": "60c4ec8419133a44a8fb152a"
-// }

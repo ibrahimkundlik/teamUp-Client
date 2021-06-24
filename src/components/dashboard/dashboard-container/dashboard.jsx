@@ -47,9 +47,13 @@ const Dashboard = ({ teams }) => {
 				formState.createTask || formState.addMembers ? "add-overlay" : ""
 			} dashboard-container`}
 		>
-			<TeamsNavbar user={user} openCreateTaskForm={openCreateTaskForm} />
+			<TeamsNavbar
+				user={user}
+				openCreateTaskForm={openCreateTaskForm}
+				team={team}
+			/>
 			{!team ? (
-				<p>Invalid team id provided.</p>
+				<p className="error-message-modal">Invalid team ID provided.</p>
 			) : team?.tasks.length === 0 ? (
 				<div
 					className={`${

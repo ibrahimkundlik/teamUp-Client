@@ -5,6 +5,10 @@
 	max-width: $max-width;
 	margin: 0 auto;
 
+	.error-message-modal {
+		margin: 0 auto;
+	}
+
 	.dashboard-no-tasks {
 		transition: $all;
 
