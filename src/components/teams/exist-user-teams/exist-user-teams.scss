@@ -117,6 +117,10 @@
 					flex: 1;
 				}
 
+				a {
+					-webkit-tap-highlight-color: transparent;
+				}
+
 				.custom-button {
 					margin-top: 1.5rem;
 				}

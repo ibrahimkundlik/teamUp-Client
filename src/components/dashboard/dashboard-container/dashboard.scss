@@ -34,3 +34,10 @@
 	background: #c5cdd382;
 	z-index: 1;
 }
+
+.hide-dashboard {
+	transition: $all;
+	transform: scale(0);
+	visibility: hidden;
+	height: 0;
+}

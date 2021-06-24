@@ -51,7 +51,11 @@ const Dashboard = ({ teams }) => {
 			{!team ? (
 				<p>Invalid team id provided.</p>
 			) : team?.tasks.length === 0 ? (
-				<div className="dashboard-no-tasks">
+				<div
+					className={`${
+						formState.createTask || formState.addMembers ? "hide-dashboard" : ""
+					} dashboard-no-tasks`}
+				>
 					<DashboardTeam loadTeam={team} />
 					<div className="create-task-img">
 						<img src={createTaskImg} alt="create-task" />
@@ -65,12 +69,18 @@ const Dashboard = ({ teams }) => {
 					</div>
 				</div>
 			) : (
-				<div className="dashboard-with-tasks">
+				<div
+					className={`${
+						formState.createTask || formState.addMembers ? "hide-dashboard" : ""
+					} dashboard-with-tasks`}
+				>
 					<DashboardTeam loadTeam={team} />
 					<p>Tasks Present -- Edit Needed</p>
 				</div>
 			)}
-			{formState.createTask && <CreateTask handleCloseForm={handleCloseForm} />}
+			{formState.createTask && (
+				<CreateTask handleCloseForm={handleCloseForm} members={team.members} />
+			)}
 		</div>
 	);
 };
