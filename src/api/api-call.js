@@ -28,3 +28,6 @@ export const createTeam = (teamData) => API.post("/teams", teamData);
 //common
 export const searchCollection = (query, collection) =>
 	API.get(`/${collection}/search?searchQuery=${query}`);
+
+//tasks
+export const createTask = (formData) => API.post("/tasks/create", formData);

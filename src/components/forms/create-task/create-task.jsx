@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./create-task.scss";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineFileSearch } from "react-icons/ai";
 import CustomInput from "../../custom-input/custom-input";
 import { BiTask, BiMessageDetail } from "react-icons/bi";
 import CustomSelect from "../../custom-select/custom-select";
@@ -8,6 +8,8 @@ import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
 import AssignMembers from "../../assign-members/assign-members";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
+import { useDispatch } from "react-redux";
+import { createTaskAction } from "../../../redux/teams/teams.action";
 
 const taskType = [
 	{
@@ -69,7 +71,9 @@ const INITIAL_STATE = {
 
 const CreateTask = ({ handleCloseForm, members, teamId }) => {
 	const [assigned, setAssigned] = useState([]);
+	const [attachments, setAttachments] = useState([]);
 	const [state, bindState] = useInputState(INITIAL_STATE);
+	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -79,7 +83,14 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 			teamId,
 			description: state.description.replaceAll("\n", " "),
 		};
-		console.log(taskData);
+
+		const formData = new FormData();
+		for (const each of attachments) {
+			formData.append("attachments", each);
+		}
+		formData.append("taskData", JSON.stringify(taskData));
+
+		dispatch(createTaskAction(formData));
 	};
 
 	return (
@@ -131,6 +142,17 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 					className="task-description"
 					{...bindState}
 					value={state.description}
+				/>
+				<CustomInput
+					type="file"
+					name="attachments"
+					label="Attach task files"
+					inputIcon={<AiOutlineFileSearch />}
+					className="attachments"
+					id="attachments"
+					multiple
+					accept=".png, .jpeg, .jpg"
+					onChange={(e) => setAttachments(e.target.files)}
 				/>
 				<AssignMembers
 					members={members}

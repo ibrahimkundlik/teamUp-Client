@@ -59,3 +59,16 @@ export const createTeam = (teamData) => async (dispatch) => {
 		});
 	}
 };
+
+//dummy
+export const createTaskAction = (formData) => async (dispatch) => {
+	try {
+		dispatch({
+			type: teamActionType.FETCH_START,
+		});
+		const { data } = await api.createTask(formData);
+		console.log(data);
+	} catch (error) {
+		console.log(error.message);
+	}
+};
