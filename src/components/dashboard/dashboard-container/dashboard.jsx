@@ -83,7 +83,11 @@ const Dashboard = ({ teams }) => {
 				</div>
 			)}
 			{formState.createTask && (
-				<CreateTask handleCloseForm={handleCloseForm} members={team.members} />
+				<CreateTask
+					handleCloseForm={handleCloseForm}
+					members={team.members}
+					teamId={team._id}
+				/>
 			)}
 		</div>
 	);

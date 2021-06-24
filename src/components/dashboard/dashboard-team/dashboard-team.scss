@@ -15,6 +15,9 @@
 	.team-name {
 		text-transform: capitalize;
 		width: 100%;
+		@media screen and (min-width: $desktop) {
+			width: 40%;
+		}
 	}
 
 	.team-members-cont {
@@ -29,6 +32,14 @@
 			margin: 0;
 			justify-content: flex-end;
 			gap: $m-gap;
+			width: 60%;
+		}
+
+		.add-member-text {
+			display: none;
+			@media screen and (min-width: $tablet) {
+				display: unset;
+			}
 		}
 
 		.members-cont h5 {

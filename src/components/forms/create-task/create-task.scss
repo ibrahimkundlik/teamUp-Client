@@ -49,6 +49,15 @@
 			.custom-select {
 				width: 50%;
 			}
+
+			.custom-input .input-icon {
+				left: 2%;
+			}
+		}
+
+		.create-task-btn {
+			width: max-content;
+			margin: $s-gap auto 0 auto;
 		}
 	}
 }

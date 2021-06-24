@@ -67,14 +67,19 @@ const INITIAL_STATE = {
 	description: "",
 };
 
-const CreateTask = ({ handleCloseForm, members }) => {
+const CreateTask = ({ handleCloseForm, members, teamId }) => {
 	const [assigned, setAssigned] = useState([]);
 	const [state, bindState] = useInputState(INITIAL_STATE);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(assigned);
-		console.log(state);
+		const taskData = {
+			...state,
+			assigned,
+			teamId,
+			description: state.description.replaceAll("\n", " "),
+		};
+		console.log(taskData);
 	};
 
 	return (
@@ -132,7 +137,7 @@ const CreateTask = ({ handleCloseForm, members }) => {
 					existingMembers={assigned}
 					setAssigned={setAssigned}
 				/>
-				<CustomButton className="create-task-btn">Create task</CustomButton>
+				<CustomButton className="create-task-btn">Create Task</CustomButton>
 			</form>
 		</div>
 	);

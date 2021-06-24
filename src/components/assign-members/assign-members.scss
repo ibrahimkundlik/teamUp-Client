@@ -22,7 +22,12 @@
 			flex-flow: row wrap;
 			justify-content: space-between;
 			align-items: center;
-			margin-bottom: $xs-gap;
+			padding: $xs-gap 0;
+			border-bottom: 2px solid #c4c4c4;
+
+			&:last-child {
+				border: none;
+			}
 
 			.member-add {
 				background: $low-text;
@@ -51,6 +56,9 @@
 
 			.member {
 				width: 48%;
+				border: none;
+				padding: 0;
+				margin-bottom: $s-gap;
 
 				&:nth-child(even) {
 					border-left: 2px solid black;

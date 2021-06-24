@@ -12,7 +12,7 @@ const DashboardTeam = ({ loadTeam }) => {
 				<Members members={loadTeam.members} />
 				<CustomButton>
 					<AiOutlineUserAdd />
-					<p>Add members</p>
+					<p className="add-member-text">Add members</p>
 				</CustomButton>
 			</div>
 		</div>
