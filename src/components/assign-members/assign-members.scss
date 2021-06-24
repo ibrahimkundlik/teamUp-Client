@@ -1,0 +1,24 @@
+@import "../../scss/variables.scss";
+
+.assign-members-cont {
+	margin: $s-gap 0;
+
+	.assign-members-label::after {
+		content: "*";
+		position: absolute;
+		color: $logo-red;
+		margin-left: 5px;
+	}
+
+	.member {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+		margin: $xs-gap 0;
+
+		.member-add {
+			background: $low-text;
+		}
+	}
+}

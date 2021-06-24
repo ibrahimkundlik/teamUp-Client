@@ -6,6 +6,7 @@ import { BiTask, BiMessageDetail } from "react-icons/bi";
 import CustomSelect from "../../custom-select/custom-select";
 import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
+import AssignMembers from "../../assign-members/assign-members";
 
 const taskType = [
 	{
@@ -61,7 +62,7 @@ const taskPriority = [
 const CreateTask = ({ handleCloseForm, members }) => {
 	return (
 		<div className="create-task-cont">
-			<h3>Create new task</h3>
+			<h2>Create new task</h2>
 			<div className="close-icon" onClick={() => handleCloseForm()}>
 				<AiFillCloseCircle />
 			</div>
@@ -70,6 +71,7 @@ const CreateTask = ({ handleCloseForm, members }) => {
 					type="text"
 					name="name"
 					label="Task name"
+					placeholder="Enter task name"
 					// onChange={handleChange}
 					// value={formData.name}
 					required
@@ -100,20 +102,8 @@ const CreateTask = ({ handleCloseForm, members }) => {
 					inputIcon={<BiMessageDetail />}
 					className="task-description"
 				/>
-				<div className="assign-members-cont">
-					<p>Assign Members</p>
-					<ul className="members-list">
-						{members.map((member) => {
-							const { _id, name } = member._id;
-							return (
-								<li className="member" key={_id}>
-									{name}
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-				<CustomButton>Create task</CustomButton>
+				<AssignMembers members={members} />
+				<CustomButton className="create-task-btn">Create task</CustomButton>
 			</form>
 		</div>
 	);

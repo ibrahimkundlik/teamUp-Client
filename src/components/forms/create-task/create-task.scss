@@ -1,29 +1,18 @@
 @import "../../../scss/variables.scss";
 
 .create-task-cont {
-	// position: absolute;
-	// top: 5.4rem;
-	// background: $secondary-bg;
-	// border-radius: $s-br;
-	// padding: $m-gap $s-gap;
-	// width: 100%;
-	// max-width: 580px;
-	// left: 50%;
-	// transform: translate(-50%, 0);
-	// z-index: 999;
-
-	// @media screen and (min-width: $desktop) {
-	// 	top: 6.4rem;
-	// }
-
 	position: relative;
 	background: $secondary-bg;
 	border-radius: $s-br;
 	padding: $m-gap $s-gap;
 	width: 100%;
-	max-width: 580px;
+	max-width: 500px;
 	margin: 0 auto;
 	z-index: 999;
+
+	@media screen and (min-width: $desktop) {
+		max-width: 620px;
+	}
 
 	.close-icon {
 		position: absolute;
@@ -34,16 +23,32 @@
 		cursor: pointer;
 	}
 
-	h3 {
-		margin-bottom: $s-gap;
-	}
-
 	.create-task-form {
 		.custom-input {
 			margin: $xs-gap 0;
 		}
+
 		.custom-textarea {
 			margin: $s-gap 0;
+		}
+
+		@media screen and (min-width: $desktop) {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+
+			& > * {
+				width: 100%;
+			}
+
+			.custom-textarea {
+				margin: $xs-gap 0;
+			}
+
+			.custom-select {
+				width: 50%;
+			}
 		}
 	}
 }

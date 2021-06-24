@@ -6,6 +6,8 @@
 	margin: 0 auto;
 
 	.dashboard-no-tasks {
+		transition: $all;
+
 		.create-task-img {
 			width: 80%;
 			max-width: 320px;
@@ -22,6 +24,10 @@
 			}
 		}
 	}
+
+	.dashboard-with-tasks {
+		transition: $all;
+	}
 }
 
 .add-overlay::after {
@@ -31,12 +37,11 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #c5cdd382;
+	background: #6868684f;
 	z-index: 1;
 }
 
 .hide-dashboard {
-	transition: $all;
 	transform: scale(0);
 	visibility: hidden;
 	height: 0;

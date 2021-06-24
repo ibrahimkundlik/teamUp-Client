@@ -28,6 +28,12 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
+		width: 90%;
+		max-width: 250px;
+
+		@media screen and (min-width: $desktop) {
+			max-width: 275px;
+		}
 
 		&:focus {
 			outline: none;
@@ -36,7 +42,9 @@
 	}
 
 	.custom-arrow {
-		transform: translate(-35px, 6px);
 		font-size: 1.6rem;
+		display: flex;
+		width: 10%;
+		transform: translate(-35px, 10px);
 	}
 }
