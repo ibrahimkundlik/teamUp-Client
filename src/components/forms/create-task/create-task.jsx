@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./create-task.scss";
 import { AiFillCloseCircle, AiOutlineFileSearch } from "react-icons/ai";
 import CustomInput from "../../custom-input/custom-input";
-import { BiTask, BiMessageDetail } from "react-icons/bi";
+import { BiTask, BiMessageDetail, BiInfoCircle } from "react-icons/bi";
 import CustomSelect from "../../custom-select/custom-select";
 import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
@@ -148,12 +148,21 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 					name="attachments"
 					label="Attach task files"
 					inputIcon={<AiOutlineFileSearch />}
-					className="attachments"
+					className="attachments file-input"
 					id="attachments"
 					multiple
 					accept=".png, .jpeg, .jpg"
 					onChange={(e) => setAttachments(e.target.files)}
-				/>
+				>
+					<div className="info-cont">
+						<BiInfoCircle />
+						<div className="main-info-cont">
+							<p>Files should be less than 1MB size</p>
+							<p>Files should be less than 1MB size</p>
+							<p>Files should be less than 1MB size</p>
+						</div>
+					</div>
+				</CustomInput>
 				<AssignMembers
 					members={members}
 					existingMembers={assigned}

@@ -44,4 +44,38 @@
 			display: flex;
 		}
 	}
+
+	.info-cont {
+		position: absolute;
+		right: 5%;
+		bottom: 10%;
+		cursor: pointer;
+		padding: $xs-gap;
+
+		&:hover {
+			.main-info-cont {
+				transform: scale(1);
+			}
+		}
+
+		svg {
+			font-size: 1.6rem;
+			display: flex;
+		}
+
+		.main-info-cont {
+			position: absolute;
+			top: 48px;
+			left: -265px;
+			color: $low-text;
+			background: $primary-bg;
+			border-radius: $s-br;
+			padding: $xs-gap $s-gap;
+			border: 2px solid #ca8fe3;
+			z-index: 999;
+
+			transform: scale(0);
+			transition: $all;
+		}
+	}
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import "./custom-select.scss";
-import { IoIosArrowDropdown } from "react-icons/io";
 
 const CustomSelect = ({ options, label, id, ...otherProps }) => {
 	return (
@@ -23,9 +22,6 @@ const CustomSelect = ({ options, label, id, ...otherProps }) => {
 					);
 				})}
 			</select>
-			<div className="custom-arrow">
-				<IoIosArrowDropdown />
-			</div>
 		</div>
 	);
 };

@@ -32,6 +32,14 @@
 			margin: $s-gap 0;
 		}
 
+		.attachments input {
+			padding: $s-gap $s-gap $s-gap 2.5rem;
+		}
+
+		.attachments .input-icon {
+			bottom: 20%;
+		}
+
 		@media screen and (min-width: $desktop) {
 			display: flex;
 			flex-flow: row wrap;

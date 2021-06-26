@@ -1,7 +1,14 @@
 import React from "react";
 import "./custom-input.scss";
 
-const CustomInput = ({ name, label, className, inputIcon, ...otherProps }) => {
+const CustomInput = ({
+	children,
+	name,
+	label,
+	className,
+	inputIcon,
+	...otherProps
+}) => {
 	return (
 		<div className={`${className ? className : ""} custom-input`}>
 			{label && (
@@ -16,6 +23,7 @@ const CustomInput = ({ name, label, className, inputIcon, ...otherProps }) => {
 			)}
 			<input name={name} {...otherProps} />
 			<div className="input-icon">{inputIcon}</div>
+			{children && children}
 		</div>
 	);
 };

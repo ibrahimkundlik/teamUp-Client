@@ -6,6 +6,20 @@
 	margin: $xs-gap 0;
 	position: relative;
 
+	&:after {
+		content: ">";
+		position: absolute;
+		left: 220px;
+		top: 48%;
+		pointer-events: none;
+		font-size: 1.8rem;
+		transform: rotate(90deg);
+
+		@media screen and (min-width: $desktop) {
+			left: 235px;
+		}
+	}
+
 	label {
 		margin: $xs-gap 0;
 		position: relative;
@@ -23,7 +37,7 @@
 		border: 2px solid #ca8fe3;
 		padding: $xs-gap $l-gap $xs-gap $xs-gap;
 		border-radius: 5px;
-		background: $primary-bg;
+		background-color: $primary-bg;
 		position: relative;
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -39,12 +53,5 @@
 			outline: none;
 			border: 2px solid #a61ee0;
 		}
-	}
-
-	.custom-arrow {
-		font-size: 1.6rem;
-		display: flex;
-		width: 10%;
-		transform: translate(-35px, 10px);
 	}
 }
