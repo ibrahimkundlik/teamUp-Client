@@ -157,9 +157,9 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 					<div className="info-cont">
 						<BiInfoCircle />
 						<div className="main-info-cont">
-							<p>Files should be less than 1MB size</p>
-							<p>Files should be less than 1MB size</p>
-							<p>Files should be less than 1MB size</p>
+							<p>&gt; Files should be less than 1MB size</p>
+							<p>&gt; Max upload of 5 files only</p>
+							<p>&gt; .png, .jpeg, .jpg format allowed</p>
 						</div>
 					</div>
 				</CustomInput>
