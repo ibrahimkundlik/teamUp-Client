@@ -14,21 +14,33 @@ API.interceptors.request.use((req) => {
 });
 
 //users
-export const login = (formData) => API.post("/users/login", formData);
-export const signup = (formData) => API.post("/users/signup", formData);
-export const joinRequest = (details, adminId) =>
-	API.patch(`/users/request/${adminId}`, details);
-export const memberRequest = (requestData) =>
-	API.patch("/users/add-member", requestData);
+export const login = (formData) => {
+	return API.post("/users/login", formData);
+};
+export const signup = (formData) => {
+	return API.post("/users/signup", formData);
+};
+export const joinRequest = (details, adminId) => {
+	return API.patch(`/users/request/${adminId}`, details);
+};
+export const memberRequest = (requestData) => {
+	return API.patch("/users/add-member", requestData);
+};
 
 //teams
-export const getTeams = () => API.get("/teams");
-export const createTeam = (teamData) => API.post("/teams", teamData);
+export const getTeams = () => {
+	return API.get("/teams");
+};
+export const createTeam = (teamData) => {
+	return API.post("/teams", teamData);
+};
 
 //common
-export const searchCollection = (query, collection) =>
-	API.get(`/${collection}/search?searchQuery=${query}`);
+export const searchCollection = (query, collection) => {
+	return API.get(`/${collection}/search?searchQuery=${query}`);
+};
 
 //tasks
-export const createTask = (formData) => API.post("/tasks/create", formData);
-export const getTaskImages = (key) => API.get(`/tasks/images/${key}`);
+export const createTask = (formData) => {
+	return API.post("/tasks/create", formData);
+};

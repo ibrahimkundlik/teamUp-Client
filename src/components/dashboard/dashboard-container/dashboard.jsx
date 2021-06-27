@@ -11,6 +11,7 @@ import CustomButton from "../../custom-button/custom-button";
 import { AiOutlinePlus } from "react-icons/ai";
 import CreateTask from "../../forms/create-task/create-task";
 import { clearMssgResAction } from "../../../redux/teams/teams.action";
+import TaskGroup from "../task-group/task-group";
 
 const INITIAL_STATE = {
 	createTask: false,
@@ -96,19 +97,7 @@ const Dashboard = ({ teams }) => {
 					{teamsSuccessMssg && (
 						<p className="success-message-modal">{teamsSuccessMssg}</p>
 					)}
-					{team.tasks.map((task) => (
-						<div key={task._id}>
-							<p>{task.name}</p>
-							{task.attachments.map((key) => (
-								<img
-									src={`/tasks/images/${key}`}
-									alt="s3 downloads"
-									style={{ width: "50px" }}
-									key={key}
-								/>
-							))}
-						</div>
-					))}
+					<TaskGroup tasks={team.tasks} />
 				</div>
 			)}
 			{formState.createTask && (
@@ -123,3 +112,40 @@ const Dashboard = ({ teams }) => {
 };
 
 export default Dashboard;
+
+/* 
+<img
+src={`/tasks/images/${key}`}
+alt="s3 downloads"
+style={{ width: "50px" }}
+key={key}
+/> 
+*/
+
+// {
+//   "attachments": [
+//     "a02c18b5f28f0ead56e671f899d26322",
+//     "b9059ac9cc274b154efe25c63c871c11"
+//   ],
+//   "_id": "60d81b1956c43b3af8b72cbf",
+//   "name": "task 1",
+//   "type": "backlog",
+//   "priority": "high",
+//   "assigned": [
+//     {
+//       "_id": "60d81b1956c43b3af8b72cc0",
+//       "username": "Adnan Kiks",
+//       "userId": "60d28ff00ae47418982f1a38"
+//     },
+//     {
+//       "_id": "60d81b1956c43b3af8b72cc1",
+//       "username": "Manal Kiks",
+//       "userId": "60d4ae95f99d7e10640836ba"
+//     }
+//   ],
+//   "description": "task 1 task 1 task 1 task 1 task 1",
+//   "comments": [],
+//   "createdAt": "2021-06-27T06:30:49.590Z",
+//   "updatedAt": "2021-06-27T06:30:49.590Z",
+//   "__v": 0
+// }

@@ -25,3 +25,10 @@ export const createTaskAction =
 			});
 		}
 	};
+
+export const seperateTasksAction = (tasks) => {
+	return {
+		type: taskActionType.SEPERATE_TASKS,
+		payload: tasks,
+	};
+};
