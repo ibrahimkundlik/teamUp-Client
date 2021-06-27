@@ -9,7 +9,7 @@ import CustomTextarea from "../../custom-textarea/custom-textarea";
 import AssignMembers from "../../assign-members/assign-members";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
 import { useDispatch } from "react-redux";
-import { createTaskAction } from "../../../redux/teams/teams.action";
+import { createTaskAction } from "../../../redux/task/task.action";
 
 const taskType = [
 	{

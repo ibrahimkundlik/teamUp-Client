@@ -20,13 +20,13 @@
 	input {
 		display: block;
 		width: 100%;
-		border: 2px solid #ca8fe3;
+		border: 2px solid $input-border;
 		padding: $xs-gap $s-gap $xs-gap 2.5rem;
 		border-radius: 5px;
 
 		&:focus {
 			outline: none;
-			border: 2px solid #a61ee0;
+			border: 2px solid $input-focus;
 		}
 
 		&::placeholder {
@@ -51,6 +51,7 @@
 		bottom: 10%;
 		cursor: pointer;
 		padding: $xs-gap;
+		background: $secondary-bg;
 
 		&:hover {
 			.main-info-cont {

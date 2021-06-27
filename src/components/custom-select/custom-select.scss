@@ -34,7 +34,7 @@
 	}
 
 	select {
-		border: 2px solid #ca8fe3;
+		border: 2px solid $input-border;
 		padding: $xs-gap $l-gap $xs-gap $xs-gap;
 		border-radius: 5px;
 		background-color: $primary-bg;
@@ -51,7 +51,7 @@
 
 		&:focus {
 			outline: none;
-			border: 2px solid #a61ee0;
+			border: 2px solid $input-focus;
 		}
 	}
 }

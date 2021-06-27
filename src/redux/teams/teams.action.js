@@ -2,7 +2,7 @@ import { teamActionType } from "./teams.type";
 import * as api from "../../api/api-call";
 import { userActionType } from "../user/user.type";
 
-const fetchError = (error) => {
+export const fetchError = (error) => {
 	let errorMessage = error.message;
 	if (error.response) {
 		errorMessage = error.response.data.message;
@@ -57,18 +57,5 @@ export const createTeam = (teamData) => async (dispatch) => {
 			type: teamActionType.FETCH_FAILURE,
 			payload: fetchError(error),
 		});
-	}
-};
-
-//dummy
-export const createTaskAction = (formData) => async (dispatch) => {
-	try {
-		dispatch({
-			type: teamActionType.FETCH_START,
-		});
-		const { data } = await api.createTask(formData);
-		console.log(data);
-	} catch (error) {
-		console.log(error.message);
 	}
 };
