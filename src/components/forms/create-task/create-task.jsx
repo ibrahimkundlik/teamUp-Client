@@ -8,8 +8,11 @@ import CustomButton from "../../custom-button/custom-button";
 import CustomTextarea from "../../custom-textarea/custom-textarea";
 import AssignMembers from "../../assign-members/assign-members";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createTaskAction } from "../../../redux/task/task.action";
+import { taskActionType } from "../../../redux/task/task.type";
+import ErrorMessageModal from "../../message-modals/error-message-modal";
+import Spinner from "../../spinner/spinner";
 
 const taskType = [
 	{
@@ -74,6 +77,7 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 	const [attachments, setAttachments] = useState([]);
 	const [state, bindState] = useInputState(INITIAL_STATE);
 	const dispatch = useDispatch();
+	const taskRequest = useSelector((state) => state.task);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -84,13 +88,22 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 			description: state.description.replaceAll("\n", " "),
 		};
 
+		if (taskData.assigned.length === 0) {
+			dispatch({
+				type: taskActionType.REQ_FAILURE,
+				payload:
+					"Currently no members are assigned to this task. Kindly add atleast 1 member.",
+			});
+			return;
+		}
+
 		const formData = new FormData();
 		for (const each of attachments) {
 			formData.append("attachments", each);
 		}
 		formData.append("taskData", JSON.stringify(taskData));
 
-		dispatch(createTaskAction(formData));
+		dispatch(createTaskAction(formData, handleCloseForm));
 	};
 
 	return (
@@ -168,7 +181,13 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 					existingMembers={assigned}
 					setAssigned={setAssigned}
 				/>
-				<CustomButton className="create-task-btn">Create Task</CustomButton>
+				{taskRequest.errorRes && (
+					<ErrorMessageModal errorMssg={taskRequest.errorRes} />
+				)}
+				<CustomButton className="create-task-btn">
+					<p>Create Task</p>
+					{taskRequest.loading && <Spinner />}
+				</CustomButton>
 			</form>
 		</div>
 	);

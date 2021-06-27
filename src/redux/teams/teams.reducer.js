@@ -1,5 +1,5 @@
 import { teamActionType } from "./teams.type";
-import { generateUpdatedTeams } from "./teams.utils";
+import { generateUpdatedTeams, addTaskToTeam } from "./teams.utils";
 
 const INITIAL_STATE = {
 	loading: false,
@@ -48,7 +48,7 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				loading: false,
 				errorRes: null,
-				teamsRes: generateUpdatedTeams(state.teamsRes, action.payload),
+				teamsRes: addTaskToTeam(state.teamsRes, action.payload),
 				successRes: "New task successfully created.",
 			};
 
