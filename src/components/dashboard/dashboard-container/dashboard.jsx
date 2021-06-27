@@ -97,7 +97,17 @@ const Dashboard = ({ teams }) => {
 						<p className="success-message-modal">{teamsSuccessMssg}</p>
 					)}
 					{team.tasks.map((task) => (
-						<p key={task._id}>{task.name}</p>
+						<div key={task._id}>
+							<p>{task.name}</p>
+							{task.attachments.map((key) => (
+								<img
+									src={`/tasks/images/${key}`}
+									alt="s3 downloads"
+									style={{ width: "50px" }}
+									key={key}
+								/>
+							))}
+						</div>
 					))}
 				</div>
 			)}

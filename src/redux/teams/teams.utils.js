@@ -17,7 +17,7 @@ export const addTaskToTeam = (teamList, payload) => {
 		if (team._id === payload.teamId) {
 			return {
 				...team,
-				tasks: [...team.tasks, payload.task],
+				tasks: [payload.task, ...team.tasks],
 			};
 		}
 		return team;

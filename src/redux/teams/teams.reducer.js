@@ -18,7 +18,7 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				loading: false,
 				errorRes: null,
-				teamsRes: [...state.teamsRes, action.payload],
+				teamsRes: [action.payload, ...state.teamsRes],
 				successRes: "New team created successfully.",
 			};
 

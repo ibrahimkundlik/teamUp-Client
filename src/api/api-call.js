@@ -31,3 +31,4 @@ export const searchCollection = (query, collection) =>
 
 //tasks
 export const createTask = (formData) => API.post("/tasks/create", formData);
+export const getTaskImages = (key) => API.get(`/tasks/images/${key}`);
