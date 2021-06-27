@@ -65,7 +65,11 @@
 
 		.create-task-btn {
 			width: max-content;
-			margin: $s-gap auto 0 auto;
+			margin: $m-gap auto 0 auto;
+
+			@media screen and (min-width: $desktop) {
+				margin: $s-gap auto 0 auto;
+			}
 		}
 	}
 }

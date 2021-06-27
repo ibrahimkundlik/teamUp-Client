@@ -1,1 +1,77 @@
 @import "../../../scss/variables.scss";
+
+.task-group-cont {
+	margin-top: $xs-gap;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: $l-br;
+
+	@media screen and (min-width: $desktop) {
+		margin-top: $m-gap;
+	}
+	@media screen and (min-width: 1150px) {
+		gap: 0;
+	}
+
+	svg {
+		font-size: 2rem;
+		display: flex;
+	}
+
+	.task-group {
+		width: 100%;
+		background: $secondary-bg;
+		border-radius: $m-br;
+		padding: $s-gap;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 980px;
+		margin: 0 auto;
+
+		@media screen and (min-width: 1150px) {
+			width: 24%;
+			margin: 0;
+		}
+
+		.task-group-head {
+			text-transform: capitalize;
+			flex-grow: 1;
+		}
+
+		.task-group-count {
+			padding: 5px $s-gap;
+			background: $secondary-text-hov;
+			color: $secondary-text;
+			border-radius: $m-br;
+			min-width: 50px;
+			text-align: center;
+			font-weight: 700;
+		}
+
+		.arrow-icon {
+			margin-left: $s-gap;
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
+			@media screen and (min-width: $desktop) {
+				display: none;
+			}
+		}
+
+		.task-category {
+			width: 100%;
+			transition: $all;
+			display: flex;
+			flex-flow: row wrap;
+			align-items: center;
+		}
+
+		.hide-group {
+			transform: scale(0);
+			height: 0;
+		}
+	}
+}

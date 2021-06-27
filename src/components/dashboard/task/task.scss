@@ -1,1 +1,69 @@
 @import "../../../scss/variables.scss";
+
+.task-main-cont {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: $s-gap auto 0 auto;
+	background-color: $primary-bg;
+	border-radius: $s-br;
+	padding: $s-gap $xs-gap;
+	box-shadow: 5px 5px 5px #e3e3e3;
+	gap: $s-gap;
+	width: 100%;
+	max-width: 450px;
+
+	@media screen and (min-width: $tablet) {
+		width: 48%;
+
+		&:last-child {
+			margin: $s-gap auto 0 $xs-gap;
+		}
+	}
+
+	@media screen and (min-width: 1150px) {
+		width: 100%;
+
+		&:last-child {
+			margin: $s-gap auto 0 auto;
+		}
+	}
+
+	.task-name {
+		width: 100%;
+	}
+
+	.task-attachments {
+		display: flex;
+		align-items: center;
+		p {
+			font-weight: 700;
+			margin-left: $xs-gap;
+		}
+		svg {
+			font-size: 1.5rem;
+		}
+	}
+
+	.task-priority {
+		text-transform: capitalize;
+		padding: 5px $xs-gap;
+		border-radius: $m-br;
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.low-clr {
+		background: $low-bg;
+		color: $low-text;
+	}
+	.medium-clr {
+		background: $med-bg;
+		color: $med-text;
+	}
+	.high-clr {
+		background: $high-bg;
+		color: $high-text;
+	}
+}
