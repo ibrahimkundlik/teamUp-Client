@@ -52,6 +52,9 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 				successRes: "New task successfully created.",
 			};
 
+		case teamActionType.CLEAR_MSSG_TEAMS:
+			return { ...state, errorRes: null, successRes: null };
+
 		default:
 			return state;
 	}

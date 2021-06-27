@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./dashboard.scss";
 import createTaskImg from "../../../images/create_task.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { selectAuthUser } from "../../../redux/user/user.selector";
 import TeamsNavbar from "../../teams/teams-navbar/teams-navbar";
@@ -10,6 +10,7 @@ import DashboardTeam from "../dashboard-team/dashboard-team";
 import CustomButton from "../../custom-button/custom-button";
 import { AiOutlinePlus } from "react-icons/ai";
 import CreateTask from "../../forms/create-task/create-task";
+import { clearMssgResAction } from "../../../redux/teams/teams.action";
 
 const INITIAL_STATE = {
 	createTask: false,
@@ -19,13 +20,23 @@ const INITIAL_STATE = {
 const Dashboard = ({ teams }) => {
 	const { id } = useParams();
 	const user = useSelector(selectAuthUser);
-	const teamsLoaded = useSelector(selectSuccessRes);
+	const teamsSuccessMssg = useSelector(selectSuccessRes);
 	const [team, setTeam] = useState(null);
 	const [formState, setFormState] = useState(INITIAL_STATE);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		setTeam(teams.find((team) => team._id === id));
 	}, [teams, id]);
+
+	useEffect(() => {
+		let timeout = setTimeout(() => {
+			if (teamsSuccessMssg) dispatch(clearMssgResAction());
+		}, 3000);
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, [teamsSuccessMssg, dispatch]);
 
 	const handleCloseForm = () => {
 		setFormState(INITIAL_STATE);
@@ -37,7 +48,10 @@ const Dashboard = ({ teams }) => {
 		window.scrollTo(0, 0);
 	};
 
-	if (teamsLoaded === "All teams loaded successfully." && teams.length === 0) {
+	if (
+		teamsSuccessMssg === "All teams loaded successfully." &&
+		teams.length === 0
+	) {
 		return <Redirect to="/teams" />;
 	}
 
@@ -79,7 +93,12 @@ const Dashboard = ({ teams }) => {
 					} dashboard-with-tasks`}
 				>
 					<DashboardTeam loadTeam={team} />
-					<p>Tasks Present -- Edit Needed</p>
+					{teamsSuccessMssg && (
+						<p className="success-message-modal">{teamsSuccessMssg}</p>
+					)}
+					{team.tasks.map((task) => (
+						<p key={task._id}>{task.name}</p>
+					))}
 				</div>
 			)}
 			{formState.createTask && (

@@ -64,7 +64,7 @@ export const logout = (history) => async (dispatch) => {
 
 export const clearMessageResAction = () => {
 	return {
-		type: userActionType.CLEAR_MESSAGE_RES,
+		type: userActionType.CLEAR_MSSG_USER,
 	};
 };
 

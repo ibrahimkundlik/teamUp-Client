@@ -59,3 +59,9 @@ export const createTeam = (teamData) => async (dispatch) => {
 		});
 	}
 };
+
+export const clearMssgResAction = () => {
+	return {
+		type: teamActionType.CLEAR_MSSG_TEAMS,
+	};
+};

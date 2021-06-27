@@ -90,7 +90,7 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 
 		if (taskData.assigned.length === 0) {
 			dispatch({
-				type: taskActionType.REQ_FAILURE,
+				type: taskActionType.REQ_FAILURE_TASK,
 				payload:
 					"Currently no members are assigned to this task. Kindly add atleast 1 member.",
 			});

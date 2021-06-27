@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../../custom-button/custom-button";
 import "./exist-user-teams.scss";
 import {
@@ -10,11 +10,12 @@ import {
 import Members from "../../members/members";
 import CreateTeam from "../../forms/create-team/create-team";
 import JoinTeam from "../../forms/join-team/join-team";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTeams } from "../../../redux/teams/teams.selector";
 import MemberRequest from "../../forms/member-request/member-request";
 import ErrorMessageModal from "../../message-modals/error-message-modal";
 import { Link } from "react-router-dom";
+import { clearMssgResAction } from "../../../redux/teams/teams.action";
 
 const INITIAL_STATE = {
 	newTeam: false,
@@ -25,7 +26,7 @@ const INITIAL_STATE = {
 const ExistUserTeams = ({ teams, username }) => {
 	const [teamForm, setTeamForm] = useState(INITIAL_STATE);
 	const { errorRes, successRes } = useSelector(selectTeams);
-	const successMssgRef = useRef();
+	const dispatch = useDispatch();
 
 	const handleCloseForm = () => {
 		setTeamForm(INITIAL_STATE);
@@ -38,16 +39,12 @@ const ExistUserTeams = ({ teams, username }) => {
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
-			if (successMssgRef.current) {
-				successMssgRef.current.style.transform = "scale(0)";
-				successMssgRef.current.style.opacity = 0;
-				successMssgRef.current.style.marginTop = "-2rem";
-			}
+			if (successRes) dispatch(clearMssgResAction());
 		}, 3000);
 		return () => {
 			clearTimeout(timeout);
 		};
-	}, [successRes]);
+	}, [successRes, dispatch]);
 
 	return (
 		<>
@@ -102,11 +99,7 @@ const ExistUserTeams = ({ teams, username }) => {
 				</div>
 				<div>
 					{errorRes && <ErrorMessageModal errorMssg={errorRes} />}
-					{successRes && (
-						<p className="success-message-modal" ref={successMssgRef}>
-							{successRes}
-						</p>
-					)}
+					{successRes && <p className="success-message-modal">{successRes}</p>}
 				</div>
 				<div className="current-teams">
 					<h4 className="team-actions-head">Your current teams:</h4>

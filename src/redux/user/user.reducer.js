@@ -33,7 +33,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			localStorage.clear();
 			return { ...state, loading: false, userRes: null, errorRes: null };
 
-		case userActionType.CLEAR_MESSAGE_RES:
+		case userActionType.CLEAR_MSSG_USER:
 			return { ...state, errorRes: null, successRes: null };
 
 		case userActionType.UPDATE_AUTH_USER:

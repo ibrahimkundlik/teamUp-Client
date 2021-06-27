@@ -7,15 +7,15 @@ const INITIAL_STATE = {
 
 const taskReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case taskActionType.REQ_START:
+		case taskActionType.REQ_START_TASK:
 			return { ...state, loading: true, errorRes: null };
-		case taskActionType.REQ_SUCCESS:
+		case taskActionType.REQ_SUCCESS_TASK:
 			return {
 				...state,
 				loading: false,
 				errorRes: null,
 			};
-		case taskActionType.REQ_FAILURE:
+		case taskActionType.REQ_FAILURE_TASK:
 			return {
 				...state,
 				loading: false,

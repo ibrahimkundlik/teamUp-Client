@@ -7,12 +7,11 @@ export const createTaskAction =
 	(formData, handleCloseForm) => async (dispatch) => {
 		try {
 			dispatch({
-				type: taskActionType.REQ_START,
+				type: taskActionType.REQ_START_TASK,
 			});
 			const { data } = await api.createTask(formData);
-			console.log(data);
 			dispatch({
-				type: taskActionType.REQ_SUCCESS,
+				type: taskActionType.REQ_SUCCESS_TASK,
 			});
 			dispatch({
 				type: teamActionType.ADD_TASK,
@@ -21,7 +20,7 @@ export const createTaskAction =
 			handleCloseForm();
 		} catch (error) {
 			dispatch({
-				type: taskActionType.REQ_FAILURE,
+				type: taskActionType.REQ_FAILURE_TASK,
 				payload: fetchError(error),
 			});
 		}

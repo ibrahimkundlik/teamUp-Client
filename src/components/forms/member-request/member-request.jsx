@@ -21,7 +21,7 @@ const MemberRequest = ({ showMemberRequest, handleClose }) => {
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
-			dispatch(clearMessageResAction());
+			if (successRes) dispatch(clearMessageResAction());
 		}, 3000);
 		return () => {
 			clearTimeout(timeout);
