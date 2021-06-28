@@ -58,34 +58,66 @@
 		}
 	}
 
+	.nav1-margin {
+		margin-bottom: $m-gap;
+		@media screen and (min-width: $desktop) {
+			margin-bottom: 0;
+		}
+	}
+
 	.dashboard-nav1 {
 		width: 80%;
-		margin-bottom: $xs-gap;
+		transition: $all;
 
 		@media screen and (min-width: $desktop) {
 			width: 40%;
-			margin-bottom: 0;
 			gap: $s-gap;
 		}
 
-		.search-task {
-			input {
-				border-color: $secondary-text;
-				border-radius: $s-br;
-				padding-top: 0.6rem;
-				padding-bottom: 0.6rem;
-				@media screen and (min-width: $desktop) {
-					padding-top: 7px;
-					padding-bottom: 7px;
+		.search-task-form {
+			position: relative;
+
+			.search-task {
+				input {
+					border-color: $secondary-text;
+					border-radius: $s-br;
+					padding: 0.6rem $xs-gap;
+					@media screen and (min-width: $desktop) {
+						padding: 7px $s-gap;
+					}
 				}
 			}
-			.input-icon {
-				bottom: 24%;
-				left: 4%;
-				color: $secondary-text;
-				@media screen and (min-width: $desktop) {
-					left: 3%;
-					bottom: 20%;
+
+			.search-message {
+				position: absolute;
+				bottom: -15%;
+				left: 0%;
+				width: 100%;
+				font-size: 0.9rem;
+				text-align: center;
+				font-weight: 500;
+			}
+
+			.search-controls {
+				position: absolute;
+				top: 26%;
+				right: 3%;
+
+				.submit-search-form {
+					background: $primary-bg;
+					padding: 6px 0 6px $s-gap;
+					svg {
+						font-size: 1.5rem;
+						color: $secondary-text;
+					}
+				}
+				.reset-search-form {
+					background: $primary-bg;
+					padding: 6px 0 6px $s-gap;
+					svg {
+						font-size: 1.5rem;
+						color: $logo-red;
+					}
 				}
 			}
 		}

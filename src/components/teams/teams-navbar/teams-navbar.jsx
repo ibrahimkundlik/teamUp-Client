@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CustomIcon from "../../custom-icon/custom-icon";
 import CustomInput from "../../custom-input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
@@ -11,6 +11,8 @@ import {
 	AiOutlinePlus,
 	AiOutlineSetting,
 	AiOutlineInfoCircle,
+	AiOutlineFileSearch,
+	AiOutlineCloseCircle,
 } from "react-icons/ai";
 import { FiActivity } from "react-icons/fi";
 import { useDispatch } from "react-redux";
@@ -24,18 +26,24 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 	const dispatch = useDispatch();
 	const [taskQuery, setTaskQuery] = useState("");
 	const [submitted, setSubmitted] = useState(false);
+	const resetRef = useRef(null);
 
 	const handleSearchSubmit = (e) => {
 		e.preventDefault();
 		dispatch(searchTaskAction(taskQuery, team.tasks));
 		setSubmitted(true);
+		if (resetRef.current) {
+			resetRef.current.focus();
+		}
 	};
 
 	const resetSearchForm = (e) => {
 		setTaskQuery("");
 		dispatch(seperateTasksAction(team.tasks));
 		setSubmitted(false);
-		e.target.focus();
+		if (resetRef.current) {
+			resetRef.current.focus();
+		}
 	};
 
 	return (
@@ -47,13 +55,17 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 				</nav>
 			) : (
 				<nav className="dashboard-navbar">
-					<div className="dashboard-nav1">
+					<div className={`dashboard-nav1 ${submitted ? "nav1-margin" : ""}`}>
 						<Link to="/teams">
 							<CustomIcon>
 								<AiOutlineHome />
 							</CustomIcon>
 						</Link>
-						<form autoComplete="off" onSubmit={handleSearchSubmit}>
+						<form
+							autoComplete="off"
+							className="search-task-form"
+							onSubmit={handleSearchSubmit}
+						>
 							<CustomInput
 								type="search"
 								name="searchTask"
@@ -66,17 +78,25 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 									setSubmitted(false);
 								}}
 							/>
-							<div>
+							{submitted && (
+								<p className="search-message">
+									Search results displayed below:
+								</p>
+							)}
+							<div className="search-controls">
 								{submitted ? (
 									<button
-										className="custom-button"
+										className="custom-button reset-search-form"
 										type="button"
+										ref={resetRef}
 										onClick={resetSearchForm}
 									>
-										R
+										<AiOutlineCloseCircle />
 									</button>
 								) : (
-									<CustomButton type="submit">S</CustomButton>
+									<CustomButton type="submit" className="submit-search-form">
+										<AiOutlineFileSearch />
+									</CustomButton>
 								)}
 							</div>
 						</form>
