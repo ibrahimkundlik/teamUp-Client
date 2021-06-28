@@ -6,8 +6,8 @@ import Logo from "../../logo/logo";
 import UserProfile from "../../user-profile/user-profile";
 import "./teams-navbar.scss";
 import { useLocation, Link } from "react-router-dom";
+import mainLogo from "../../../images/logo192.png";
 import {
-	AiOutlineHome,
 	AiOutlinePlus,
 	AiOutlineSetting,
 	AiOutlineInfoCircle,
@@ -58,48 +58,50 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 					<div className={`dashboard-nav1 ${submitted ? "nav1-margin" : ""}`}>
 						<Link to="/teams">
 							<CustomIcon>
-								<AiOutlineHome />
+								<img src={mainLogo} alt="teamUp logo" />
 							</CustomIcon>
 						</Link>
-						<form
-							autoComplete="off"
-							className="search-task-form"
-							onSubmit={handleSearchSubmit}
-						>
-							<CustomInput
-								type="search"
-								name="searchTask"
-								placeholder="Search Task"
-								required
-								className="search-task"
-								value={taskQuery}
-								onChange={(e) => {
-									setTaskQuery(e.target.value);
-									setSubmitted(false);
-								}}
-							/>
-							{submitted && (
-								<p className="search-message">
-									Search results displayed below:
-								</p>
-							)}
-							<div className="search-controls">
-								{submitted ? (
-									<button
-										className="custom-button reset-search-form"
-										type="button"
-										ref={resetRef}
-										onClick={resetSearchForm}
-									>
-										<AiOutlineCloseCircle />
-									</button>
-								) : (
-									<CustomButton type="submit" className="submit-search-form">
-										<AiOutlineFileSearch />
-									</CustomButton>
+						{team && (
+							<form
+								autoComplete="off"
+								className="search-task-form"
+								onSubmit={handleSearchSubmit}
+							>
+								<CustomInput
+									type="search"
+									name="searchTask"
+									placeholder="Search Task"
+									required
+									className="search-task"
+									value={taskQuery}
+									onChange={(e) => {
+										setTaskQuery(e.target.value);
+										setSubmitted(false);
+									}}
+								/>
+								{submitted && (
+									<p className="search-message">
+										Search results displayed below:
+									</p>
 								)}
-							</div>
-						</form>
+								<div className="search-controls">
+									{submitted ? (
+										<button
+											className="custom-button reset-search-form"
+											type="button"
+											ref={resetRef}
+											onClick={resetSearchForm}
+										>
+											<AiOutlineCloseCircle />
+										</button>
+									) : (
+										<CustomButton type="submit" className="submit-search-form">
+											<AiOutlineFileSearch />
+										</CustomButton>
+									)}
+								</div>
+							</form>
+						)}
 					</div>
 					<div className="dashboard-nav2">
 						{team && (

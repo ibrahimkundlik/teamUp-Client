@@ -69,9 +69,18 @@
 		width: 80%;
 		transition: $all;
 
+		.custom-icon-cont {
+			width: 48px;
+			padding: 4px;
+		}
+
 		@media screen and (min-width: $desktop) {
 			width: 40%;
 			gap: $s-gap;
+
+			.custom-icon-cont {
+				width: 45px;
+			}
 		}
 
 		.search-task-form {
@@ -93,7 +102,7 @@
 				bottom: -15%;
 				left: 0%;
 				width: 100%;
-				font-size: 0.9rem;
+				font-size: 0.8rem;
 				text-align: center;
 				font-weight: 500;
 			}
