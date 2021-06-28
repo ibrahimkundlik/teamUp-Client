@@ -12,16 +12,19 @@ import { AiOutlinePlus } from "react-icons/ai";
 import CreateTask from "../../forms/create-task/create-task";
 import { clearMssgResAction } from "../../../redux/teams/teams.action";
 import TaskGroup from "../task-group/task-group";
+import TaskWindow from "../task-window/task-window";
 
 const INITIAL_STATE = {
 	createTask: false,
 	addMembers: false,
+	showTaskWindow: false,
 };
 
 const Dashboard = ({ teams }) => {
 	const { id } = useParams();
 	const user = useSelector(selectAuthUser);
 	const teamsSuccessMssg = useSelector(selectSuccessRes);
+	const taskWindow = useSelector((state) => state.task.window);
 	const [team, setTeam] = useState(null);
 	const [formState, setFormState] = useState(INITIAL_STATE);
 	const dispatch = useDispatch();
@@ -29,6 +32,12 @@ const Dashboard = ({ teams }) => {
 	useEffect(() => {
 		setTeam(teams.find((team) => team._id === id));
 	}, [teams, id]);
+
+	useEffect(() => {
+		if (taskWindow) {
+			setFormState({ ...INITIAL_STATE, showTaskWindow: true });
+		}
+	}, [taskWindow]);
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
@@ -45,7 +54,7 @@ const Dashboard = ({ teams }) => {
 	};
 
 	const openCreateTaskForm = () => {
-		setFormState({ ...formState, createTask: true });
+		setFormState({ ...INITIAL_STATE, createTask: true });
 		window.scrollTo(0, 0);
 	};
 
@@ -59,7 +68,7 @@ const Dashboard = ({ teams }) => {
 	return (
 		<div
 			className={`${
-				formState.createTask || formState.addMembers ? "add-overlay" : ""
+				Object.values(formState).find((element) => element) ? "add-overlay" : ""
 			} dashboard-container`}
 		>
 			<TeamsNavbar
@@ -72,7 +81,9 @@ const Dashboard = ({ teams }) => {
 			) : team?.tasks.length === 0 ? (
 				<div
 					className={`${
-						formState.createTask || formState.addMembers ? "hide-dashboard" : ""
+						Object.values(formState).find((element) => element)
+							? "hide-dashboard"
+							: ""
 					} dashboard-no-tasks`}
 				>
 					<DashboardTeam loadTeam={team} />
@@ -90,7 +101,9 @@ const Dashboard = ({ teams }) => {
 			) : (
 				<div
 					className={`${
-						formState.createTask || formState.addMembers ? "hide-dashboard" : ""
+						Object.values(formState).find((element) => element)
+							? "hide-dashboard"
+							: ""
 					} dashboard-with-tasks`}
 				>
 					<DashboardTeam loadTeam={team} />
@@ -107,6 +120,9 @@ const Dashboard = ({ teams }) => {
 					teamId={team._id}
 				/>
 			)}
+			{formState.showTaskWindow && (
+				<TaskWindow handleCloseForm={handleCloseForm} task={taskWindow} />
+			)}
 		</div>
 	);
 };
@@ -121,31 +137,3 @@ style={{ width: "50px" }}
 key={key}
 /> 
 */
-
-// {
-//   "attachments": [
-//     "a02c18b5f28f0ead56e671f899d26322",
-//     "b9059ac9cc274b154efe25c63c871c11"
-//   ],
-//   "_id": "60d81b1956c43b3af8b72cbf",
-//   "name": "task 1",
-//   "type": "backlog",
-//   "priority": "high",
-//   "assigned": [
-//     {
-//       "_id": "60d81b1956c43b3af8b72cc0",
-//       "username": "Adnan Kiks",
-//       "userId": "60d28ff00ae47418982f1a38"
-//     },
-//     {
-//       "_id": "60d81b1956c43b3af8b72cc1",
-//       "username": "Manal Kiks",
-//       "userId": "60d4ae95f99d7e10640836ba"
-//     }
-//   ],
-//   "description": "task 1 task 1 task 1 task 1 task 1",
-//   "comments": [],
-//   "createdAt": "2021-06-27T06:30:49.590Z",
-//   "updatedAt": "2021-06-27T06:30:49.590Z",
-//   "__v": 0
-// }

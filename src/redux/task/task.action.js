@@ -34,8 +34,9 @@ export const seperateTasksAction = (tasks) => {
 };
 
 export const searchTaskAction = (query, tasks) => {
-	const searchRegex = new RegExp(query, "gi");
-	const filtered = tasks.filter((task) => searchRegex.test(task.name));
+	const filtered = tasks.filter(
+		(task) => task.name.indexOf(query.trim()) !== -1
+	);
 
 	return {
 		type: taskActionType.SEPERATE_TASKS,

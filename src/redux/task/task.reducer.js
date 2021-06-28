@@ -4,6 +4,7 @@ const INITIAL_STATE = {
 	loading: false,
 	errorRes: null,
 	tasks: null,
+	window: null,
 };
 
 const taskReducer = (state = INITIAL_STATE, action) => {
@@ -35,6 +36,11 @@ const taskReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				tasks: taskModel,
+			};
+		case taskActionType.SHOW_TASK_WINDOW:
+			return {
+				...state,
+				window: action.payload,
 			};
 		default:
 			return state;

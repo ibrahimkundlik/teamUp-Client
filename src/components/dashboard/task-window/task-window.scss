@@ -1,0 +1,12 @@
+@import "../../../scss/variables.scss";
+
+.task-window-cont {
+	position: relative;
+	z-index: 999;
+	background: $secondary-bg;
+	border-radius: $s-br;
+	padding: $m-gap $s-gap;
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+}
