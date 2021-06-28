@@ -51,20 +51,27 @@
 		text-transform: capitalize;
 		padding: 5px $xs-gap;
 		border-radius: $m-br;
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 		font-weight: 700;
-	}
 
-	.low-clr {
-		background: $low-bg;
-		color: $low-text;
+		@media screen and (min-width: $desktop) {
+			font-size: 0.7rem;
+		}
 	}
-	.medium-clr {
-		background: $med-bg;
-		color: $med-text;
-	}
-	.high-clr {
-		background: $high-bg;
-		color: $high-text;
-	}
+}
+
+.low-clr {
+	background: $low-bg;
+	color: $low-text;
+	border: 2px solid $low-text;
+}
+.medium-clr {
+	background: $med-bg;
+	color: $med-text;
+	border: 2px solid $med-text;
+}
+.high-clr {
+	background: $high-bg;
+	color: $high-text;
+	border: 2px solid $high-text;
 }

@@ -9,4 +9,62 @@
 	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
+
+	.task-nav {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+
+		.dashboard-icon {
+			color: $secondary-text;
+			font-size: 1.5rem;
+			margin-right: $xs-gap;
+		}
+		.team-name {
+			text-transform: capitalize;
+		}
+		.close-icon {
+			color: $logo-red;
+			font-size: 2rem;
+			margin-left: auto;
+			cursor: pointer;
+		}
+	}
+
+	.task-name {
+		margin: $s-gap 0;
+	}
+
+	.task-type-priority {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+
+		.task-type {
+			text-transform: capitalize;
+			padding: $xs-gap $s-gap;
+			border-radius: $m-br;
+			color: $secondary-text;
+			background: $secondary-text-hov;
+			border: 2px solid $secondary-text;
+			margin-right: $m-gap;
+		}
+		.task-priority {
+			text-transform: capitalize;
+			padding: $xs-gap $s-gap;
+			border-radius: $m-br;
+		}
+	}
+
+	.members-cont {
+		margin: 1.5rem 0 $s-gap 0;
+	}
+
+	.task-description {
+		background: $primary-bg;
+		border-radius: 8px;
+		line-height: 1.6;
+		padding: $s-gap $xs-gap;
+		margin: $xs-gap 0 $s-gap 0;
+	}
 }
