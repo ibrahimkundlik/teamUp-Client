@@ -121,19 +121,14 @@ const Dashboard = ({ teams }) => {
 				/>
 			)}
 			{formState.showTaskWindow && (
-				<TaskWindow handleCloseForm={handleCloseForm} task={taskWindow} />
+				<TaskWindow
+					handleCloseForm={handleCloseForm}
+					task={taskWindow}
+					teamName={team.name}
+				/>
 			)}
 		</div>
 	);
 };
 
 export default Dashboard;
-
-/* 
-<img
-src={`/tasks/images/${key}`}
-alt="s3 downloads"
-style={{ width: "50px" }}
-key={key}
-/> 
-*/

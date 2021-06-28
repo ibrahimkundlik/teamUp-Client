@@ -110,7 +110,12 @@ const ExistUserTeams = ({ teams, username }) => {
 								<li key={_id} className="team">
 									<h3>{name}</h3>
 									<p className="team-description">{description}</p>
-									<Members members={members} />
+									<Members
+										members={members.map((member) => ({
+											_id: member._id._id,
+											username: member._id.name,
+										}))}
+									/>
 									<Link to={`/teams/dashboard/${_id}`}>
 										<CustomButton>
 											Dashboard

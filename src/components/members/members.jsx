@@ -6,10 +6,10 @@ const Members = ({ members }) => {
 		<div className="members-cont">
 			<h5>Members:</h5>
 			{members.slice(0, 5).map((member) => (
-				<div className="member" key={member._id?._id}>
+				<div className="member" key={member._id}>
 					<p>
-						{member._id?.name.split(" ")[0][0]}
-						{member._id?.name.split(" ")[1][0]}
+						{member.username.split(" ")[0][0]}
+						{member.username.split(" ")[1][0]}
 					</p>
 				</div>
 			))}

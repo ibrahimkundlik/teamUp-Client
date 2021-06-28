@@ -9,7 +9,12 @@ const DashboardTeam = ({ loadTeam }) => {
 		<div className="dashboard-team-cont">
 			<h2 className="team-name">{loadTeam.name} board</h2>
 			<div className="team-members-cont">
-				<Members members={loadTeam.members} />
+				<Members
+					members={loadTeam.members.map((member) => ({
+						_id: member._id._id,
+						username: member._id.name,
+					}))}
+				/>
 				<CustomButton>
 					<AiOutlineUserAdd />
 					<p className="add-member-text">Add members</p>
