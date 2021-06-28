@@ -13,6 +13,7 @@
 	gap: $s-gap;
 	width: 100%;
 	max-width: 450px;
+	cursor: pointer;
 
 	@media screen and (min-width: $tablet) {
 		width: 48%;

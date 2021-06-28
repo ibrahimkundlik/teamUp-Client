@@ -32,3 +32,13 @@ export const seperateTasksAction = (tasks) => {
 		payload: tasks,
 	};
 };
+
+export const searchTaskAction = (query, tasks) => {
+	const searchRegex = new RegExp(query, "gi");
+	const filtered = tasks.filter((task) => searchRegex.test(task.name));
+
+	return {
+		type: taskActionType.SEPERATE_TASKS,
+		payload: filtered,
+	};
+};

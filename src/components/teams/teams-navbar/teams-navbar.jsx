@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomIcon from "../../custom-icon/custom-icon";
 import CustomInput from "../../custom-input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
@@ -11,12 +11,32 @@ import {
 	AiOutlinePlus,
 	AiOutlineSetting,
 	AiOutlineInfoCircle,
-	AiOutlineSearch,
 } from "react-icons/ai";
 import { FiActivity } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import {
+	searchTaskAction,
+	seperateTasksAction,
+} from "../../../redux/task/task.action";
 
 const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 	const location = useLocation();
+	const dispatch = useDispatch();
+	const [taskQuery, setTaskQuery] = useState("");
+	const [submitted, setSubmitted] = useState(false);
+
+	const handleSearchSubmit = (e) => {
+		e.preventDefault();
+		dispatch(searchTaskAction(taskQuery, team.tasks));
+		setSubmitted(true);
+	};
+
+	const resetSearchForm = (e) => {
+		setTaskQuery("");
+		dispatch(seperateTasksAction(team.tasks));
+		setSubmitted(false);
+		e.target.focus();
+	};
 
 	return (
 		<div className="teams-navbar-cont">
@@ -33,15 +53,32 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 								<AiOutlineHome />
 							</CustomIcon>
 						</Link>
-						<form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+						<form autoComplete="off" onSubmit={handleSearchSubmit}>
 							<CustomInput
 								type="search"
 								name="searchTask"
 								placeholder="Search Task"
 								required
-								inputIcon={<AiOutlineSearch />}
 								className="search-task"
+								value={taskQuery}
+								onChange={(e) => {
+									setTaskQuery(e.target.value);
+									setSubmitted(false);
+								}}
 							/>
+							<div>
+								{submitted ? (
+									<button
+										className="custom-button"
+										type="button"
+										onClick={resetSearchForm}
+									>
+										R
+									</button>
+								) : (
+									<CustomButton type="submit">S</CustomButton>
+								)}
+							</div>
 						</form>
 					</div>
 					<div className="dashboard-nav2">
