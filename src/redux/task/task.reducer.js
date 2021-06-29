@@ -42,6 +42,13 @@ const taskReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				window: action.payload,
 			};
+		case taskActionType.LOAD_IMAGES:
+			return {
+				...state,
+				loading: false,
+				errorRes: null,
+				window: { ...state.window, attachments: action.payload },
+			};
 		default:
 			return state;
 	}

@@ -2,16 +2,17 @@ import React from "react";
 import "./task.scss";
 import { TiAttachment } from "react-icons/ti";
 import { useDispatch } from "react-redux";
-import { taskActionType } from "../../../redux/task/task.type";
+import { showTaskWindowAction } from "../../../redux/task/task.action";
 
 const Task = ({ task }) => {
 	const dispatch = useDispatch();
 
 	const setTaskWindow = () => {
-		dispatch({
-			type: taskActionType.SHOW_TASK_WINDOW,
-			payload: task,
-		});
+		dispatch(
+			showTaskWindowAction(task, {
+				attachments: task.attachments,
+			})
+		);
 	};
 
 	return (

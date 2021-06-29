@@ -36,6 +36,7 @@ const Dashboard = ({ teams }) => {
 	useEffect(() => {
 		if (taskWindow) {
 			setFormState({ ...INITIAL_STATE, showTaskWindow: true });
+			window.scrollTo(0, 0);
 		}
 	}, [taskWindow]);
 

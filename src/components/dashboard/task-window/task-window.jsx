@@ -34,23 +34,18 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 			</div>
 			<div className="task-attach-cont">
 				<h5>Attachments:</h5>
-				{task.attachments.length ? (
-					task.attachments.map((each) => <p key={each}>{each}</p>)
-				) : (
-					<p>No attachments found</p>
-				)}
+				<ul className="attachments">
+					{task.attachments.map((url) => (
+						<li key={url} className="attachment">
+							<a href={url} download>
+								<img src={url} alt="attachment" style={{ maxWidth: "60px" }} />
+							</a>
+						</li>
+					))}
+				</ul>
 			</div>
 		</div>
 	);
 };
 
 export default TaskWindow;
-
-/* 
-<img
-src={`/tasks/images/${key}`}
-alt="s3 downloads"
-style={{ width: "50px" }}
-key={key}
-/> 
-*/
