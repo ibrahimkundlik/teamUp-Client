@@ -2,8 +2,21 @@ import React from "react";
 import "./task-window.scss";
 import { RiDashboardLine, RiCloseCircleLine } from "react-icons/ri";
 import Members from "../../members/members";
+import { useDispatch, useSelector } from "react-redux";
+import { taskActionType } from "../../../redux/task/task.type";
+import Spinner from "../../spinner/spinner";
+import ErrorMessageModal from "../../message-modals/error-message-modal";
 
 const TaskWindow = ({ handleCloseForm, task, teamName }) => {
+	const taskStatus = useSelector((state) => state.task);
+	const dispatch = useDispatch();
+	const clearTaskWindow = () => {
+		dispatch({
+			type: taskActionType.SHOW_TASK_WINDOW,
+			payload: null,
+		});
+	};
+
 	return (
 		<div className="task-window-cont">
 			<div className="task-nav">
@@ -11,12 +24,16 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 				<h3 className="team-name">{teamName} Board</h3>
 				<RiCloseCircleLine
 					className="close-icon"
-					onClick={() => handleCloseForm()}
+					onClick={() => {
+						handleCloseForm();
+						clearTaskWindow();
+					}}
 				/>
 			</div>
-			<h3 className="task-name">
-				{task.name[0].toUpperCase() + task.name.substring(1)}
-			</h3>
+			<div className="task-name-cont">
+				<h5>Task:</h5>
+				<h3>{task.name[0].toUpperCase() + task.name.substring(1)}</h3>
+			</div>
 			<div className="task-type-priority">
 				<h4 className="task-type">
 					{task.type === "progress" || task.type === "review"
@@ -35,13 +52,27 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 			<div className="task-attach-cont">
 				<h5>Attachments:</h5>
 				<ul className="attachments">
-					{task.attachments.map((url) => (
-						<li key={url} className="attachment">
-							<a href={url} download>
-								<img src={url} alt="attachment" style={{ maxWidth: "60px" }} />
-							</a>
-						</li>
-					))}
+					{!task.attachments.length ? (
+						<li>No attachments added for this task.</li>
+					) : taskStatus.loading ? (
+						<Spinner />
+					) : taskStatus.errorRes ? (
+						<ErrorMessageModal errorMssg={taskStatus.errorRes} />
+					) : (
+						task.attachments.map((url) => (
+							<li key={url} className="attachment">
+								<a
+									href={url}
+									download
+									target="_blank"
+									rel="noreferrer"
+									className="attachment-link"
+								>
+									<img src={url} alt="attachment" className="attachment-img" />
+								</a>
+							</li>
+						))
+					)}
 				</ul>
 			</div>
 		</div>

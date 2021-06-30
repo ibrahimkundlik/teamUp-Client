@@ -14,6 +14,7 @@
 	width: 100%;
 	max-width: 450px;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 
 	@media screen and (min-width: $tablet) {
 		width: 48%;

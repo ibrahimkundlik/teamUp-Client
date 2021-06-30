@@ -31,8 +31,16 @@
 		}
 	}
 
-	.task-name {
-		margin: $s-gap 0;
+	.task-name-cont {
+		margin: $s-gap 0 1.8rem 0;
+
+		h3 {
+			background: $primary-bg;
+			border-radius: 8px;
+			line-height: 1.6;
+			padding: 5px $xs-gap;
+			margin-top: 5px;
+		}
 	}
 
 	.task-type-priority {
@@ -57,14 +65,51 @@
 	}
 
 	.members-cont {
-		margin: 1.5rem 0 $s-gap 0;
+		margin: $m-gap 0 $s-gap 0;
 	}
 
-	.task-description {
+	.task-description,
+	.attachments {
 		background: $primary-bg;
 		border-radius: 8px;
 		line-height: 1.6;
-		padding: $s-gap $xs-gap;
+		padding: $xs-gap;
 		margin: $xs-gap 0 $s-gap 0;
+	}
+
+	.attachments {
+		display: flex;
+		flex-flow: row wrap;
+		gap: $s-gap $m-gap;
+		padding: $s-gap $xs-gap;
+		position: relative;
+
+		&::after {
+			content: "^ click on image to download";
+			position: absolute;
+			right: 5px;
+			bottom: -18%;
+			font-size: 0.7rem;
+			font-weight: 500;
+		}
+
+		.spinner-cont {
+			margin: 0 auto;
+		}
+
+		.spinner {
+			width: 40px;
+			height: 40px;
+		}
+
+		.attachment-img {
+			width: 80px;
+			height: 80px;
+			object-fit: cover;
+			border-radius: 5px;
+			border: 2px solid $primary-text;
+			font-size: 0.75rem;
+			text-align: center;
+		}
 	}
 }

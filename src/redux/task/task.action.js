@@ -35,7 +35,7 @@ export const seperateTasksAction = (tasks) => {
 
 export const searchTaskAction = (query, tasks) => {
 	const filtered = tasks.filter(
-		(task) => task.name.indexOf(query.trim()) !== -1
+		(task) => task.name.toLowerCase().indexOf(query.trim().toLowerCase()) !== -1
 	);
 
 	return {
