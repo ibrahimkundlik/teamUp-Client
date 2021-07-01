@@ -21,7 +21,7 @@ import {
 	seperateTasksAction,
 } from "../../../redux/task/task.action";
 
-const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
+const TeamsNavbar = ({ user, openStateForm, team }) => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const [taskQuery, setTaskQuery] = useState("");
@@ -70,7 +70,7 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 								<CustomInput
 									type="search"
 									name="searchTask"
-									placeholder="Search Task"
+									placeholder="Search tasks"
 									required
 									className="search-task"
 									value={taskQuery}
@@ -107,7 +107,7 @@ const TeamsNavbar = ({ user, openCreateTaskForm, team }) => {
 						{team && (
 							<CustomButton
 								className="new-task-btn"
-								onClick={() => openCreateTaskForm()}
+								onClick={() => openStateForm("createTask")}
 							>
 								<AiOutlinePlus />
 								<p>New Task</p>

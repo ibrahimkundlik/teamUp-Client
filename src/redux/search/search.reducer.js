@@ -10,8 +10,10 @@ const searchReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case searchActionType.SEARCH_START:
 			return { ...state, loading: true, errorRes: null };
+
 		case searchActionType.SEARCH_STOP:
 			return { ...state, loading: false, errorRes: null };
+
 		case searchActionType.SEARCH_SUCCESS:
 			return {
 				...state,
@@ -19,8 +21,10 @@ const searchReducer = (state = INITIAL_STATE, action) => {
 				searchRes: action.payload,
 				errorRes: null,
 			};
+
 		case searchActionType.SEARCH_FAILURE:
 			return { ...state, loading: false, errorRes: action.payload };
+
 		default:
 			return state;
 	}

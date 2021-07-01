@@ -89,6 +89,7 @@ export const memberRequestAction = (requestData) => async (dispatch) => {
 					field: "members",
 					value: data.team,
 					teamId: requestData.teamId,
+					successRes: null,
 				},
 			});
 		}

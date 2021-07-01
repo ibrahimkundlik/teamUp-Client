@@ -2,7 +2,7 @@
 
 .user-profile-cont {
 	.user-profile-icon {
-		border-radius: 50%;
+		border-radius: $s-br;
 		border-color: $low-bg;
 		color: $primary-text;
 		background: linear-gradient(-45.72deg, #a2facf 7.09%, #6a9dd8 96.61%);
@@ -40,7 +40,7 @@
 			display: grid;
 			place-items: center;
 			border-radius: 50%;
-			border: 2px solid $primary-text;
+			border: 2px solid #6a84a7;
 			background: linear-gradient(-45.72deg, #a2facf 7.09%, #6a9dd8 96.61%);
 		}
 

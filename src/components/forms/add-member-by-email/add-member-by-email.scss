@@ -1,0 +1,29 @@
+@import "../../../scss/variables.scss";
+
+.add-member-by-email-cont {
+	position: relative;
+	background: $secondary-bg;
+	border-radius: $s-br;
+	padding: $m-gap $s-gap;
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	z-index: 999;
+
+	.close-icon {
+		position: absolute;
+		top: $m-gap;
+		right: $s-gap;
+		font-size: 1.9rem;
+		color: $logo-red;
+		cursor: pointer;
+	}
+
+	.add-member-btn {
+		margin: 1.5rem auto 0 auto;
+	}
+
+	.error-message-modal {
+		margin-top: 1.5rem;
+	}
+}

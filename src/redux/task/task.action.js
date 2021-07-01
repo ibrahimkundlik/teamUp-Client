@@ -67,3 +67,31 @@ export const showTaskWindowAction = (task, keys) => async (dispatch) => {
 		});
 	}
 };
+
+export const addMemberByEmailAction =
+	(userData, handleCloseForm) => async (dispatch) => {
+		try {
+			dispatch({
+				type: taskActionType.REQ_START_TASK,
+			});
+			const { data } = await api.addMemberByEmail(userData);
+			dispatch({
+				type: taskActionType.REQ_SUCCESS_TASK,
+			});
+			dispatch({
+				type: teamActionType.UPDATE_TEAM,
+				payload: {
+					field: "members",
+					teamId: userData.teamId,
+					value: data.updatedTeamMembers,
+					successRes: `${userData.userMail} is successfully added to the team.`,
+				},
+			});
+			handleCloseForm();
+		} catch (error) {
+			dispatch({
+				type: taskActionType.REQ_FAILURE_TASK,
+				payload: fetchError(error),
+			});
+		}
+	};

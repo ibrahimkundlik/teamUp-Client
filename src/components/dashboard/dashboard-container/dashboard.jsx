@@ -13,10 +13,12 @@ import CreateTask from "../../forms/create-task/create-task";
 import { clearMssgResAction } from "../../../redux/teams/teams.action";
 import TaskGroup from "../task-group/task-group";
 import TaskWindow from "../task-window/task-window";
+import AddMemberByEmail from "../../forms/add-member-by-email/add-member-by-email";
+import { taskActionType } from "../../../redux/task/task.type";
 
 const INITIAL_STATE = {
 	createTask: false,
-	addMembers: false,
+	addMember: false,
 	showTaskWindow: false,
 };
 
@@ -52,10 +54,13 @@ const Dashboard = ({ teams }) => {
 	const handleCloseForm = () => {
 		setFormState(INITIAL_STATE);
 		window.scrollTo(0, 0);
+		dispatch({
+			type: taskActionType.CLEAR_REQ_MSSG,
+		});
 	};
 
-	const openCreateTaskForm = () => {
-		setFormState({ ...INITIAL_STATE, createTask: true });
+	const openStateForm = (formField) => {
+		setFormState({ ...INITIAL_STATE, [formField]: true });
 		window.scrollTo(0, 0);
 	};
 
@@ -72,11 +77,7 @@ const Dashboard = ({ teams }) => {
 				Object.values(formState).find((element) => element) ? "add-overlay" : ""
 			} dashboard-container`}
 		>
-			<TeamsNavbar
-				user={user}
-				openCreateTaskForm={openCreateTaskForm}
-				team={team}
-			/>
+			<TeamsNavbar user={user} openStateForm={openStateForm} team={team} />
 			{!team ? (
 				<p className="error-message-modal">Invalid team ID provided.</p>
 			) : team?.tasks.length === 0 ? (
@@ -87,13 +88,19 @@ const Dashboard = ({ teams }) => {
 							: ""
 					} dashboard-no-tasks`}
 				>
-					<DashboardTeam loadTeam={team} />
+					<DashboardTeam loadTeam={team} openStateForm={openStateForm} />
+					{teamsSuccessMssg && (
+						<p className="success-message-modal">{teamsSuccessMssg}</p>
+					)}
 					<div className="create-task-img">
 						<img src={createTaskImg} alt="create-task" />
 					</div>
 					<div className="no-task-desc">
 						<p>Currently there are no tasks added in this team.</p>
-						<CustomButton className="new-task-btn" onClick={openCreateTaskForm}>
+						<CustomButton
+							className="new-task-btn"
+							onClick={() => openStateForm("createTask")}
+						>
 							<AiOutlinePlus />
 							<p>Add New Task</p>
 						</CustomButton>
@@ -107,7 +114,7 @@ const Dashboard = ({ teams }) => {
 							: ""
 					} dashboard-with-tasks`}
 				>
-					<DashboardTeam loadTeam={team} />
+					<DashboardTeam loadTeam={team} openStateForm={openStateForm} />
 					{teamsSuccessMssg && (
 						<p className="success-message-modal">{teamsSuccessMssg}</p>
 					)}
@@ -127,6 +134,9 @@ const Dashboard = ({ teams }) => {
 					task={taskWindow}
 					teamName={team.name}
 				/>
+			)}
+			{formState.addMember && (
+				<AddMemberByEmail handleCloseForm={handleCloseForm} teamId={team._id} />
 			)}
 		</div>
 	);

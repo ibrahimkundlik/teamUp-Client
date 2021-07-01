@@ -15,11 +15,6 @@
 		flex-flow: row nowrap;
 		align-items: center;
 
-		.dashboard-icon {
-			color: $secondary-text;
-			font-size: 1.5rem;
-			margin-right: $xs-gap;
-		}
 		.team-name {
 			text-transform: capitalize;
 		}
@@ -32,14 +27,12 @@
 	}
 
 	.task-name-cont {
-		margin: $s-gap 0 1.8rem 0;
+		margin: $m-gap 0 1.5rem 0;
 
-		h3 {
-			background: $primary-bg;
-			border-radius: 8px;
-			line-height: 1.6;
-			padding: 5px $xs-gap;
-			margin-top: 5px;
+		.task-icon {
+			font-size: 1.7rem;
+			margin-right: $xs-gap;
+			transform: translateY(5px);
 		}
 	}
 
@@ -84,15 +77,6 @@
 		padding: $s-gap $xs-gap;
 		position: relative;
 
-		&::after {
-			content: "^ click on image to download";
-			position: absolute;
-			right: 5px;
-			bottom: -18%;
-			font-size: 0.7rem;
-			font-weight: 500;
-		}
-
 		.spinner-cont {
 			margin: 0 auto;
 		}
@@ -100,6 +84,10 @@
 		.spinner {
 			width: 40px;
 			height: 40px;
+		}
+
+		.no-attachments {
+			font-size: 0.85rem;
 		}
 
 		.attachment-img {
@@ -111,5 +99,14 @@
 			font-size: 0.75rem;
 			text-align: center;
 		}
+	}
+
+	.attach-info::after {
+		content: "^ click on image to download";
+		position: absolute;
+		right: 5px;
+		bottom: -20px;
+		font-size: 0.7rem;
+		font-weight: 500;
 	}
 }

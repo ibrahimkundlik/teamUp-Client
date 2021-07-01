@@ -26,6 +26,9 @@ export const joinRequest = (details, adminId) => {
 export const memberRequest = (requestData) => {
 	return API.patch("/users/add-member", requestData);
 };
+export const addMemberByEmail = (userData) => {
+	return API.patch("/users/add-member-by-email", userData);
+};
 
 //teams
 export const getTeams = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./task-window.scss";
-import { RiDashboardLine, RiCloseCircleLine } from "react-icons/ri";
+import { RiCloseCircleLine, RiCalendarTodoFill } from "react-icons/ri";
 import Members from "../../members/members";
 import { useDispatch, useSelector } from "react-redux";
 import { taskActionType } from "../../../redux/task/task.type";
@@ -20,8 +20,7 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 	return (
 		<div className="task-window-cont">
 			<div className="task-nav">
-				<RiDashboardLine className="dashboard-icon" />
-				<h3 className="team-name">{teamName} Board</h3>
+				<h2 className="team-name">{teamName} Board</h2>
 				<RiCloseCircleLine
 					className="close-icon"
 					onClick={() => {
@@ -31,8 +30,10 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 				/>
 			</div>
 			<div className="task-name-cont">
-				<h5>Task:</h5>
-				<h3>{task.name[0].toUpperCase() + task.name.substring(1)}</h3>
+				<h3 className="task-name">
+					<RiCalendarTodoFill className="task-icon" />
+					{task.name[0].toUpperCase() + task.name.substring(1)}
+				</h3>
 			</div>
 			<div className="task-type-priority">
 				<h4 className="task-type">
@@ -51,9 +52,15 @@ const TaskWindow = ({ handleCloseForm, task, teamName }) => {
 			</div>
 			<div className="task-attach-cont">
 				<h5>Attachments:</h5>
-				<ul className="attachments">
+				<ul
+					className={`attachments ${
+						task.attachments.length ? "attach-info" : ""
+					}`}
+				>
 					{!task.attachments.length ? (
-						<li>No attachments added for this task.</li>
+						<li className="no-attachments">
+							No attachments added for this task.
+						</li>
 					) : taskStatus.loading ? (
 						<Spinner />
 					) : taskStatus.errorRes ? (

@@ -37,17 +37,13 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 		case teamActionType.UPDATE_TEAM:
 			return {
 				...state,
-				loading: false,
-				errorRes: null,
 				teamsRes: generateUpdatedTeams(state.teamsRes, action.payload),
-				successRes: null,
+				successRes: action.payload.successRes,
 			};
 
 		case teamActionType.ADD_TASK:
 			return {
 				...state,
-				loading: false,
-				errorRes: null,
 				teamsRes: addTaskToTeam(state.teamsRes, action.payload),
 				successRes: "New task successfully created.",
 			};

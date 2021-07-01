@@ -4,7 +4,7 @@ import Members from "../../members/members";
 import CustomButton from "../../custom-button/custom-button";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
-const DashboardTeam = ({ loadTeam }) => {
+const DashboardTeam = ({ loadTeam, openStateForm }) => {
 	return (
 		<div className="dashboard-team-cont">
 			<h2 className="team-name">{loadTeam.name} board</h2>
@@ -15,7 +15,7 @@ const DashboardTeam = ({ loadTeam }) => {
 						username: member._id.name,
 					}))}
 				/>
-				<CustomButton>
+				<CustomButton onClick={() => openStateForm("addMember")}>
 					<AiOutlineUserAdd />
 					<p className="add-member-text">Add members</p>
 				</CustomButton>

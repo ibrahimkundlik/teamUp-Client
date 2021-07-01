@@ -44,21 +44,3 @@ const AssignMembers = ({ members, existingMembers, setAssigned }) => {
 };
 
 export default AssignMembers;
-
-// {
-// 	"name": "new task 2 22 222",
-// 	"type": "pending",
-// 	"priority": "medium",
-// 	"assigned": [
-// 			{
-// 					"username": "Clark Kent",
-// 					"userId": "60c4ebb319133a44a8fb1526"
-// 			},
-// 			{
-// 					"username": "Bruce Wayne",
-// 					"userId": "60c458f833b9ba19288892c7"
-// 			}
-// 	],
-// 	"description": "nxcm nxmcn mxncm mxncm mnxcm nxmcn",
-// 	"teamId": "60c4ec8419133a44a8fb152a"
-// }
