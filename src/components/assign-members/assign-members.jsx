@@ -13,8 +13,9 @@ const AssignMembers = ({ members, existingMembers, setAssigned }) => {
 					return (
 						<li className="member" key={_id}>
 							<p>{name}</p>
-							{existingMembers.findIndex((member) => member.userId === _id) <
-							0 ? (
+							{existingMembers.findIndex(
+								(memberExist) => memberExist._id === _id
+							) < 0 ? (
 								<CustomButton
 									className="member-add"
 									type="button"
@@ -22,8 +23,8 @@ const AssignMembers = ({ members, existingMembers, setAssigned }) => {
 										setAssigned([
 											...existingMembers,
 											{
+												_id: _id,
 												username: name,
-												userId: _id,
 											},
 										]);
 									}}

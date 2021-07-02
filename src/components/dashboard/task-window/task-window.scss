@@ -14,20 +14,24 @@
 		display: flex;
 		flex-flow: row nowrap;
 		align-items: center;
+		gap: $xs-gap;
 
 		.team-name {
 			text-transform: capitalize;
+			font-weight: 400;
+			font-size: 1.4rem;
 		}
 		.close-icon {
 			color: $logo-red;
 			font-size: 2rem;
 			margin-left: auto;
 			cursor: pointer;
+			min-width: 34px;
 		}
 	}
 
 	.task-name-cont {
-		margin: $m-gap 0 1.5rem 0;
+		margin: $s-gap 0 1.5rem 0;
 
 		.task-icon {
 			font-size: 1.7rem;
@@ -57,8 +61,42 @@
 		}
 	}
 
-	.members-cont {
-		margin: $m-gap 0 $s-gap 0;
+	.allow-member-update {
+		.members-cont h5 {
+			display: none;
+			@media screen and (min-width: $tablet) {
+				display: unset;
+			}
+		}
+	}
+
+	.add-members-cont {
+		margin: $m-gap 0 1.2rem 0;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		.members-cont {
+			width: 80%;
+		}
+
+		.add-member-icon {
+			font-size: 2.6rem;
+			border: 3px dotted $secondary-text;
+			color: $secondary-text;
+			background: $secondary-text-hov;
+			padding: 6px;
+			border-radius: 50%;
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
+
+			&:focus {
+				border-color: $input-focus;
+				color: $input-focus;
+				outline: none;
+			}
+		}
 	}
 
 	.task-description,
@@ -73,7 +111,7 @@
 	.attachments {
 		display: flex;
 		flex-flow: row wrap;
-		gap: $s-gap $m-gap;
+		gap: $s-gap $s-gap;
 		padding: $s-gap $xs-gap;
 		position: relative;
 
@@ -108,5 +146,9 @@
 		bottom: -20px;
 		font-size: 0.7rem;
 		font-weight: 500;
+	}
+
+	.save-changes {
+		margin: $m-gap auto 0 auto;
 	}
 }

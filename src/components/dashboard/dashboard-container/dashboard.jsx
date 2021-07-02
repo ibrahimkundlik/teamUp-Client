@@ -133,6 +133,7 @@ const Dashboard = ({ teams }) => {
 					handleCloseForm={handleCloseForm}
 					task={taskWindow}
 					teamName={team.name}
+					members={team.members}
 				/>
 			)}
 			{formState.addMember && (

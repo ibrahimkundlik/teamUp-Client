@@ -47,6 +47,9 @@ export const searchCollection = (query, collection) => {
 export const createTask = (formData) => {
 	return API.post("/tasks/create", formData);
 };
+export const updateTask = (updatedData) => {
+	return API.patch("/tasks/update", updatedData);
+};
 export const getAttachmentLinks = (keys) => {
 	return API.post("/tasks/attachments", keys);
 };
