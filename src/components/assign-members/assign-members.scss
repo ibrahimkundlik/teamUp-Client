@@ -18,6 +18,11 @@
 		background: $primary-bg;
 		margin-top: $xs-gap;
 
+		.no-member {
+			margin-bottom: $xs-gap;
+			font-size: 0.9rem;
+		}
+
 		.member {
 			display: flex;
 			flex-flow: row wrap;

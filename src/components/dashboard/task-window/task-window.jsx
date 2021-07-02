@@ -13,6 +13,8 @@ import ErrorMessageModal from "../../message-modals/error-message-modal";
 import { selectAuthUser } from "../../../redux/user/user.selector";
 import AssignMembers from "../../assign-members/assign-members";
 import CustomButton from "../../custom-button/custom-button";
+import CustomSelect from "../../custom-select/custom-select";
+import { useInputState } from "../../../hooks/useInputState/useInputState";
 
 const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 	const taskStatus = useSelector((state) => state.task);
@@ -20,7 +22,12 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 	const [allowUpdate, setAllowUpdate] = useState(false);
 	const [addedMembers, setAddedMembers] = useState([]);
 	const [showAssignMember, setShowAssignMember] = useState(false);
+	const [state, bindState] = useInputState({
+		type: task.type,
+		priority: task.priority,
+	});
 	const currentUser = useSelector(selectAuthUser);
+	const { taskType, taskPriority } = useSelector((state) => state.task.info);
 
 	const clearTaskWindow = () => {
 		dispatch({
@@ -53,16 +60,45 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 					{task.name[0].toUpperCase() + task.name.substring(1)}
 				</h3>
 			</div>
+
 			<div className="task-type-priority">
-				<h4 className="task-type">
-					{task.type === "progress" || task.type === "review"
-						? `in ${task.type}`
-						: task.type}
-				</h4>
-				<h4 className={`task-priority ${task.priority}-clr`}>
-					{task.priority}
-				</h4>
+				{allowUpdate ? (
+					<>
+						<CustomSelect
+							options={taskType.slice(1)}
+							label="Type of task"
+							name="type"
+							id="type-select"
+							className="task-type"
+							required
+							{...bindState}
+							value={state.type}
+						/>
+						<CustomSelect
+							options={taskPriority.slice(1)}
+							label="Priority of task"
+							name="priority"
+							id="priority-select"
+							className={`task-priority ${state.priority}-clr`}
+							required
+							{...bindState}
+							value={state.priority}
+						/>
+					</>
+				) : (
+					<>
+						<h4 className="task-type">
+							{task.type === "progress" || task.type === "review"
+								? `in ${task.type}`
+								: task.type}
+						</h4>
+						<h4 className={`task-priority ${task.priority}-clr`}>
+							{task.priority}
+						</h4>
+					</>
+				)}
 			</div>
+
 			<div
 				className={`add-members-cont ${
 					allowUpdate ? "allow-member-update" : ""

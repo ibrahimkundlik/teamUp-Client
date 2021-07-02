@@ -7,13 +7,14 @@
 	position: relative;
 
 	&:after {
-		content: ">";
+		content: "";
+		border: 8px solid transparent;
+		border-top: 8px solid $primary-text;
+		border-bottom: 0 none;
 		position: absolute;
-		left: 220px;
-		top: 48%;
+		left: 215px;
+		top: 70%;
 		pointer-events: none;
-		font-size: 1.8rem;
-		transform: rotate(90deg);
 
 		@media screen and (min-width: $desktop) {
 			left: 235px;

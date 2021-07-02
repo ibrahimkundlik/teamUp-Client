@@ -14,57 +14,6 @@ import { taskActionType } from "../../../redux/task/task.type";
 import ErrorMessageModal from "../../message-modals/error-message-modal";
 import Spinner from "../../spinner/spinner";
 
-const taskType = [
-	{
-		value: "",
-		key: "blank-option",
-		text: "--Choose an option--",
-	},
-	{
-		value: "backlog",
-		key: "backlog",
-		text: "Backlog",
-	},
-	{
-		value: "progress",
-		key: "progress",
-		text: "In Progress",
-	},
-	{
-		value: "review",
-		key: "review",
-		text: "In Review",
-	},
-	{
-		value: "done",
-		key: "done",
-		text: "Done",
-	},
-];
-
-const taskPriority = [
-	{
-		value: "",
-		key: "blank-option",
-		text: "--Choose an option--",
-	},
-	{
-		value: "high",
-		key: "high",
-		text: "High",
-	},
-	{
-		value: "medium",
-		key: "medium",
-		text: "Medium",
-	},
-	{
-		value: "low",
-		key: "low",
-		text: "Low",
-	},
-];
-
 const INITIAL_STATE = {
 	name: "",
 	type: "",
@@ -78,6 +27,7 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 	const [state, bindState] = useInputState(INITIAL_STATE);
 	const dispatch = useDispatch();
 	const taskRequest = useSelector((state) => state.task);
+	const { taskType, taskPriority } = useSelector((state) => state.task.info);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

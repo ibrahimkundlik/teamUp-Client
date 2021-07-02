@@ -39,6 +39,9 @@ const AssignMembers = ({ members, existingMembers, setAssigned }) => {
 						</li>
 					);
 				})}
+				{members.length === 0 && (
+					<p className="no-member">No more members to add ...</p>
+				)}
 			</ul>
 		</div>
 	);

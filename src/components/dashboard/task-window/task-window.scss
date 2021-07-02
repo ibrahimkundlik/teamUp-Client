@@ -44,6 +44,7 @@
 		display: flex;
 		flex-flow: row nowrap;
 		align-items: center;
+		gap: 1.5rem;
 
 		.task-type {
 			text-transform: capitalize;
@@ -52,12 +53,50 @@
 			color: $secondary-text;
 			background: $secondary-text-hov;
 			border: 2px solid $secondary-text;
-			margin-right: $m-gap;
 		}
 		.task-priority {
 			text-transform: capitalize;
 			padding: $xs-gap $s-gap;
 			border-radius: $m-br;
+		}
+		.low-clr {
+			background: $low-bg;
+			color: $low-text;
+			border: 2px solid $low-text;
+		}
+		.medium-clr {
+			background: $med-bg;
+			color: $med-text;
+			border: 2px solid $med-text;
+		}
+		.high-clr {
+			background: $high-bg;
+			color: $high-text;
+			border: 2px solid $high-text;
+		}
+
+		.custom-select {
+			width: 150px;
+			label {
+				display: none;
+			}
+			select {
+				padding: $xs-gap;
+				width: 100%;
+				font-weight: 500;
+			}
+			&::after {
+				left: 115px;
+				top: 42%;
+				opacity: 0.5;
+			}
+
+			@media screen and (min-width: $desktop) {
+				width: 170px;
+				&::after {
+					left: 140px;
+				}
+			}
 		}
 	}
 
@@ -81,6 +120,10 @@
 			width: 80%;
 		}
 
+		.assign-members-label {
+			font-size: 0.9rem;
+		}
+
 		.add-member-icon {
 			font-size: 2.6rem;
 			border: 3px dotted $secondary-text;
@@ -91,9 +134,8 @@
 			cursor: pointer;
 			-webkit-tap-highlight-color: transparent;
 
-			&:focus {
+			&:hover {
 				border-color: $input-focus;
-				color: $input-focus;
 				outline: none;
 			}
 		}
