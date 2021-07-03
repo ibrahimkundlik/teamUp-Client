@@ -10,6 +10,13 @@
 	max-width: 600px;
 	margin: 0 auto;
 
+	.save-changes {
+		margin: $s-gap auto 0 auto;
+	}
+	.error-message-modal {
+		margin: 1.5rem auto 0 auto;
+	}
+
 	.task-nav {
 		display: flex;
 		flex-flow: row nowrap;
@@ -84,6 +91,12 @@
 				padding: $xs-gap;
 				width: 100%;
 				font-weight: 500;
+				option {
+					font-weight: 600;
+					color: $primary-text;
+					background: $primary-bg;
+					margin: 5px 0;
+				}
 			}
 			&::after {
 				left: 115px;
@@ -125,6 +138,7 @@
 		}
 
 		.add-member-icon {
+			outline: none;
 			font-size: 2.6rem;
 			border: 3px dotted $secondary-text;
 			color: $secondary-text;
@@ -170,6 +184,10 @@
 			font-size: 0.85rem;
 		}
 
+		.error-message-modal {
+			margin: 0 auto;
+		}
+
 		.attachment-img {
 			width: 80px;
 			height: 80px;
@@ -188,9 +206,5 @@
 		bottom: -20px;
 		font-size: 0.7rem;
 		font-weight: 500;
-	}
-
-	.save-changes {
-		margin: $m-gap auto 0 auto;
 	}
 }

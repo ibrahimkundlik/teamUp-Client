@@ -1,5 +1,9 @@
 import { teamActionType } from "./teams.type";
-import { generateUpdatedTeams, addTaskToTeam } from "./teams.utils";
+import {
+	generateUpdatedTeams,
+	addTaskToTeam,
+	updateTaskToTeam,
+} from "./teams.utils";
 
 const INITIAL_STATE = {
 	loading: false,
@@ -46,6 +50,13 @@ const teamReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				teamsRes: addTaskToTeam(state.teamsRes, action.payload),
 				successRes: "New task successfully created.",
+			};
+
+		case teamActionType.UPDATE_TASK:
+			return {
+				...state,
+				teamsRes: updateTaskToTeam(state.teamsRes, action.payload),
+				successRes: "Task details successfully updated.",
 			};
 
 		case teamActionType.CLEAR_MSSG_TEAMS:

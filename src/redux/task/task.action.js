@@ -95,3 +95,31 @@ export const addMemberByEmailAction =
 			});
 		}
 	};
+
+export const updateTaskAction =
+	(updatedData, teamId, handleCloseForm, clearTaskWindow) =>
+	async (dispatch) => {
+		try {
+			dispatch({
+				type: taskActionType.REQ_START_TASK,
+			});
+			const { data } = await api.updateTask(updatedData);
+			dispatch({
+				type: taskActionType.REQ_SUCCESS_TASK,
+			});
+			dispatch({
+				type: teamActionType.UPDATE_TASK,
+				payload: {
+					teamId,
+					updatedTask: data.task,
+				},
+			});
+			handleCloseForm();
+			clearTaskWindow();
+		} catch (error) {
+			dispatch({
+				type: taskActionType.REQ_FAILURE_TASK,
+				payload: fetchError(error),
+			});
+		}
+	};

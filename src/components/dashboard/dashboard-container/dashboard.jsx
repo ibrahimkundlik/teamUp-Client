@@ -133,6 +133,7 @@ const Dashboard = ({ teams }) => {
 					handleCloseForm={handleCloseForm}
 					task={taskWindow}
 					teamName={team.name}
+					teamId={team._id}
 					members={team.members}
 				/>
 			)}

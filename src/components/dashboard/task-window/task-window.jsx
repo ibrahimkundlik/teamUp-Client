@@ -15,8 +15,9 @@ import AssignMembers from "../../assign-members/assign-members";
 import CustomButton from "../../custom-button/custom-button";
 import CustomSelect from "../../custom-select/custom-select";
 import { useInputState } from "../../../hooks/useInputState/useInputState";
+import { updateTaskAction } from "../../../redux/task/task.action";
 
-const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
+const TaskWindow = ({ handleCloseForm, task, teamName, teamId, members }) => {
 	const taskStatus = useSelector((state) => state.task);
 	const dispatch = useDispatch();
 	const [allowUpdate, setAllowUpdate] = useState(false);
@@ -34,6 +35,18 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 			type: taskActionType.SHOW_TASK_WINDOW,
 			payload: null,
 		});
+	};
+
+	const handleTaskUpdate = () => {
+		const updatedTask = {
+			type: state.type,
+			priority: state.priority,
+			assigned: addedMembers,
+			taskId: task._id,
+		};
+		dispatch(
+			updateTaskAction(updatedTask, teamId, handleCloseForm, clearTaskWindow)
+		);
 	};
 
 	useEffect(() => {
@@ -54,19 +67,31 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 					}}
 				/>
 			</div>
+			{allowUpdate &&
+				(addedMembers.length ||
+					state.type !== task.type ||
+					state.priority !== task.priority) && (
+					<>
+						<CustomButton className="save-changes" onClick={handleTaskUpdate}>
+							Save changes
+							{taskStatus.loading && <Spinner />}
+						</CustomButton>
+						{taskStatus.errorRes && (
+							<ErrorMessageModal errorMssg={taskStatus.errorRes} />
+						)}
+					</>
+				)}
 			<div className="task-name-cont">
 				<h3 className="task-name">
 					<RiCalendarTodoFill className="task-icon" />
 					{task.name[0].toUpperCase() + task.name.substring(1)}
 				</h3>
 			</div>
-
 			<div className="task-type-priority">
 				{allowUpdate ? (
 					<>
 						<CustomSelect
 							options={taskType.slice(1)}
-							label="Type of task"
 							name="type"
 							id="type-select"
 							className="task-type"
@@ -76,7 +101,6 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 						/>
 						<CustomSelect
 							options={taskPriority.slice(1)}
-							label="Priority of task"
 							name="priority"
 							id="priority-select"
 							className={`task-priority ${state.priority}-clr`}
@@ -98,7 +122,6 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 					</>
 				)}
 			</div>
-
 			<div
 				className={`add-members-cont ${
 					allowUpdate ? "allow-member-update" : ""
@@ -164,9 +187,6 @@ const TaskWindow = ({ handleCloseForm, task, teamName, members }) => {
 					)}
 				</ul>
 			</div>
-			{allowUpdate && (
-				<CustomButton className="save-changes">Save changes</CustomButton>
-			)}
 		</div>
 	);
 };

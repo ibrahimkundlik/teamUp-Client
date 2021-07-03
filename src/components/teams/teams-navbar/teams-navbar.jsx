@@ -37,7 +37,7 @@ const TeamsNavbar = ({ user, openStateForm, team }) => {
 		}
 	};
 
-	const resetSearchForm = (e) => {
+	const resetSearchForm = () => {
 		setTaskQuery("");
 		dispatch(seperateTasksAction(team.tasks));
 		setSubmitted(false);
@@ -77,6 +77,9 @@ const TeamsNavbar = ({ user, openStateForm, team }) => {
 									onChange={(e) => {
 										setTaskQuery(e.target.value);
 										setSubmitted(false);
+										if (e.target.value === "") {
+											resetSearchForm();
+										}
 									}}
 								/>
 								{submitted && (

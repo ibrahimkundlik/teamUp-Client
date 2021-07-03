@@ -1,11 +1,13 @@
 import React from "react";
 import "./task.scss";
 import { TiAttachment } from "react-icons/ti";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showTaskWindowAction } from "../../../redux/task/task.action";
+// import { selectAuthUser } from "../../../redux/user/user.selector";
 
 const Task = ({ task }) => {
 	const dispatch = useDispatch();
+	// const currentUser = useSelector(selectAuthUser);
 
 	const setTaskWindow = () => {
 		dispatch(
