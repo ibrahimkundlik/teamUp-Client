@@ -16,6 +16,7 @@
 	cursor: pointer;
 	position: relative;
 	-webkit-tap-highlight-color: transparent;
+	user-select: none;
 
 	@media screen and (min-width: $tablet) {
 		width: 48%;

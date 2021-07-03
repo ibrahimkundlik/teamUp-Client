@@ -59,7 +59,7 @@ const CreateTask = ({ handleCloseForm, members, teamId }) => {
 	return (
 		<div className="create-task-cont">
 			<h2>Create new task</h2>
-			<div className="close-icon" onClick={() => handleCloseForm()}>
+			<div className="close-icon" onClick={(e) => handleCloseForm(e)}>
 				<AiFillCloseCircle />
 			</div>
 			<form

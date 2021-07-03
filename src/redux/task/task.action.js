@@ -44,29 +44,30 @@ export const searchTaskAction = (query, tasks) => {
 	};
 };
 
-export const showTaskWindowAction = (task, keys) => async (dispatch) => {
-	try {
-		dispatch({
-			type: taskActionType.SHOW_TASK_WINDOW,
-			payload: task,
-		});
-		if (keys.attachments.length) {
+export const showTaskWindowAction =
+	(task, keys, yScroll) => async (dispatch) => {
+		try {
 			dispatch({
-				type: taskActionType.REQ_START_TASK,
+				type: taskActionType.SHOW_TASK_WINDOW,
+				payload: { task, yScroll },
 			});
-			const { data } = await api.getAttachmentLinks(keys);
+			if (keys.attachments.length) {
+				dispatch({
+					type: taskActionType.REQ_START_TASK,
+				});
+				const { data } = await api.getAttachmentLinks(keys);
+				dispatch({
+					type: taskActionType.LOAD_IMAGES,
+					payload: data.signedURLs,
+				});
+			}
+		} catch (error) {
 			dispatch({
-				type: taskActionType.LOAD_IMAGES,
-				payload: data.signedURLs,
+				type: taskActionType.REQ_FAILURE_TASK,
+				payload: fetchError(error),
 			});
 		}
-	} catch (error) {
-		dispatch({
-			type: taskActionType.REQ_FAILURE_TASK,
-			payload: fetchError(error),
-		});
-	}
-};
+	};
 
 export const addMemberByEmailAction =
 	(userData, handleCloseForm) => async (dispatch) => {
@@ -96,30 +97,26 @@ export const addMemberByEmailAction =
 		}
 	};
 
-export const updateTaskAction =
-	(updatedData, teamId, handleCloseForm, clearTaskWindow) =>
-	async (dispatch) => {
-		try {
-			dispatch({
-				type: taskActionType.REQ_START_TASK,
-			});
-			const { data } = await api.updateTask(updatedData);
-			dispatch({
-				type: taskActionType.REQ_SUCCESS_TASK,
-			});
-			dispatch({
-				type: teamActionType.UPDATE_TASK,
-				payload: {
-					teamId,
-					updatedTask: data.task,
-				},
-			});
-			handleCloseForm();
-			clearTaskWindow();
-		} catch (error) {
-			dispatch({
-				type: taskActionType.REQ_FAILURE_TASK,
-				payload: fetchError(error),
-			});
-		}
-	};
+export const updateTaskAction = (updatedData, teamId) => async (dispatch) => {
+	try {
+		dispatch({
+			type: taskActionType.REQ_START_TASK,
+		});
+		const { data } = await api.updateTask(updatedData);
+		dispatch({
+			type: taskActionType.REQ_SUCCESS_TASK,
+		});
+		dispatch({
+			type: teamActionType.UPDATE_TASK,
+			payload: {
+				teamId,
+				updatedTask: data.task,
+			},
+		});
+	} catch (error) {
+		dispatch({
+			type: taskActionType.REQ_FAILURE_TASK,
+			payload: fetchError(error),
+		});
+	}
+};

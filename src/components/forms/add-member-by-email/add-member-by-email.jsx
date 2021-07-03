@@ -29,7 +29,7 @@ const AddMemberByEmail = ({ handleCloseForm, teamId }) => {
 	return (
 		<div className="add-member-by-email-cont">
 			<h3>Add member by email</h3>
-			<div className="close-icon" onClick={() => handleCloseForm()}>
+			<div className="close-icon" onClick={(e) => handleCloseForm(e)}>
 				<AiFillCloseCircle />
 			</div>
 			<form

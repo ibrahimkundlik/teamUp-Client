@@ -56,6 +56,7 @@ const INITIAL_STATE = {
 	errorRes: null,
 	tasks: null,
 	window: null,
+	scroll: null,
 	info: {
 		taskType,
 		taskPriority,
@@ -99,7 +100,8 @@ const taskReducer = (state = INITIAL_STATE, action) => {
 		case taskActionType.SHOW_TASK_WINDOW:
 			return {
 				...state,
-				window: action.payload,
+				window: action.payload.task,
+				scroll: action.payload.yScroll,
 			};
 
 		case taskActionType.LOAD_IMAGES:

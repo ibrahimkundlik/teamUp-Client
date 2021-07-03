@@ -33,20 +33,20 @@ const TaskWindow = ({ handleCloseForm, task, teamName, teamId, members }) => {
 	const clearTaskWindow = () => {
 		dispatch({
 			type: taskActionType.SHOW_TASK_WINDOW,
-			payload: null,
+			payload: { task: null, yScroll: taskStatus.scroll },
 		});
 	};
 
-	const handleTaskUpdate = () => {
+	const handleTaskUpdate = (e) => {
 		const updatedTask = {
 			type: state.type,
 			priority: state.priority,
 			assigned: addedMembers,
 			taskId: task._id,
 		};
-		dispatch(
-			updateTaskAction(updatedTask, teamId, handleCloseForm, clearTaskWindow)
-		);
+		dispatch(updateTaskAction(updatedTask, teamId));
+		clearTaskWindow();
+		handleCloseForm(e);
 	};
 
 	useEffect(() => {
@@ -60,10 +60,10 @@ const TaskWindow = ({ handleCloseForm, task, teamName, teamId, members }) => {
 			<div className="task-nav">
 				<h2 className="team-name">{teamName} Board</h2>
 				<RiCloseCircleFill
-					className="close-icon"
-					onClick={() => {
-						handleCloseForm();
+					className="close-icon task-window-close"
+					onClick={(e) => {
 						clearTaskWindow();
+						handleCloseForm(e);
 					}}
 				/>
 			</div>

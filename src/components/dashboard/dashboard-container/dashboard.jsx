@@ -26,7 +26,7 @@ const Dashboard = ({ teams }) => {
 	const { id } = useParams();
 	const user = useSelector(selectAuthUser);
 	const teamsSuccessMssg = useSelector(selectSuccessRes);
-	const taskWindow = useSelector((state) => state.task.window);
+	const taskStatus = useSelector((state) => state.task);
 	const [team, setTeam] = useState(null);
 	const [formState, setFormState] = useState(INITIAL_STATE);
 	const dispatch = useDispatch();
@@ -36,11 +36,11 @@ const Dashboard = ({ teams }) => {
 	}, [teams, id]);
 
 	useEffect(() => {
-		if (taskWindow) {
+		if (taskStatus.window) {
 			setFormState({ ...INITIAL_STATE, showTaskWindow: true });
 			window.scrollTo(0, 0);
 		}
-	}, [taskWindow]);
+	}, [taskStatus.window]);
 
 	useEffect(() => {
 		let timeout = setTimeout(() => {
@@ -51,12 +51,18 @@ const Dashboard = ({ teams }) => {
 		};
 	}, [teamsSuccessMssg, dispatch]);
 
-	const handleCloseForm = () => {
+	const handleCloseForm = (e) => {
 		setFormState(INITIAL_STATE);
-		window.scrollTo(0, 0);
 		dispatch({
 			type: taskActionType.CLEAR_REQ_MSSG,
 		});
+		if (e.currentTarget.classList.contains("task-window-close")) {
+			setTimeout(() => {
+				window.scrollTo({ top: taskStatus.scroll, behavior: "smooth" });
+			}, 500);
+		} else {
+			window.scrollTo(0, 0);
+		}
 	};
 
 	const openStateForm = (formField) => {
@@ -131,7 +137,7 @@ const Dashboard = ({ teams }) => {
 			{formState.showTaskWindow && (
 				<TaskWindow
 					handleCloseForm={handleCloseForm}
-					task={taskWindow}
+					task={taskStatus.window}
 					teamName={team.name}
 					teamId={team._id}
 					members={team.members}

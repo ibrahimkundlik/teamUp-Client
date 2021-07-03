@@ -11,10 +11,15 @@ const Task = ({ task }) => {
 	const currentUser = useSelector(selectAuthUser);
 
 	const setTaskWindow = () => {
+		const scroll = window.pageYOffset || document.documentElement.scrollTop;
 		dispatch(
-			showTaskWindowAction(task, {
-				attachments: task.attachments,
-			})
+			showTaskWindowAction(
+				task,
+				{
+					attachments: task.attachments,
+				},
+				scroll
+			)
 		);
 	};
 
