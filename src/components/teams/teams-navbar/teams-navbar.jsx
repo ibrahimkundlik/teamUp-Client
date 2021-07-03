@@ -14,7 +14,7 @@ import {
 	AiOutlineFileSearch,
 	AiOutlineCloseCircle,
 } from "react-icons/ai";
-import { FiActivity } from "react-icons/fi";
+// import { FiActivity } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import {
 	searchTaskAction,
@@ -54,7 +54,7 @@ const TeamsNavbar = ({ user, openStateForm, team }) => {
 					<UserProfile user={user} />
 				</nav>
 			) : (
-				<nav className="dashboard-navbar">
+				<nav className={`dashboard-navbar ${team ? "" : "invalid-dashboard"}`}>
 					<div className={`dashboard-nav1 ${submitted ? "nav1-margin" : ""}`}>
 						<Link to="/teams">
 							<CustomIcon>
@@ -108,22 +108,26 @@ const TeamsNavbar = ({ user, openStateForm, team }) => {
 					</div>
 					<div className="dashboard-nav2">
 						{team && (
-							<CustomButton
-								className="new-task-btn"
-								onClick={() => openStateForm("createTask")}
-							>
-								<AiOutlinePlus />
-								<p>New Task</p>
-							</CustomButton>
+							<>
+								<CustomButton
+									className="new-task-btn"
+									onClick={() => openStateForm("createTask")}
+								>
+									<AiOutlinePlus />
+									<p>New Task</p>
+								</CustomButton>
+								{/* 
+								<CustomIcon>
+									<FiActivity />
+								</CustomIcon> 
+								*/}
+								<Link to="/teams/settings">
+									<CustomIcon>
+										<AiOutlineSetting />
+									</CustomIcon>
+								</Link>
+							</>
 						)}
-						<CustomIcon>
-							<FiActivity />
-						</CustomIcon>
-						<Link to="/teams/settings">
-							<CustomIcon>
-								<AiOutlineSetting />
-							</CustomIcon>
-						</Link>
 						<Link to="/teams/info">
 							<CustomIcon>
 								<AiOutlineInfoCircle />

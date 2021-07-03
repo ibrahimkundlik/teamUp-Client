@@ -3,10 +3,14 @@ import errorImage from "../../images/errorImage.png";
 import CustomButton from "../custom-button/custom-button";
 import "./error-page.scss";
 import { Link } from "react-router-dom";
+import Logo from "../logo/logo";
 
 const ErrorPage = () => {
 	return (
 		<div className="error-page-cont">
+			<Link to="/">
+				<Logo />
+			</Link>
 			<div className="error-image-cont">
 				<img src={errorImage} alt="errorImage" />
 			</div>

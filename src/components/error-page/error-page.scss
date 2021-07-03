@@ -4,6 +4,20 @@
 	text-align: center;
 	width: 100%;
 
+	.teamUp-logo-cont {
+		width: 150px;
+		cursor: pointer;
+		margin-top: 0.5rem;
+		.logo-text {
+			font-size: 1.5rem;
+		}
+	}
+
+	a {
+		display: block;
+		width: max-content;
+	}
+
 	.error-image-cont {
 		margin: 2rem auto 1rem auto;
 		width: 50%;

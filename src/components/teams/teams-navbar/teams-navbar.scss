@@ -153,3 +153,11 @@
 		}
 	}
 }
+
+.teams-navbar-cont .invalid-dashboard {
+	flex-flow: row nowrap;
+	margin-top: $xs-gap;
+	.user-profile-cont {
+		top: 0;
+	}
+}
