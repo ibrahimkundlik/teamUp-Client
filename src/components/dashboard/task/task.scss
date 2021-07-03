@@ -14,6 +14,7 @@
 	width: 100%;
 	max-width: 450px;
 	cursor: pointer;
+	position: relative;
 	-webkit-tap-highlight-color: transparent;
 
 	@media screen and (min-width: $tablet) {
@@ -32,8 +33,17 @@
 		}
 	}
 
+	.task-assigned {
+		position: absolute;
+		right: $xs-gap;
+		top: 1.2rem;
+		font-size: 1.4rem;
+		color: $input-focus;
+	}
+
 	.task-name {
-		width: 100%;
+		width: 90%;
+		padding-right: $xs-gap;
 	}
 
 	.task-attachments {
