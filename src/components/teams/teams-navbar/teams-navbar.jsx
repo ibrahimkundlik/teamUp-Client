@@ -9,8 +9,8 @@ import { useLocation, Link } from "react-router-dom";
 import mainLogo from "../../../images/logo192.png";
 import {
 	AiOutlinePlus,
-	AiOutlineSetting,
-	AiOutlineInfoCircle,
+	// AiOutlineSetting,
+	// AiOutlineInfoCircle,
 	AiOutlineFileSearch,
 	AiOutlineCloseCircle,
 } from "react-icons/ai";
@@ -121,18 +121,18 @@ const TeamsNavbar = ({ user, openStateForm, team }) => {
 									<FiActivity />
 								</CustomIcon> 
 								*/}
-								<Link to="/teams/settings">
+								{/* <Link to="/teams/settings">
 									<CustomIcon>
 										<AiOutlineSetting />
 									</CustomIcon>
-								</Link>
+								</Link> */}
 							</>
 						)}
-						<Link to="/teams/info">
+						{/* <Link to="/teams/info">
 							<CustomIcon>
 								<AiOutlineInfoCircle />
 							</CustomIcon>
-						</Link>
+						</Link> */}
 						<UserProfile user={user} />
 					</div>
 				</nav>
