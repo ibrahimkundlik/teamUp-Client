@@ -7,7 +7,13 @@ import AuthError from "./components/auth-error/auth-error";
 import ScrollToTop from "./components/scroll-to-top/scroll-to-top";
 import ErrorPage from "./components/error-page/error-page";
 import decode from "jwt-decode";
-import { Route, Switch, useLocation, Redirect } from "react-router-dom";
+import {
+	Route,
+	Switch,
+	useLocation,
+	Redirect,
+	useHistory,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, checkUser } from "./redux/user/user.action";
 import { selectAuth, selectAuthToken } from "./redux/user/user.selector";
@@ -17,6 +23,7 @@ const App = () => {
 	const dispatch = useDispatch();
 	const auth = useSelector(selectAuth);
 	const authToken = useSelector(selectAuthToken);
+	const history = useHistory();
 
 	useEffect(() => {
 		dispatch(checkUser());
@@ -27,7 +34,7 @@ const App = () => {
 		if (token) {
 			const decodedToken = decode(token);
 			if (decodedToken.exp * 1000 < new Date().getTime()) {
-				dispatch(logout());
+				dispatch(logout(history));
 			}
 		}
 	}, [authToken, location, dispatch]);
