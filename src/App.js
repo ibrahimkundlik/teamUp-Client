@@ -37,7 +37,7 @@ const App = () => {
 				dispatch(logout(history));
 			}
 		}
-	}, [authToken, location, dispatch]);
+	}, [authToken, location, dispatch, history]);
 
 	return (
 		<div className="App">
