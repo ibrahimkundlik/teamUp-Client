@@ -56,7 +56,7 @@ const Dashboard = ({ teams }) => {
 		dispatch({
 			type: taskActionType.CLEAR_REQ_MSSG,
 		});
-		if (e.currentTarget.classList.contains("task-window-close")) {
+		if (e && e.currentTarget.classList.contains("task-window-close")) {
 			setTimeout(() => {
 				window.scrollTo({ top: taskStatus.scroll, behavior: "smooth" });
 			}, 500);
