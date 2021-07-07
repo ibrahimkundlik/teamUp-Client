@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API = axios.create({
 	baseURL:
-		"http://teamupserver-env.eba-3h8gevga.ap-south-1.elasticbeanstalk.com/",
+		"https://teamupserver-env.eba-3h8gevga.ap-south-1.elasticbeanstalk.com/",
 });
 
 API.interceptors.request.use((req) => {
