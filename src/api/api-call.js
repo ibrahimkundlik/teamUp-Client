@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-	baseURL: "https://teamup-server-ik.herokuapp.com/",
+	baseURL:
+		"http://teamupserver-env.eba-3h8gevga.ap-south-1.elasticbeanstalk.com/",
 });
 
 API.interceptors.request.use((req) => {
