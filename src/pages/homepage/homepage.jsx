@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./homepage.scss";
 import dashboardImg from "../../images/dashboard.png";
 import CustomButton from "../../components/custom-button/custom-button";
@@ -15,14 +15,31 @@ const HomePage = () => {
 	const history = useHistory();
 	const trialLogin = useTrialLogin();
 	const auth = useSelector(selectAuth);
+	const serverRequest = useRef();
 
 	useEffect(() => {
 		dispatch(clearMessageResAction());
 	}, [dispatch]);
 
+	useEffect(() => {
+		if (serverRequest) {
+			let timeout = setTimeout(() => {
+				serverRequest.current.remove();
+			}, 5000);
+			return () => {
+				clearTimeout(timeout);
+			};
+		}
+	}, []);
+
 	return (
 		<>
 			<Navbar showLogin={true} />
+			<p className="server-request-mssg" ref={serverRequest}>
+				<span>teamUp server</span> is deployed on <span>Heroku</span>, due to
+				which it might take <span>few seconds</span> to make the{" "}
+				<span>first</span> server request.
+			</p>
 			<div className="hero-section">
 				<div className="hero-image">
 					<img src={dashboardImg} alt="teamUp dashboard" />
