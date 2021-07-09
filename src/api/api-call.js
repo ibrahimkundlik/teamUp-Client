@@ -13,6 +13,10 @@ API.interceptors.request.use((req) => {
 	return req;
 });
 
+export const firstFetch = () => {
+	return API.get("/");
+};
+
 //users
 export const login = (formData) => {
 	return API.post("/users/login", formData);

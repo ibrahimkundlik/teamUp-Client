@@ -32,11 +32,6 @@
 		@media screen and (min-width: 1200px) {
 			width: 50%;
 		}
-
-		// img {
-		// 	border: 2px solid gray;
-		// 	border-radius: $m-br;
-		// }
 	}
 
 	.hero-text {
@@ -60,7 +55,7 @@
 				width: 100%;
 				text-align: center;
 				position: absolute;
-				top: -15%;
+				top: -8%;
 
 				span {
 					font-size: 1.3rem;
@@ -120,5 +115,28 @@
 				margin: $xs-gap auto $s-gap 0;
 			}
 		}
+	}
+}
+
+.server-request-mssg {
+	text-align: center;
+	font-size: 0.9rem;
+	background: $high-bg;
+	border: 2px solid $logo-red;
+	color: $logo-red;
+	border-radius: $s-br;
+	padding: $s-br;
+	width: 100%;
+	max-width: 890px;
+	margin: 0 auto;
+	transform: translateY(1.5rem);
+
+	span {
+		color: $primary-text;
+		font-weight: 600;
+	}
+
+	@media screen and (min-width: 1200px) {
+		transform: translateY(2.5rem);
 	}
 }

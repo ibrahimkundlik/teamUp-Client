@@ -17,6 +17,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { logout, checkUser } from "./redux/user/user.action";
 import { selectAuth, selectAuthToken } from "./redux/user/user.selector";
+import { firstFetch } from "./api/api-call";
 
 const App = () => {
 	const location = useLocation();
@@ -38,6 +39,17 @@ const App = () => {
 			}
 		}
 	}, [authToken, location, dispatch, history]);
+
+	useEffect(() => {
+		async function serverWake() {
+			try {
+				await firstFetch();
+			} catch (error) {
+				console.log(error.message);
+			}
+		}
+		serverWake();
+	}, []);
 
 	return (
 		<div className="App">
