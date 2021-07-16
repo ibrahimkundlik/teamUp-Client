@@ -117,3 +117,30 @@
 		}
 	}
 }
+
+.server-request-mssg {
+	text-align: center;
+	font-size: 0.9rem;
+	font-weight: 500;
+	background: $secondary-bg;
+	border: 2px solid $secondary-text;
+	color: $primary-text;
+	border-radius: $s-br;
+	padding: $s-br;
+	width: 100%;
+	max-width: 890px;
+	margin: 0 auto;
+	transform: translateY(1.5rem);
+
+	strong {
+		font-weight: 700;
+		color: $logo-red;
+		span {
+			color: $logo-blue;
+		}
+	}
+
+	@media screen and (min-width: 1200px) {
+		transform: translateY(2.5rem);
+	}
+}

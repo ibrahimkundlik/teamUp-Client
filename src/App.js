@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HomePage from "./pages/homepage/homepage";
 import SignUp from "./pages/signup/signup";
 import Login from "./pages/login/login";
@@ -25,6 +25,7 @@ const App = () => {
 	const auth = useSelector(selectAuth);
 	const authToken = useSelector(selectAuthToken);
 	const history = useHistory();
+	const [firstFetchSS, setFirstFetchSS] = useState(null);
 
 	useEffect(() => {
 		dispatch(checkUser());
@@ -44,11 +45,23 @@ const App = () => {
 		async function serverWake() {
 			try {
 				await firstFetch();
+				sessionStorage.setItem("firstFetch", "done");
+				setFirstFetchSS(sessionStorage.getItem("firstFetch"));
 			} catch (error) {
 				console.log(error.message);
 			}
 		}
 		serverWake();
+	}, []);
+
+	useEffect(() => {
+		let timeout = setTimeout(() => {
+			sessionStorage.clear();
+			setFirstFetchSS(null);
+		}, 7000);
+		return () => {
+			clearTimeout(timeout);
+		};
 	}, []);
 
 	return (
@@ -59,7 +72,11 @@ const App = () => {
 					exact
 					path="/"
 					render={() =>
-						auth.userRes ? <Redirect to="/teams" /> : <HomePage />
+						auth.userRes ? (
+							<Redirect to="/teams" />
+						) : (
+							<HomePage firstFetchSS={firstFetchSS} />
+						)
 					}
 				/>
 				<Route

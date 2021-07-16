@@ -10,7 +10,7 @@ import Spinner from "../../components/spinner/spinner";
 import { clearMessageResAction } from "../../redux/user/user.action";
 import Navbar from "../../components/navbar/navbar";
 
-const HomePage = () => {
+const HomePage = ({ firstFetchSS }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const trialLogin = useTrialLogin();
@@ -23,6 +23,15 @@ const HomePage = () => {
 	return (
 		<>
 			<Navbar showLogin={true} />
+			{firstFetchSS && (
+				<p className="server-request-mssg">
+					<strong>
+						team<span>Up</span>
+					</strong>{" "}
+					server is deployed on Heroku, due to which it might take few seconds
+					to make the first server request.
+				</p>
+			)}
 			<div className="hero-section">
 				<div className="hero-image">
 					<img src={dashboardImg} alt="teamUp dashboard" />
