@@ -44,9 +44,9 @@ const App = () => {
 	useEffect(() => {
 		async function serverWake() {
 			try {
-				await firstFetch();
 				sessionStorage.setItem("firstFetch", "done");
 				setFirstFetchSS(sessionStorage.getItem("firstFetch"));
+				await firstFetch();
 			} catch (error) {
 				console.log(error.message);
 			}
